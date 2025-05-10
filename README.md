@@ -1,62 +1,103 @@
 # Urban Fracture
 
-**Urban Fracture** is an experimental first-person shooter set in a surreal, fractured cityscape, inspired by the aesthetic of *Garry's Mod* and mid-2000s games. Players explore an abandoned urban environment filled with AI-controlled enemies, interactive prop cars, destructible objects, and emergent sandbox gameplay.
+**Urban Fracture** is an experimental first-person shooter set in a surreal, fractured cityscape, drawing inspiration from *Garry's Mod* and mid-2000s video games. Players navigate an abandoned urban environment populated by AI-controlled enemies, interactive vehicles, destructible objects, and emergent sandbox gameplay.
 
 ---
 
 ## Features
 
-- FPS gameplay with AI enemies
-- Stylized mid-2000s-inspired graphics
-- Interactive prop cars and destructible objects
-- Open-ended level design with sandbox interactions
-- Immersive minimalist UI
+- First-person shooter mechanics with AI-driven enemies
+- Stylized visuals inspired by mid-2000s games
+- Interactive vehicles and destructible environment elements
+- Open-ended level design encouraging exploration and experimentation
+- Minimalist, immersive user interface
 
 ---
 
 ## Development Status
 
-Urban Fracture is currently **in development**.  
-The following features are implemented so far:
+**Urban Fracture** is currently under active development.  
+The following features have been implemented to date:
 
-- [x] Basic main menu system with functional buttons
-- [x] Hover and click sound effects on UI buttons
-- [x] Background music track for the main menu
-- [x] Loading screen mechanics
+- [x] Main menu system with functional buttons
+- [x] Hover and click sound effects on user interface buttons
+- [x] Background music for the main menu
+- [x] Loading screen functionality
+- [x] Initial terrain creation for the game world
 
 ---
 
-## 🎵 Credits
+## To-Do List
+
+### Core Gameplay
+- [ ] Implement player controller (movement, mouse look, jump, crouch)
+- [ ] Develop weapon system (shooting, ammunition, reloading, weapon switching)
+- [ ] Add melee combat (e.g., fists or melee weapon)
+- [ ] Create health and damage system
+- [ ] Build basic enemy AI (patrol, chase, attack)
+- [ ] Expand to advanced AI behaviors (taking cover, ranged attacks, melee attacks)
+- [ ] Enable interactable props (push, break, explode)
+- [ ] Implement destructible environment elements
+- [ ] Establish simple objective system (e.g., locate object, reach destination)
+
+### Level Design
+- [ ] Expand terrain with additional buildings and streets
+- [ ] Populate the level with interactive vehicles and debris
+- [ ] Define invisible boundaries for the playable area
+- [ ] Complete lighting pass (skybox, directional light, ambient light)
+- [ ] Apply post-processing effects (color grading, bloom, vignette)
+
+### User Interface and User Experience
+- [x] Main menu implemented
+- [x] Loading screen implemented
+- [ ] Develop in-game HUD (health bar, ammunition counter, crosshair)
+- [ ] Create pause menu (resume, settings, quit options)
+- [ ] Design game over screen
+- [ ] Design victory screen
 
 ### Audio
+- [x] Button hover and click sound effects implemented
+- [x] Main menu background music implemented
+- [ ] Add background music for gameplay
+- [ ] Implement gunfire sound effects
+- [ ] Add sound effects for enemy actions
+- [ ] Implement footstep sound effects
+- [ ] Add environmental sound effects (city ambience, sirens, industrial sounds)
 
-- **Menu background music:**  
-    - [YouTube Link](https://youtu.be/2ecOtpKuB90?list=PLSBYfyLFV5VGw4PggkD4jHQUPY5jfokDj)  
-- **Sound effects:**  
-    - Created and mixed by me.
-
----
-
-## 🏙️ Assets Used
-
-All 3D assets are sourced from the **Unity Asset Store**:
-
-- [Urban Road Pack Lite (Clean & Weathered)](https://assetstore.unity.com/packages/3d/environments/roadways/urban-road-pack-lite-clean-weathered-318193)
-- [Versatile Building Kit - 15 Medium Poly Models](https://assetstore.unity.com/packages/3d/props/versatile-building-kit-15-medium-poly-models-for-game-developmen-303398)
-- [VRBN Studios Free Buildings HDRP Bundle 001](https://assetstore.unity.com/packages/3d/environments/urban/vrbn-studios-free-buildings-hdrp-bundle-001-264012)
-- [UAA City Props Vehicles](https://assetstore.unity.com/packages/3d/vehicles/land/uaa-city-props-vehicles-120339)
-
-All assets are used under their respective licenses.
+### Polish and Additional Features
+- [ ] Develop settings menu (volume control, key binding customization)
+- [ ] Add graphics options (resolution, quality presets)
+- [ ] Create credits screen
+- [ ] Implement save and load functionality (optional)
+- [ ] Develop an introductory cutscene (optional)
 
 ---
 
-## 📄 Notes
+## Stretch Goals
 
-Urban Fracture is an ongoing personal development project. Feel free to explore, fork, or provide feedback!
+- [ ] Integrate Steam platform features
+- [ ] Add photo mode
+- [ ] Implement achievements system
+- [ ] Explore modding support
 
 ---
 
-## ✍️ Author
+## Audio Credits
 
-Developed by **Ramiyan Gangatharan**.  
+### Music
+
+- **Main menu background music:**  
+  - [YouTube Link](https://youtu.be/2ecOtpKuB90?list=PLSBYfyLFV5VGw4PggkD4jHQUPY5jfokDj)
+
+---
+
+## Notes
+
+Urban Fracture is an independent development project. Contributions, forks, and constructive feedback are welcome.
+
+---
+
+## Author
+
+Developed by **Ramiyan Gangatharan**  
 Contact: ramiyan2185@gmail.com
