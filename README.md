@@ -57,8 +57,11 @@ This project is created purely for educational purposes to practice and refine g
 
 ## Development Log
 
----
-
 ### Monday, May 12th, 2025
 - Restarted progress on the game as everything broke as I tried to port over a character and its script over from another project.
 - Created terrain for the game.
+- Structured the UI namespace and split responsibilities into `MainMenuController` and `UIButtonAudio` components.
+- Implemented XML documentation for maintainability and future scaling.  
+- Main menu now supports hover and click sound effects for button interactions.
+
+

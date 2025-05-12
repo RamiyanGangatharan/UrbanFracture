@@ -14,6 +14,9 @@ namespace UrbanFracture.UI.Components
         [SerializeField] private AudioSource hoverSound;
         [SerializeField] private AudioSource clickSound;
 
+        /// <summary>
+        /// Registers hover and click events to play audio feedback when the component is initialized.
+        /// </summary>
         private void Awake()
         {
             var button = GetComponent<Button>();
