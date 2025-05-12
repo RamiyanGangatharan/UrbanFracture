@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace UrbanFracture.UI.LoadingScreen
 {
     /// <summary>
-    /// This is the enum that keeps track of scene indices based on the Unity build sequence
+    /// This is the enum that keeps track of scene indices based on the Unity build sequence.
     /// </summary>
     public enum SceneEnum
     {
@@ -26,68 +26,128 @@ namespace UrbanFracture.UI.LoadingScreen
 
         [Header("UI Elements")]
         [SerializeField] private Slider loadingSlider;
-        [SerializeField] private TextMeshProUGUI loadingText;
 
         [Header("Scene Selection")]
         [SerializeField] private SceneEnum selectedScene;
 
+        [Header("Background Image Configuration")]
+        [SerializeField] private RawImage backgroundImage;
+        [SerializeField] private Texture2D[] backgroundTextures; // Use Texture2D instead of Sprite
+        [SerializeField] private float backgroundSwitchInterval = 2f;
+        [SerializeField] private float crossfadeDuration = 1f;
+
         /// <summary>
-        /// Called via Button OnClick — uses selectedScene dropdown value
+        /// Called via Button OnClick — uses selectedScene dropdown value to load the scene.
         /// </summary>
         public void LoadSelectedScene() { LoadLevel(selectedScene); }
 
         /// <summary>
-        /// Starts loading a scene from enum
+        /// Starts loading a scene from the given enum value.
+        /// Displays the loading screen and begins the loading process.
         /// </summary>
+        /// <param name="levelToLoad">The scene to load represented by the SceneEnum.</param>
         public void LoadLevel(SceneEnum levelToLoad)
         {
             if (sceneFrom != null) sceneFrom.SetActive(false);
             if (loadingScreen != null) loadingScreen.SetActive(true);
 
             StartCoroutine(LoadLevelAsync(levelToLoad.ToString()));
+            StartCoroutine(BackgroundSlideshow());
         }
 
         /// <summary>
-        /// Asynchronously loads a scene and updates UI
+        /// Starts a slideshow of background images while the loading screen is active.
+        /// Loops through the images with a specified interval.
         /// </summary>
+        /// <returns>An IEnumerator for Coroutine.</returns>
+        private IEnumerator BackgroundSlideshow()
+        {
+            int index = 0;
+            while (loadingScreen.activeSelf)
+            {
+                if (backgroundTextures.Length == 0 || backgroundImage == null) yield break;
+
+                Texture2D nextTexture = backgroundTextures[index];
+                StartCoroutine(CrossfadeToTexture(nextTexture));
+                index = (index + 1) % backgroundTextures.Length;
+
+                yield return new WaitForSeconds(backgroundSwitchInterval);
+            }
+        }
+
+        /// <summary>
+        /// Smoothly crossfades between two background images.
+        /// </summary>
+        /// <param name="newTexture">The new texture to fade to.</param>
+        /// <returns>An IEnumerator for Coroutine.</returns>
+        private IEnumerator CrossfadeToTexture(Texture2D newTexture)
+        {
+            float t = 0f;
+            Color color = backgroundImage.color;
+            while (t < 1f)
+            {
+                t += Time.deltaTime / crossfadeDuration;
+                backgroundImage.color = new Color(color.r, color.g, color.b, Mathf.Lerp(1f, 0f, t));
+                yield return null;
+            }
+
+            backgroundImage.texture = newTexture; // Set the texture instead of sprite
+
+            t = 0f;
+            while (t < 1f)
+            {
+                t += Time.deltaTime / crossfadeDuration;
+                backgroundImage.color = new Color(color.r, color.g, color.b, Mathf.Lerp(0f, 1f, t));
+                yield return null;
+            }
+        }
+
+        /// <summary>
+        /// Asynchronously loads a scene and updates the loading UI.
+        /// The scene loading progress is tracked and displayed until fully loaded.
+        /// </summary>
+        /// <param name="levelToLoad">The scene name to load as a string.</param>
+        /// <returns>An IEnumerator for Coroutine.</returns>
         private IEnumerator LoadLevelAsync(string levelToLoad)
         {
+            SceneManager.sceneLoaded += OnSceneLoaded;
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
             loadOperation.allowSceneActivation = false;
 
-            float minLoadTime = 2f; // Minimum time to show loading screen
+            float minLoadTime = 10f; // Minimum time to show loading screen (can adjust as necessary)
             float elapsedTime = 0f;
             float progress = 0f;
+            float targetProgress = 0f;
 
+            // While the scene is loading
             while (!loadOperation.isDone)
             {
-                // True progress until 0.9
-                float targetProgress = Mathf.Clamp01(loadOperation.progress / 0.9f);
+                // If scene is not yet finished loading, update progress based on loadOperation.progress
+                if (loadOperation.progress < 0.9f)
+                {
+                    // Gradually interpolate progress based on loading operation, slower than before
+                    targetProgress = Mathf.Lerp(progress, loadOperation.progress / 0.9f, Time.deltaTime * 1.5f); // Adjusted smoothness rate
+                }
+                else
+                {
+                    // Once the scene is almost done loading, animate the progress to 100% with the minimum load time
+                    elapsedTime += Time.deltaTime;
 
-                // Smoothly interpolate displayed progress toward actual
-                progress = Mathf.MoveTowards(progress, targetProgress, Time.deltaTime);
+                    // Gradually update progress toward 100% based on elapsed time, ensuring it takes minLoadTime to reach 100%
+                    targetProgress = Mathf.Lerp(progress, 1f, Mathf.Min(elapsedTime / minLoadTime, 1f));
+                }
 
-                // Update UI
+                // Update progress and UI
+                progress = targetProgress;
                 if (loadingSlider != null) loadingSlider.value = progress;
                 if (sliderController != null) sliderController.SliderChange(progress);
-                if (loadingText != null) loadingText.text = $"{progress * 100f:0}%";
 
-                elapsedTime += Time.deltaTime;
-
-                // If the scene is basically done loading and the timer has run out
-                if (loadOperation.progress >= 0.9f && elapsedTime >= minLoadTime)
+                // If we reach 100% progress and the loading time has been met, we activate the scene
+                if (progress >= 1f && elapsedTime >= minLoadTime)
                 {
-                    // Animate progress to 100% before switching scenes
-                    while (progress < 1f)
-                    {
-                        progress = Mathf.MoveTowards(progress, 1f, Time.deltaTime);
-                        if (loadingSlider != null) loadingSlider.value = progress;
-                        if (sliderController != null) sliderController.SliderChange(progress);
-                        if (loadingText != null) loadingText.text = $"{progress * 100f:0}%";
-                        yield return null;
-                    }
+                    // Add a small delay before switching scenes for a smooth transition
+                    yield return new WaitForSeconds(0.5f);  // Adjust this for the desired wait time
 
-                    // Switch scenes
                     loadOperation.allowSceneActivation = true;
                 }
 
@@ -98,8 +158,11 @@ namespace UrbanFracture.UI.LoadingScreen
 
 
         /// <summary>
-        /// Resets loading UI after the scene is loaded
+        /// Resets the loading UI after the scene is loaded and deactivates the loading screen.
+        /// This method is called when the scene has finished loading.
         /// </summary>
+        /// <param name="scene">The scene that has just loaded.</param>
+        /// <param name="mode">The mode in which the scene was loaded (e.g., Single, Additive).</param>
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             if (loadingScreen != null) loadingScreen.SetActive(false);
@@ -107,11 +170,16 @@ namespace UrbanFracture.UI.LoadingScreen
         }
 
         /// <summary>
-        /// Loads a scene from a string name
+        /// Loads a scene by name.
+        /// This method tries to parse the scene name into a SceneEnum and then calls LoadLevel with the enum value.
         /// </summary>
+        /// <param name="sceneName">The name of the scene to load.</param>
         public void LoadLevelByName(string sceneName)
         {
-            if (System.Enum.TryParse(sceneName, out SceneEnum scene)) { LoadLevel(scene); }
+            if (System.Enum.TryParse(sceneName, out SceneEnum scene))
+            {
+                LoadLevel(scene);
+            }
         }
     }
 }
