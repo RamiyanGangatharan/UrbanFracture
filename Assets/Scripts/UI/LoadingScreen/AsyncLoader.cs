@@ -84,6 +84,7 @@ namespace UrbanFracture.UI.LoadingScreen
         {
             float t = 0f;
             Color color = backgroundImage.color;
+
             while (t < 1f)
             {
                 t += Time.deltaTime / crossfadeDuration;
@@ -91,9 +92,10 @@ namespace UrbanFracture.UI.LoadingScreen
                 yield return null;
             }
 
-            backgroundImage.texture = newTexture; // Set the texture instead of sprite
+            backgroundImage.texture = newTexture; 
 
             t = 0f;
+
             while (t < 1f)
             {
                 t += Time.deltaTime / crossfadeDuration;
@@ -114,7 +116,7 @@ namespace UrbanFracture.UI.LoadingScreen
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
             loadOperation.allowSceneActivation = false;
 
-            float minLoadTime = 10f; // Minimum time to show loading screen (can adjust as necessary)
+            float minLoadTime = 10f;
             float elapsedTime = 0f;
             float progress = 0f;
             float targetProgress = 0f;
@@ -125,15 +127,11 @@ namespace UrbanFracture.UI.LoadingScreen
                 // If scene is not yet finished loading, update progress based on loadOperation.progress
                 if (loadOperation.progress < 0.9f)
                 {
-                    // Gradually interpolate progress based on loading operation, slower than before
-                    targetProgress = Mathf.Lerp(progress, loadOperation.progress / 0.9f, Time.deltaTime * 1.5f); // Adjusted smoothness rate
+                    targetProgress = Mathf.Lerp(progress, loadOperation.progress / 0.9f, Time.deltaTime * 1.5f);
                 }
                 else
                 {
-                    // Once the scene is almost done loading, animate the progress to 100% with the minimum load time
                     elapsedTime += Time.deltaTime;
-
-                    // Gradually update progress toward 100% based on elapsed time, ensuring it takes minLoadTime to reach 100%
                     targetProgress = Mathf.Lerp(progress, 1f, Mathf.Min(elapsedTime / minLoadTime, 1f));
                 }
 
@@ -145,12 +143,9 @@ namespace UrbanFracture.UI.LoadingScreen
                 // If we reach 100% progress and the loading time has been met, we activate the scene
                 if (progress >= 1f && elapsedTime >= minLoadTime)
                 {
-                    // Add a small delay before switching scenes for a smooth transition
-                    yield return new WaitForSeconds(0.5f);  // Adjust this for the desired wait time
-
+                    yield return new WaitForSeconds(0.5f);
                     loadOperation.allowSceneActivation = true;
                 }
-
                 yield return null;
             }
         }
@@ -176,10 +171,7 @@ namespace UrbanFracture.UI.LoadingScreen
         /// <param name="sceneName">The name of the scene to load.</param>
         public void LoadLevelByName(string sceneName)
         {
-            if (System.Enum.TryParse(sceneName, out SceneEnum scene))
-            {
-                LoadLevel(scene);
-            }
+            if (System.Enum.TryParse(sceneName, out SceneEnum scene)) { LoadLevel(scene); }
         }
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UrbanFracture.UI.MainMenu
 {
@@ -35,8 +35,7 @@ namespace UrbanFracture.UI.MainMenu
         {
             if (button == null) return;
 
-            // Add click sound
-            button.onClick.AddListener(() => PlayClickSound());
+            button.onClick.AddListener(() => PlayClickSound()); // Add click sound
 
             // Add hover sound via EventTrigger
             EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
@@ -44,17 +43,11 @@ namespace UrbanFracture.UI.MainMenu
 
             var entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
             entry.callback.AddListener(_ => PlayHoverSound());
+
             trigger.triggers.Add(entry);
         }
 
-        private void PlayHoverSound()
-        {
-            if (hoverSound != null) hoverSound.Play();
-        }
-
-        private void PlayClickSound()
-        {
-            if (clickSound != null) clickSound.Play();
-        }
+        private void PlayHoverSound() { if (hoverSound != null) hoverSound.Play(); }
+        private void PlayClickSound() { if (clickSound != null) clickSound.Play(); }
     }
 }

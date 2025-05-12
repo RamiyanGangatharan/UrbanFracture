@@ -71,4 +71,8 @@ This project is created purely for educational purposes to practice and refine g
 - Main menu now supports hover and click sound effects for button interactions.
 - Fixed audio issues with button mechanics.
 - Created a loading screen and functioning loading mechanics.
+- Optimized loading to make it look smoother
+- Made a GTA IV style load screen with an image slideshow
+- Modified the theme song to only feature the chorus and the ending portion of the original song
+- Created Asynchronous operations to manage the scenes and the loading of them
 
