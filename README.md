@@ -55,6 +55,12 @@ This project is created purely for educational purposes to practice and refine g
 
 ---
 
+## Resources Used:
+- [Background Music Implementation](https://damiandabrowski.medium.com/how-to-add-and-manage-background-music-in-your-unity-projects-86cd5889a542)
+- [Progress Bars](https://youtu.be/J1ng1zA3-Pk)
+- [Loading Screen](https://youtu.be/iXWFTgFNRdM)
+- [First-Person Movement](https://youtu.be/41MD0s9FiXI)
+
 ## Development Log
 
 ### Monday, May 12th, 2025
