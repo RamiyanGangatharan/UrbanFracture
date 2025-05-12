@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace UrbanFracture.UI.MainMenu
 {
     /// <summary>
-    /// Controls the main menu functionality, including button references and click audio setup.
+    /// Controls the main menu functionality, including button references and audio feedback.
     /// </summary>
     public class MainMenuController : MonoBehaviour
     {
@@ -14,29 +15,46 @@ namespace UrbanFracture.UI.MainMenu
         [SerializeField] private Button quitButton;
         [SerializeField] private Button creditsButton;
 
-        /// <summary>
-        /// Initializes the main menu by attaching audio components to buttons.
-        /// </summary>
+        [Header("Audio")]
+        [SerializeField] private AudioSource hoverSound;
+        [SerializeField] private AudioSource clickSound;
+
         private void Start()
         {
-            AttachAudio(playButton);
-            AttachAudio(settingsButton);
-            AttachAudio(quitButton);
-            AttachAudio(creditsButton);
+            SetupButton(playButton);
+            SetupButton(settingsButton);
+            SetupButton(quitButton);
+            SetupButton(creditsButton);
         }
 
         /// <summary>
-        /// Attaches a UIButtonAudio component to the provided button if not already present.
+        /// Attaches audio behavior to the specified button.
         /// </summary>
-        /// <param name="button">The button to attach the audio behavior to.</param>
-        private void AttachAudio(Button button)
+        /// <param name="button">Button to set up.</param>
+        private void SetupButton(Button button)
         {
             if (button == null) return;
 
-            if (button.GetComponent<UrbanFracture.UI.Components.UIButtonAudio>() == null)
-            {
-                button.gameObject.AddComponent<UrbanFracture.UI.Components.UIButtonAudio>();
-            }
+            // Add click sound
+            button.onClick.AddListener(() => PlayClickSound());
+
+            // Add hover sound via EventTrigger
+            EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
+            if (trigger == null) { trigger = button.gameObject.AddComponent<EventTrigger>(); }
+
+            var entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
+            entry.callback.AddListener(_ => PlayHoverSound());
+            trigger.triggers.Add(entry);
+        }
+
+        private void PlayHoverSound()
+        {
+            if (hoverSound != null) hoverSound.Play();
+        }
+
+        private void PlayClickSound()
+        {
+            if (clickSound != null) clickSound.Play();
         }
     }
 }
