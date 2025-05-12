@@ -59,7 +59,7 @@ This project is created purely for educational purposes to practice and refine g
 - [Background Music Implementation](https://damiandabrowski.medium.com/how-to-add-and-manage-background-music-in-your-unity-projects-86cd5889a542)
 - [UI Slider](https://youtu.be/oya8_SlLXb0)
 - [Loading Screen](https://youtu.be/NyFYNsC3H8k)
-- [First-Person Movement](https://youtu.be/41MD0s9FiXIk)
+- [First-Person Movement](https://youtu.be/41MD0s9FiXI)
 
 ## Development Log
 
