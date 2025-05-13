@@ -60,7 +60,7 @@ This project is created purely for educational purposes to practice and refine g
 - [UI Slider](https://youtu.be/oya8_SlLXb0)
 - [Loading Screen](https://youtu.be/NyFYNsC3H8k)
 - [First-Person Movement](https://youtu.be/41MD0s9FiXI)
-
+- [Weapon Systems](https://youtu.be/JCngTlb2R2c)
 ---
 
 ## Development Log
