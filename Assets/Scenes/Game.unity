@@ -628,6 +628,7 @@ GameObject:
   - component: {fileID: 1281205258}
   - component: {fileID: 1281205257}
   - component: {fileID: 1281205259}
+  - component: {fileID: 1281205260}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -765,6 +766,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e1013ccec1cfbd148851a49dc50298d8, type: 3}
   footstep_general:
   - {fileID: 8300000, guid: d5c3778edd6f88244a5eff78db0951cb, type: 3}
+--- !u!114 &1281205260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281205253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58239a22a504df4a96c1b18e5482cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobFrequency: 1
+  bobAmplitude: 0.5
+  cameraReference: {fileID: 384825293}
 --- !u!1 &1458028076
 GameObject:
   m_ObjectHideFlags: 0

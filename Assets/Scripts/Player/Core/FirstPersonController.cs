@@ -29,6 +29,7 @@ namespace UrbanFracture.Core.Player
         private LookHandler lookHandler;
         private CameraFOVHandler FOVHandler;
         private JumpHandler jumpHandler;
+        private CameraBob cameraBob;
 
         /// <summary>
         /// Ensures required component references are assigned in the editor.
@@ -48,6 +49,8 @@ namespace UrbanFracture.Core.Player
             lookHandler = new LookHandler(transform, firstPersonCamera);
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
             jumpHandler = new JumpHandler(characterController);
+
+            cameraBob = GetComponent<CameraBob>();
         }
 
         /// <summary>
@@ -64,6 +67,7 @@ namespace UrbanFracture.Core.Player
             movementHandler.ApplyMovement(movementHandler.verticalVelocity);
 
             footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
+            cameraBob.UpdateCameraBob(movementHandler.CurrentSpeed, characterController.isGrounded);
         }
 
         /// <summary>
