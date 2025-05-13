@@ -61,18 +61,69 @@ This project is created purely for educational purposes to practice and refine g
 - [Loading Screen](https://youtu.be/NyFYNsC3H8k)
 - [First-Person Movement](https://youtu.be/41MD0s9FiXI)
 
+---
+
 ## Development Log
 
 ### Monday, May 12th, 2025
-- Restarted progress on the game as everything broke as I tried to port over a character and its script over from another project.
-- Created terrain for the game.
-- Structured the UI namespace and split responsibilities into `MainMenuController` and `UIButtonAudio` components.
-- Implemented XML documentation for maintainability and future scaling.  
-- Main menu now supports hover and click sound effects for button interactions.
-- Fixed audio issues with button mechanics.
-- Created a loading screen and functioning loading mechanics.
-- Optimized loading to make it look smoother
-- Made a GTA IV style load screen with an image slideshow
-- Modified the theme song to only feature the chorus and the ending portion of the original song
-- Created Asynchronous operations to manage the scenes and the loading of them
 
+---
+
+### General
+- Restarted the project from scratch after a critical failure caused by attempting to port a character and controller script from a previous project.
+- Implemented XML documentation throughout the codebase for improved maintainability and future scalability.
+- Designed and added basic terrain for initial gameplay testing and level prototyping.
+
+---
+
+### UI Development
+- Refactored UI structure:
+  - Introduced `MainMenuController` and `UIButtonAudio` components to separate visual logic from audio interactions.
+- Enhanced main menu functionality:
+  - Added responsive hover and click sound effects for interactive feedback.
+- Fixed issues with inconsistent audio playback in UI elements.
+
+---
+
+### First-Person Character System
+- Developed a modular **First Person Controller** featuring:
+  - Smooth acceleration-based movement using `CharacterController`.
+  - Sprinting with Cinemachine-driven dynamic FOV changes for immersive speed feedback.
+  - Configurable double-jump system with toggle and automatic reset upon landing.
+  - Scaled gravity application for more realistic airborne movement and fall behavior.
+  - Asynchronous velocity blending for seamless movement transitions.
+  - Landing detection with Unity Events for potential animation or effect triggers.
+  
+- Implemented advanced **mouse look system**:
+  - Adjustable pitch/yaw sensitivity.
+  - Pitch clamping for natural head movement limits.
+  - Real-time camera and player rotation for a fluid FPS experience.
+  
+- Integrated cinematic FOV transitions using `Mathf.Lerp` to visually enhance sprinting.
+
+---
+
+### Player Input Integration
+- Connected Unity's new Input System to gameplay through a `Player` component.
+  - Mapped the following actions using `InputValue`:
+    - Movement: `WASD`
+    - Look: `Mouse`
+    - Sprint: `Left Shift`
+    - Jump: `Spacebar`
+- Centralized input logic for better maintainability and flexibility across gameplay features.
+
+---
+
+### Scene Management and Loading
+- Created asynchronous scene loading logic to support non-blocking transitions.
+- Designed and implemented a loading screen with:
+  - Progress feedback to improve UX during scene changes.
+  - A GTA IV-style slideshow showcasing in-game images for visual engagement.
+- Optimized load performance to create a smoother, more polished transition experience.
+
+---
+
+### Audio Enhancements
+- Fixed persistent audio playback issues in the UI interaction system.
+- Edited the game’s theme song:
+  - Trimmed to highlight the chorus and closing sections for a more memorable intro/loop.
