@@ -64,15 +64,35 @@ This project is created purely for educational purposes to practice and refine g
 ## Development Log
 
 ### Monday, May 12th, 2025
-- Restarted progress on the game as everything broke as I tried to port over a character and its script over from another project.
-- Created terrain for the game.
-- Structured the UI namespace and split responsibilities into `MainMenuController` and `UIButtonAudio` components.
+#### General
+- Restarted the project due to critical breakage during character/controller port from another project.
 - Implemented XML documentation for maintainability and future scaling.  
+- Created terrain for the game.
+
+#### UI Development
+- Structured the UI namespace and split responsibilities into `MainMenuController` and `UIButtonAudio` components.
 - Main menu now supports hover and click sound effects for button interactions.
-- Fixed audio issues with button mechanics.
+
+#### First Person Character Control System
+- Created a modular first person controller with:
+    - Smooth acceleration-based movement using Unity's CharacterController.
+    - Sprinting mechanics with FOV zoom via Cinemachine (sprinting causes a higher FOV compared to walking).
+    - Double Jump functionality with a toggle and jump count reset on landing.
+    - Gravity handling using a scaled physics approach for realistic falling.
+    - Asynchronous velocity blending for smoother transitions.
+    - Event-driven landing detection via UnityEvent.
+- Implemented mouse-based camera functionality with:
+    - Customizable pitch/yaw sensitivity.
+    - Clampable vertical pitch for immersive control.
+    - Rotation applied to both camera and player body.
+- Added dynamic camera FOV shift when using Mathf.Lerp for a cinematic zoom effect.
+
+#### Scene Management
+- Created Asynchronous operations to manage the scenes and the loading of them
 - Created a loading screen and functioning loading mechanics.
 - Optimized loading to make it look smoother
 - Made a GTA IV style load screen with an image slideshow
-- Modified the theme song to only feature the chorus and the ending portion of the original song
-- Created Asynchronous operations to manage the scenes and the loading of them
 
+#### Audio
+- Fixed audio issues with button mechanics.
+- Modified the theme song to only feature the chorus and the ending portion of the original song
