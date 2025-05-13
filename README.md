@@ -60,10 +60,31 @@ This project is created purely for educational purposes to practice and refine g
 - [UI Slider](https://youtu.be/oya8_SlLXb0)
 - [Loading Screen](https://youtu.be/NyFYNsC3H8k)
 - [First-Person Movement](https://youtu.be/41MD0s9FiXI)
-
+- [Weapon Systems](https://youtu.be/JCngTlb2R2c)
 ---
 
 ## Development Log
+
+### Tuesday, May 13th, 2025
+
+---
+
+### General
+- Split up the player controller into multiple files to keep it more organized.
+    - Organized it into a hub and spoke, controller type of system, will implement that concept into later systems.
+- Imported Playermodels
+- Imported Terrain assets
+- Created a terrain
+
+### First Person Character System
+- Implemented a player model called `Survivalist character`.
+- Added then removed the player model as it is too complicated to configure at the moment
+- added camera bobbing
+
+### Audio
+- Added footstep sounds
+
+---
 
 ### Monday, May 12th, 2025
 
@@ -127,3 +148,6 @@ This project is created purely for educational purposes to practice and refine g
 - Fixed persistent audio playback issues in the UI interaction system.
 - Edited the game’s theme song:
   - Trimmed to highlight the chorus and closing sections for a more memorable intro/loop.
+
+---
+
