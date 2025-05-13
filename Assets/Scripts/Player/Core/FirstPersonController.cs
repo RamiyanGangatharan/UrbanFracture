@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Unity.Cinemachine;
+using UnityEngine;
 using UnityEngine.Events;
-using Unity.Cinemachine;
+using UrbanFracture.Combat;
 using UrbanFracture.Player.Components;
 
 namespace UrbanFracture.Core.Player
@@ -14,9 +15,8 @@ namespace UrbanFracture.Core.Player
     {
         [Header("References")]
         [SerializeField] private CharacterController characterController;
-        [SerializeField] private CinemachineCamera firstPersonCamera;
+        [SerializeField] public CinemachineCamera firstPersonCamera;
         [SerializeField] private Footsteps footsteps;
-
 
         [Header("Input")]
         public Vector2 moveInput;
@@ -24,12 +24,14 @@ namespace UrbanFracture.Core.Player
         public bool sprintInput;
         public UnityEvent Landed;
 
+        [Header("Combat")]
+        [SerializeField] private Gun currentGun;
+
         // Component Handlers
         private MovementHandler movementHandler;
         private LookHandler lookHandler;
         private CameraFOVHandler FOVHandler;
         private JumpHandler jumpHandler;
-        private CameraBob cameraBob;
 
         /// <summary>
         /// Ensures required component references are assigned in the editor.
@@ -49,8 +51,6 @@ namespace UrbanFracture.Core.Player
             lookHandler = new LookHandler(transform, firstPersonCamera);
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
             jumpHandler = new JumpHandler(characterController);
-
-            cameraBob = GetComponent<CameraBob>();
         }
 
         /// <summary>
@@ -67,12 +67,11 @@ namespace UrbanFracture.Core.Player
             movementHandler.ApplyMovement(movementHandler.verticalVelocity);
 
             footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
-            cameraBob.UpdateCameraBob(movementHandler.CurrentSpeed, characterController.isGrounded);
         }
 
-        /// <summary>
-        /// Attempts to initiate a jump using the current vertical velocity state.
-        /// </summary>
         public void TryJump() => jumpHandler.TryJump(ref movementHandler.verticalVelocity);
+        public void TryAttack() => currentGun?.TryShoot();
+        public void TryReload() => currentGun?.TryReload();
+        public void EquipGun(Gun gun) => currentGun = gun;
     }
 }

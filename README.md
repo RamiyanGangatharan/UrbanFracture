@@ -81,6 +81,18 @@ This project is created purely for educational purposes to practice and refine g
 - Added then removed the player model as it is too complicated to configure at the moment
 - added camera bobbing
 
+### Weapon System
+- Implemented a Pistol Model
+- Implemented firing mechanics
+- Implemented reloading mechanics
+- Implemented recoil mechanics [currently broken]
+- Created a crosshair on a canvas
+
+- Created a Gun Class
+- Created a Pistol Class
+- Created a Recoil Class
+- Created a GunData Scriptable Object
+
 ### Audio
 - Added footstep sounds
 
