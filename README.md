@@ -82,16 +82,19 @@ This project is created purely for educational purposes to practice and refine g
 - added camera bobbing
 
 ### Weapon System
-- Implemented a Pistol Model
-- Implemented firing mechanics
-- Implemented reloading mechanics
-- Implemented recoil mechanics [currently broken]
-- Created a crosshair on a canvas
 
-- Created a Gun Class
-- Created a Pistol Class
-- Created a Recoil Class
-- Created a GunData Scriptable Object
+- General Weapon System Implementation
+    - Implemented a Pistol Model
+    - Implemented firing mechanics
+    - Implemented reloading mechanics
+    - Implemented recoil mechanics [currently broken]
+    - Created a crosshair on a canvas
+
+- General Codebase for the Weapon System
+    - Created a Gun Class
+    - Created a Pistol Class
+    - Created a Recoil Class
+    - Created a GunData Scriptable Object
 
 ### Audio
 - Added footstep sounds
