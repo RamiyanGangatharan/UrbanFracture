@@ -65,6 +65,27 @@ This project is created purely for educational purposes to practice and refine g
 
 ## Development Log
 
+### Tuesday, May 13th, 2025
+
+---
+
+### General
+- Split up the player controller into multiple files to keep it more organized.
+    - Organized it into a hub and spoke, controller type of system, will implement that concept into later systems.
+- Imported Playermodels
+- Imported Terrain assets
+- Created a terrain
+
+### First Person Character System
+- Implemented a player model called `Survivalist character`.
+- Added then removed the player model as it is too complicated to configure at the moment
+- added camera bobbing
+
+### Audio
+- Added footstep sounds
+
+---
+
 ### Monday, May 12th, 2025
 
 ---
@@ -129,17 +150,4 @@ This project is created purely for educational purposes to practice and refine g
   - Trimmed to highlight the chorus and closing sections for a more memorable intro/loop.
 
 ---
-
-### Tuesday, May 13th, 2025
-
----
-
-- Implemented a player model called `Survivalist character`.
-- Split up the player controller into multiple files to keep it more organized.
-    - Organized it into a hub and spoke, controller type of system, will implement that concept into later systems.
-
-TODO: 
-- Model a terrain for it
-- link a player model to the scripts
-- link animations to the player model
 
