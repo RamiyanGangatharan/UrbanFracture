@@ -13,7 +13,7 @@ namespace UrbanFracture.Player.Components
         private readonly CinemachineCamera camera;
         private Vector2 sensitivity = new(0.1f, 0.1f);
         private float pitch = 0f;
-        private float pitchLimit = 80f;
+        private float pitchLimit = 40f;
 
         /// <summary>
         /// Initializes the look handler with player body and camera references.

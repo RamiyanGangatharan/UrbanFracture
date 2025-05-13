@@ -15,6 +15,8 @@ namespace UrbanFracture.Core.Player
         [Header("References")]
         [SerializeField] private CharacterController characterController;
         [SerializeField] private CinemachineCamera firstPersonCamera;
+        [SerializeField] private Footsteps footsteps;
+
 
         [Header("Input")]
         public Vector2 moveInput;
@@ -34,6 +36,7 @@ namespace UrbanFracture.Core.Player
         private void OnValidate()
         {
             if (characterController == null) characterController = GetComponent<CharacterController>();
+            if (footsteps == null) footsteps = GetComponentInChildren<Footsteps>();
         }
 
         /// <summary>
@@ -59,6 +62,8 @@ namespace UrbanFracture.Core.Player
 
             if (jumpHandler.CheckLanding()) { Landed?.Invoke(); }
             movementHandler.ApplyMovement(movementHandler.verticalVelocity);
+
+            footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
         }
 
         /// <summary>
