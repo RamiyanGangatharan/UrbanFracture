@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace UrbanFracture.Player
+namespace UrbanFracture.Core.Player
 {
     [RequireComponent(typeof(FirstPersonController))]
     public class Player : MonoBehaviour

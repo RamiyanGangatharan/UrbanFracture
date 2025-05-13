@@ -496,8 +496,8 @@ GameObject:
   - component: {fileID: 1281205254}
   - component: {fileID: 1281205255}
   - component: {fileID: 1281205256}
-  - component: {fileID: 1281205257}
   - component: {fileID: 1281205258}
+  - component: {fileID: 1281205257}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -585,23 +585,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1281205253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06f5a72903edf0a4587ac63b0ca35812, type: 3}
+  m_Script: {fileID: 11500000, guid: 552e10f66afb87d468878fef600a8b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 15
-  walkSpeed: 3.5
-  sprintSpeed: 15
-  lookSensitivity: {x: 0.1, y: 0.1}
-  pitchLimit: 85
-  currentPitch: 0
-  CameraNormalFOV: 60
-  CameraSprintFOV: 80
-  CameraFOVSmoothing: 3
-  moveInput: {x: 0, y: 0}
-  lookInput: {x: 0, y: 0}
-  sprintInput: 0
-  characterController: {fileID: 1281205255}
-  firstPersonCamera: {fileID: 384825293}
+  firstPersonController: {fileID: 1281205258}
 --- !u!114 &1281205258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,10 +598,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1281205253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba0bedd6b501bc74d86535f238399622, type: 3}
+  m_Script: {fileID: 11500000, guid: 37434f77f0ace4b4298fb6ae71d29414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstPersonController: {fileID: 1281205257}
+  characterController: {fileID: 1281205255}
+  firstPersonCamera: {fileID: 384825293}
+  moveInput: {x: 0, y: 0}
+  lookInput: {x: 0, y: 0}
+  sprintInput: 0
+  Landed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1458028076
 GameObject:
   m_ObjectHideFlags: 0

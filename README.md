@@ -127,3 +127,19 @@ This project is created purely for educational purposes to practice and refine g
 - Fixed persistent audio playback issues in the UI interaction system.
 - Edited the game’s theme song:
   - Trimmed to highlight the chorus and closing sections for a more memorable intro/loop.
+
+---
+
+### Tuesday, May 13th, 2025
+
+---
+
+- Implemented a player model called `Survivalist character`.
+- Split up the player controller into multiple files to keep it more organized.
+    - Organized it into a hub and spoke, controller type of system, will implement that concept into later systems.
+
+TODO: 
+- Model a terrain for it
+- link a player model to the scripts
+- link animations to the player model
+
