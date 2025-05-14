@@ -62,6 +62,7 @@ This project is created purely for educational purposes to practice and refine g
 - [First-Person Movement](https://youtu.be/41MD0s9FiXI)
 - [Weapon Systems](https://youtu.be/JCngTlb2R2c)
 - [Muzzle Flash Particle System](https://youtu.be/rf7gHVixmmc)
+- Used ChatGPT for the sand impact Particle System
 ---
 
 ## Development Log
