@@ -17,14 +17,14 @@ namespace UrbanFracture.Combat
 
         public float currentAmmo = 0f;
         private float nextTimeToFire = 0f;
-
         private bool isReloading = false;
 
-        [Header("Audio")]
-        public AudioClip shootSFX;
-        public AudioClip reloadSFX;
+        [Header("Audio Sources")]
+        [Tooltip("AudioSource component that plays shooting sound.")]
+        public AudioSource shootSFX;
 
-        private AudioSource audioSource;
+        [Tooltip("AudioSource component that plays reloading sound.")]
+        public AudioSource reloadSFX;
 
         private void Start()
         {
@@ -34,37 +34,28 @@ namespace UrbanFracture.Combat
             recoilHandler = GetComponent<Recoil>();
 
             if (firstPersonController != null)
-            {
                 gameHUD = firstPersonController.GetComponentInChildren<GameHUD>();
-            }
-
-            audioSource = GetComponent<AudioSource>();
-            if (audioSource == null)
-            {
-                audioSource = gameObject.AddComponent<AudioSource>();
-            }
         }
 
         public virtual void Update()
         {
-            if (recoilHandler != null)
-            {
-                recoilHandler.ResetRecoil(gunData);
-            }
+            recoilHandler?.ResetRecoil(gunData);
         }
 
         public void TryShoot()
         {
             if (isReloading)
             {
-                Debug.Log(gunData.WeaponName + " is reloading...");
+                Debug.Log($"{gunData.WeaponName} is reloading...");
                 return;
             }
+
             if (currentAmmo <= 0f)
             {
-                Debug.Log(gunData.WeaponName + " has run out of ammo, please reload...");
+                Debug.Log($"{gunData.WeaponName} has run out of ammo, please reload...");
                 return;
             }
+
             if (Time.time >= nextTimeToFire)
             {
                 nextTimeToFire = Time.time + (1 / gunData.FireRate);
@@ -75,11 +66,10 @@ namespace UrbanFracture.Combat
         private void HandleShoot()
         {
             currentAmmo--;
-            Debug.Log(gunData.WeaponName + " shot!, bullets left: " + currentAmmo);
+            Debug.Log($"{gunData.WeaponName} shot! Bullets left: {currentAmmo}");
 
-            // 🔊 Play shoot SFX
-            if (shootSFX != null && audioSource != null)
-                audioSource.PlayOneShot(shootSFX);
+            // 🔊 Play shoot AudioSource
+            shootSFX?.Play();
 
             Shoot();
             recoilHandler?.ApplyRecoil(gunData);
@@ -90,31 +80,29 @@ namespace UrbanFracture.Combat
         public void TryReload()
         {
             if (!isReloading && currentAmmo < gunData.MagazineSize)
-            {
                 StartCoroutine(Reload());
-            }
         }
 
         public IEnumerator Reload()
         {
             isReloading = true;
 
-            if (gameHUD.ReloadText != null)
+            if (gameHUD?.ReloadText != null)
                 gameHUD.ReloadText.enabled = true;
 
-            Debug.Log(gunData.WeaponName + " is reloading...");
+            Debug.Log($"{gunData.WeaponName} is reloading...");
 
-            // 🔊 Play reload SFX
-            if (reloadSFX != null && audioSource != null)
-                audioSource.PlayOneShot(reloadSFX);
+            // 🔊 Play reload AudioSource
+            reloadSFX?.Play();
 
             yield return new WaitForSeconds(gunData.ReloadTime);
 
             currentAmmo = gunData.MagazineSize;
             isReloading = false;
 
-            Debug.Log(gunData.WeaponName + " is reloaded...");
-            if (gameHUD.ReloadText != null)
+            Debug.Log($"{gunData.WeaponName} is reloaded.");
+
+            if (gameHUD?.ReloadText != null)
                 gameHUD.ReloadText.enabled = false;
 
             gameHUD?.UpdateHUD();

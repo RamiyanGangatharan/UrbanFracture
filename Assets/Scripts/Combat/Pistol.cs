@@ -4,37 +4,42 @@ namespace UrbanFracture.Combat
 {
     public class Pistol : Gun
     {
-        public GameObject muzzleFlashPrefab;
-        public GameObject hitEffectPrefab;
+        [Header("Effects")]
+        public ParticleSystem muzzleFlash;
+        public Transform muzzleFlashSpawnPoint;
+        public ParticleSystem hitEffectParticleSystem;
 
-        public override void Update() { base.Update(); }
+        public override void Update()
+        {
+            base.Update();
+        }
 
         public override void Shoot()
         {
-            Instantiate(muzzleFlashPrefab, transform.position, transform.rotation);
-
-            RaycastHit hit;
-
-            if (
-                Physics.Raycast
-                (
-                    cameraTransform.position, 
-                    cameraTransform.forward, 
-                    out hit, gunData.Range, 
-                    gunData.TargetLayerMask
-                )
-               )
+            // Muzzle flash
+            if (muzzleFlash != null)
             {
-                Debug.Log(gunData.WeaponName + " hit " + hit.collider.name);
+                if (muzzleFlashSpawnPoint != null)
+                {
+                    muzzleFlash.transform.position = muzzleFlashSpawnPoint.position;
+                    muzzleFlash.transform.rotation = muzzleFlashSpawnPoint.rotation;
+                }
 
-                if (hitEffectPrefab != null) 
-                { 
-                    Instantiate
-                    (
-                        hitEffectPrefab, 
-                        hit.point, 
-                        Quaternion.LookRotation(hit.normal)
-                    ); 
+                muzzleFlash.Play();
+            }
+
+            // Raycast hit
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit hit, gunData.Range, gunData.TargetLayerMask))
+            {
+                Debug.Log($"{gunData.WeaponName} hit {hit.collider.name}");
+
+                if (hitEffectParticleSystem != null)
+                {
+                    var hitEffect = Instantiate(hitEffectParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
+                    hitEffect.Play();
+
+                    float destroyDelay = hitEffect.main.duration + hitEffect.main.startLifetime.constantMax;
+                    Destroy(hitEffect.gameObject, destroyDelay);
                 }
             }
         }

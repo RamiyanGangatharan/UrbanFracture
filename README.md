@@ -70,16 +70,22 @@ This project is created purely for educational purposes to practice and refine g
 ---
 
 ### General:
-- Implemented a functional in-game HUD (health, ammo, weapon info).
-- Integrated basic particle effects for weapons (e.g. muzzle flash & impact placeholders).
-- Began debugging recoil system — logic added, but no visible impact yet.
-- Muzzle flash effects currently not rendering; under investigation.
+- Implemented a functional in-game HUD displaying player health, ammo count, and weapon information.
+- Integrated initial weapon particle effects, including muzzle flash and placeholder impact visuals.
+- Began debugging the recoil system — logic is in place, but no visible impact in-game yet.
 
 ### First Person Character System:
-- Introduced a modular health system for the player.
-- Added weapon SFX (shooting, reloading).
-- Added a crosshair for the weapon
-- Implemented a simple crosshair UI element for aiming feedback.
+- Developed a modular player health system, laying the foundation for damage and healing mechanics.
+- Added weapon SFX for shooting and reloading using AudioSource components.
+- Implemented a simple crosshair UI for aiming feedback.
+- Improved weapon interaction flow by connecting audio, UI, and player inputs.
+
+### Unity Particle System
+- Replaced Unity’s default particle pack with custom-made VFX for better visual consistency.
+- Designed and implemented a muzzle flash particle system tailored for first-person shooting.
+- Built a sand impact particle system to simulate bullet hits on dirt or soft terrain, using custom shape, lifetime, and color settings.
+
+---
 
 ### Tuesday, May 13th, 2025
 
