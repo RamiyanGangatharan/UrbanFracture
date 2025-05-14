@@ -1,5 +1,4 @@
-﻿using TMPro;
-using Unity.Cinemachine;
+﻿using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UrbanFracture.Combat;
@@ -64,11 +63,7 @@ namespace UrbanFracture.Core.Player
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
             jumpHandler = new JumpHandler(characterController);
 
-            // Initialize GameHUD using the assigned canvas
-            if (gameHUDCanvas != null)
-            {
-                gameHUD = gameHUDCanvas.GetComponentInChildren<GameHUD>();
-            }
+            if (gameHUDCanvas != null) { gameHUD = gameHUDCanvas.GetComponentInChildren<GameHUD>(); }
         }
 
         /// <summary>
@@ -88,6 +83,7 @@ namespace UrbanFracture.Core.Player
         }
 
         public void TryJump() => jumpHandler.TryJump(ref movementHandler.verticalVelocity);
+
         public void TryAttack()
         {
             if (currentGun != null)
@@ -110,7 +106,7 @@ namespace UrbanFracture.Core.Player
         public void TakeDamage(float amount)
         {
             playerHealth?.TakeDamage(amount);
-            gameHUD?.UpdateHUD(); // Update the HUD when damage is taken
+            gameHUD?.UpdateHUD(); 
         }
     }
 }

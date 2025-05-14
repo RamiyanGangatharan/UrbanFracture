@@ -13,41 +13,37 @@ namespace UrbanFracture.Player.Components
         [SerializeField] private float currentHealth;
 
         [Header("Events")]
-        public UnityEvent<float> OnHealthChanged; // Sends current health value
+        public UnityEvent<float> OnHealthChanged;
         public UnityEvent OnDeath;
 
         public float CurrentHealth => currentHealth;
         public float MaxHealth => maxHealth;
         public bool IsDead => currentHealth <= 0f;
 
-        private void Awake()
-        {
-            currentHealth = maxHealth;
-        }
+        /// <summary>
+        /// Resets health to maximum values
+        /// </summary>
+        private void Awake() { currentHealth = maxHealth; }
 
         /// <summary>
         /// Applies damage to the player and triggers death if health reaches zero.
         /// </summary>
+        /// <param name="amount"></param>
         public void TakeDamage(float amount)
         {
             if (IsDead) return;
-
             currentHealth = Mathf.Clamp(currentHealth - amount, 0f, maxHealth);
             OnHealthChanged?.Invoke(currentHealth);
-
-            if (currentHealth <= 0f)
-            {
-                Die();
-            }
+            if (currentHealth <= 0f) { Die(); }
         }
 
         /// <summary>
         /// Heals the player by a specified amount.
         /// </summary>
+        /// <param name="amount"></param>
         public void Heal(float amount)
         {
             if (IsDead) return;
-
             currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
             OnHealthChanged?.Invoke(currentHealth);
         }
@@ -58,7 +54,6 @@ namespace UrbanFracture.Player.Components
         public void Kill()
         {
             if (IsDead) return;
-
             currentHealth = 0f;
             OnHealthChanged?.Invoke(currentHealth);
             Die();

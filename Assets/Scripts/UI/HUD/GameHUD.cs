@@ -6,6 +6,11 @@ using UrbanFracture.Core.Player;
 
 namespace UrbanFracture.UI.HUD
 {
+    /// <summary>
+    /// Manages and updates the in-game HUD (Head-Up Display) for displaying the player's health, ammo count,
+    /// equipped weapon name, and weapon icon. The HUD is updated every frame to reflect the current state of
+    /// the player's health and equipped weapon.
+    /// </summary>
     public class GameHUD : MonoBehaviour
     {
         [Header("References")]
@@ -13,11 +18,14 @@ namespace UrbanFracture.UI.HUD
         public TextMeshProUGUI HealthText;
         public TextMeshProUGUI WeaponName;
         public RawImage WeaponImage;
-        public TextMeshProUGUI ReloadText; 
+        public TextMeshProUGUI ReloadText;
 
         private FirstPersonController player;
         private Gun currentGun;
 
+        /// <summary>
+        /// Initializes the HUD by retrieving the player controller and setting up the necessary listeners.
+        /// </summary>
         private void Start()
         {
             player = GetComponent<FirstPersonController>();
@@ -25,22 +33,21 @@ namespace UrbanFracture.UI.HUD
             if (player != null)
             {
                 currentGun = player.EquippedGun;
-
-                if (player.PlayerHealth != null)
-                    player.PlayerHealth.OnHealthChanged.AddListener(UpdateHealth);
+                if (player.PlayerHealth != null) { player.PlayerHealth.OnHealthChanged.AddListener(UpdateHealth); }
             }
 
             UpdateHUD();
         }
 
-        private void Update()
-        {
-            if (player != null && currentGun != null)
-            {
-                UpdateHUD();
-            }
-        }
+        /// <summary>
+        /// Updates the HUD every frame if the player and equipped gun are available.
+        /// </summary>
+        private void Update() { if (player != null && currentGun != null) { UpdateHUD(); } }
 
+        /// <summary>
+        /// Updates the displayed HUD elements with the current values for ammo, 
+        /// weapon name, weapon icon, and player's health.
+        /// </summary>
         public void UpdateHUD()
         {
             if (currentGun != null)
@@ -49,7 +56,9 @@ namespace UrbanFracture.UI.HUD
                 WeaponName.text = currentGun.gunData.WeaponName;
 
                 if (WeaponImage != null && currentGun.gunData.WeaponIcon != null)
+                {
                     WeaponImage.texture = currentGun.gunData.WeaponIcon;
+                }
             }
 
             if (player.PlayerHealth != null)
@@ -58,10 +67,10 @@ namespace UrbanFracture.UI.HUD
             }
         }
 
-        private void UpdateHealth(float currentHealth)
-        {
-            HealthText.text = $"HP: {Mathf.RoundToInt(currentHealth)}";
-        }
-
+        /// <summary>
+        /// Updates the player's health text based on the current health value.
+        /// </summary>
+        /// <param name="currentHealth">The player's current health value.</param>
+        private void UpdateHealth(float currentHealth) { HealthText.text = $"HP: {Mathf.RoundToInt(currentHealth)}"; }
     }
 }
