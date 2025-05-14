@@ -2,6 +2,7 @@
 using UnityEngine;
 using UrbanFracture.Core.Player;
 using UrbanFracture.Player.Components;
+using UrbanFracture.UI.HUD;
 
 namespace UrbanFracture.Combat
 {
@@ -12,17 +13,24 @@ namespace UrbanFracture.Combat
         [HideInInspector] public Transform cameraTransform;
         [HideInInspector] public Recoil recoilHandler;
 
-        private float currentAmmo = 0f;
+        public GameHUD gameHUD;
+
+        public float currentAmmo = 0f;
         private float nextTimeToFire = 0f;
 
         private bool isReloading = false;
 
         private void Start()
         {
-            currentAmmo = gunData.magazineSize;
+            currentAmmo = gunData.MagazineSize;
             firstPersonController = transform.root.GetComponent<FirstPersonController>();
             cameraTransform = firstPersonController.firstPersonCamera.transform;
             recoilHandler = GetComponent<Recoil>();
+
+            if (firstPersonController != null)
+            {
+                gameHUD = firstPersonController.GetComponentInChildren<GameHUD>();
+            }
         }
 
         public virtual void Update()
@@ -37,17 +45,17 @@ namespace UrbanFracture.Combat
         {
             if (isReloading)
             {
-                Debug.Log(gunData.weaponName + " is reloading...");
+                Debug.Log(gunData.WeaponName + " is reloading...");
                 return;
             }
             if (currentAmmo <= 0f)
             {
-                Debug.Log(gunData.weaponName + " has run out of ammo, please reload...");
+                Debug.Log(gunData.WeaponName + " has run out of ammo, please reload...");
                 return;
             }
             if (Time.time >= nextTimeToFire)
             {
-                nextTimeToFire = Time.time + (1 / gunData.fireRate);
+                nextTimeToFire = Time.time + (1 / gunData.FireRate);
                 HandleShoot();
             }
         }
@@ -55,27 +63,32 @@ namespace UrbanFracture.Combat
         private void HandleShoot()
         {
             currentAmmo--;
-            Debug.Log(gunData.weaponName + " shot!, bullets left: " + currentAmmo);
+            Debug.Log(gunData.WeaponName + " shot!, bullets left: " + currentAmmo);
             Shoot();
             recoilHandler?.ApplyRecoil(gunData);
         }
 
         public abstract void Shoot();
 
-        public void TryReload() { if (!isReloading && currentAmmo < gunData.magazineSize) { StartCoroutine(Reload()); } }
+        public void TryReload() { if (!isReloading && currentAmmo < gunData.MagazineSize) { StartCoroutine(Reload()); } }
 
         public IEnumerator Reload()
         {
             isReloading = true;
 
-            Debug.Log(gunData.weaponName + " is reloading...");
+            if (gameHUD.ReloadText != null) { gameHUD.ReloadText.enabled = true; }
 
-            yield return new WaitForSeconds(gunData.reloadTime);
+            Debug.Log(gunData.WeaponName + " is reloading...");
 
-            currentAmmo = gunData.magazineSize;
+            yield return new WaitForSeconds(gunData.ReloadTime);
+
+            currentAmmo = gunData.MagazineSize;
             isReloading = false;
 
-            Debug.Log(gunData.weaponName + " is reloaded...");
+            Debug.Log(gunData.WeaponName + " is reloaded...");
+            if (gameHUD.ReloadText != null) { gameHUD.ReloadText.enabled = false; }
+            gameHUD?.UpdateHUD();
         }
+
     }
 }

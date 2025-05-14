@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: Pistol
+  weaponIcon: {fileID: 2800000, guid: 58cfca2465ad37e45a724005cd142733, type: 3}
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -21,6 +22,6 @@ MonoBehaviour:
   magazineSize: 10
   reloadTime: 2
   recoilAmount: 1
-  maximumRecoil: {x: 1, y: 2}
   recoilSpeed: 0
+  maximumRecoil: {x: 1, y: 2}
   resetRecoilSpeed: 4

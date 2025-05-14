@@ -1,8 +1,10 @@
-﻿using Unity.Cinemachine;
+﻿using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UrbanFracture.Combat;
 using UrbanFracture.Player.Components;
+using UrbanFracture.UI.HUD;
 
 namespace UrbanFracture.Core.Player
 {
@@ -17,6 +19,9 @@ namespace UrbanFracture.Core.Player
         [SerializeField] private CharacterController characterController;
         [SerializeField] public CinemachineCamera firstPersonCamera;
         [SerializeField] private Footsteps footsteps;
+        [SerializeField] private Canvas gameHUDCanvas; // Canvas reference for GameHUD
+        [SerializeField] private Health playerHealth;
+        public Health PlayerHealth => playerHealth; // Expose for GameHUD
 
         [Header("Input")]
         public Vector2 moveInput;
@@ -27,11 +32,16 @@ namespace UrbanFracture.Core.Player
         [Header("Combat")]
         [SerializeField] private Gun currentGun;
 
+        [Header("Player Stats")]
+        public Gun EquippedGun => currentGun;
+
         // Component Handlers
         private MovementHandler movementHandler;
         private LookHandler lookHandler;
         private CameraFOVHandler FOVHandler;
         private JumpHandler jumpHandler;
+
+        private GameHUD gameHUD; // Reference to the GameHUD component
 
         /// <summary>
         /// Ensures required component references are assigned in the editor.
@@ -40,6 +50,8 @@ namespace UrbanFracture.Core.Player
         {
             if (characterController == null) characterController = GetComponent<CharacterController>();
             if (footsteps == null) footsteps = GetComponentInChildren<Footsteps>();
+            if (gameHUDCanvas == null) gameHUDCanvas = GetComponentInChildren<Canvas>(); // Find canvas if not assigned
+            if (playerHealth == null) playerHealth = GetComponent<Health>();
         }
 
         /// <summary>
@@ -51,6 +63,12 @@ namespace UrbanFracture.Core.Player
             lookHandler = new LookHandler(transform, firstPersonCamera);
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
             jumpHandler = new JumpHandler(characterController);
+
+            // Initialize GameHUD using the assigned canvas
+            if (gameHUDCanvas != null)
+            {
+                gameHUD = gameHUDCanvas.GetComponentInChildren<GameHUD>();
+            }
         }
 
         /// <summary>
@@ -70,8 +88,30 @@ namespace UrbanFracture.Core.Player
         }
 
         public void TryJump() => jumpHandler.TryJump(ref movementHandler.verticalVelocity);
-        public void TryAttack() => currentGun?.TryShoot();
-        public void TryReload() => currentGun?.TryReload();
+        public void TryAttack()
+        {
+            if (currentGun != null)
+            {
+                currentGun.TryShoot();
+                gameHUD?.UpdateHUD();
+            }
+        }
+        public void TryReload()
+        {
+            if (currentGun != null)
+            {
+                
+                currentGun.TryReload();
+                gameHUD?.UpdateHUD();
+            }
+        }
+
         public void EquipGun(Gun gun) => currentGun = gun;
+
+        public void TakeDamage(float amount)
+        {
+            playerHealth?.TakeDamage(amount);
+            gameHUD?.UpdateHUD(); // Update the HUD when damage is taken
+        }
     }
 }

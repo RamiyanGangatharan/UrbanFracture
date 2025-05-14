@@ -2,34 +2,40 @@ using UnityEngine;
 
 namespace UrbanFracture.Combat
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class Pistol : Gun
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        public GameObject muzzleFlashPrefab;
+        public GameObject hitEffectPrefab;
+
         public override void Update() { base.Update(); }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public override void Shoot()
         {
+            Instantiate(muzzleFlashPrefab, transform.position, transform.rotation);
+
             RaycastHit hit;
 
             if (
-                    Physics.Raycast
-                    (
-                        cameraTransform.position, 
-                        cameraTransform.forward, 
-                        out hit, gunData.range, 
-                        gunData.targetLayerMask
-                    )
+                Physics.Raycast
+                (
+                    cameraTransform.position, 
+                    cameraTransform.forward, 
+                    out hit, gunData.Range, 
+                    gunData.TargetLayerMask
+                )
                )
             {
-                Debug.Log(gunData.weaponName + " hit " + hit.collider.name);
+                Debug.Log(gunData.WeaponName + " hit " + hit.collider.name);
+
+                if (hitEffectPrefab != null) 
+                { 
+                    Instantiate
+                    (
+                        hitEffectPrefab, 
+                        hit.point, 
+                        Quaternion.LookRotation(hit.normal)
+                    ); 
+                }
             }
         }
     }

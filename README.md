@@ -65,6 +65,22 @@ This project is created purely for educational purposes to practice and refine g
 
 ## Development Log
 
+### Wednesday, May 14th, 2025
+
+---
+
+### General:
+- Implemented a functional in-game HUD (health, ammo, weapon info).
+- Integrated basic particle effects for weapons (e.g. muzzle flash & impact placeholders).
+- Began debugging recoil system — logic added, but no visible impact yet.
+- Muzzle flash effects currently not rendering; under investigation.
+
+### First Person Character System:
+- Introduced a modular health system for the player.
+- Added weapon SFX (shooting, reloading).
+- Added a crosshair for the weapon
+- Implemented a simple crosshair UI element for aiming feedback.
+
 ### Tuesday, May 13th, 2025
 
 ---
