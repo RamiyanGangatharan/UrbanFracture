@@ -20,6 +20,12 @@ namespace UrbanFracture.Combat
 
         private bool isReloading = false;
 
+        [Header("Audio")]
+        public AudioClip shootSFX;
+        public AudioClip reloadSFX;
+
+        private AudioSource audioSource;
+
         private void Start()
         {
             currentAmmo = gunData.MagazineSize;
@@ -30,6 +36,12 @@ namespace UrbanFracture.Combat
             if (firstPersonController != null)
             {
                 gameHUD = firstPersonController.GetComponentInChildren<GameHUD>();
+            }
+
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
             }
         }
 
@@ -64,21 +76,37 @@ namespace UrbanFracture.Combat
         {
             currentAmmo--;
             Debug.Log(gunData.WeaponName + " shot!, bullets left: " + currentAmmo);
+
+            // 🔊 Play shoot SFX
+            if (shootSFX != null && audioSource != null)
+                audioSource.PlayOneShot(shootSFX);
+
             Shoot();
             recoilHandler?.ApplyRecoil(gunData);
         }
 
         public abstract void Shoot();
 
-        public void TryReload() { if (!isReloading && currentAmmo < gunData.MagazineSize) { StartCoroutine(Reload()); } }
+        public void TryReload()
+        {
+            if (!isReloading && currentAmmo < gunData.MagazineSize)
+            {
+                StartCoroutine(Reload());
+            }
+        }
 
         public IEnumerator Reload()
         {
             isReloading = true;
 
-            if (gameHUD.ReloadText != null) { gameHUD.ReloadText.enabled = true; }
+            if (gameHUD.ReloadText != null)
+                gameHUD.ReloadText.enabled = true;
 
             Debug.Log(gunData.WeaponName + " is reloading...");
+
+            // 🔊 Play reload SFX
+            if (reloadSFX != null && audioSource != null)
+                audioSource.PlayOneShot(reloadSFX);
 
             yield return new WaitForSeconds(gunData.ReloadTime);
 
@@ -86,9 +114,10 @@ namespace UrbanFracture.Combat
             isReloading = false;
 
             Debug.Log(gunData.WeaponName + " is reloaded...");
-            if (gameHUD.ReloadText != null) { gameHUD.ReloadText.enabled = false; }
+            if (gameHUD.ReloadText != null)
+                gameHUD.ReloadText.enabled = false;
+
             gameHUD?.UpdateHUD();
         }
-
     }
 }

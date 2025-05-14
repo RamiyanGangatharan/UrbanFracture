@@ -100,7 +100,6 @@ namespace UrbanFracture.Core.Player
         {
             if (currentGun != null)
             {
-                
                 currentGun.TryReload();
                 gameHUD?.UpdateHUD();
             }
