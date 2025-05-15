@@ -18,7 +18,6 @@ namespace UrbanFracture.UI.HUD
         public TextMeshProUGUI HealthText;
         public TextMeshProUGUI WeaponName;
         public RawImage WeaponImage;
-        public TextMeshProUGUI ReloadText;
 
         private FirstPersonController player;
         private Gun currentGun;
