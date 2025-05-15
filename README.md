@@ -6,6 +6,9 @@ This project is created purely for educational purposes to practice and refine g
 
 --- 
 
+> [!WARNING] 
+> INSTALL LFS for Git **(LARGE FILE SYSTEM FOR GIT/GITHUB)** BEFORE PROCEEDING TO CLONE THIS PROJECT.
+
 # Getting Started
 
 ## Prerequisites:
