@@ -67,6 +67,14 @@ This project is created purely for educational purposes to practice and refine g
 
 ## Development Log
 
+### Thursday, May 15th, 2025
+
+--- 
+
+### General:
+- Converted this repository to LFS (Large File System)
+
+
 ### Wednesday, May 14th, 2025
 
 ---
