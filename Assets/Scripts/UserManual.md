@@ -40,6 +40,12 @@ camera, I check my Player namespace (e.g., UrbanFracture.Player.Components.LookH
 responsible script. This is a personal preference, and you can use namespaces in whatever way best fits 
 your project.
 
+---
+
+> [!WARNING]
+> Look into the source code XML documentation for further detail within the methods and classes involved in this codebase.
+
+---
 
 ### Combat
 The `Combat` namespace currently contains three main scripts: `Gun.cs`, `GunData.cs`, and `Pistol.cs`.
@@ -56,12 +62,17 @@ pistol weapon. It directly manages the pistol's 3D model and behavior in-game, i
 muzzle flash particle systems and Raycast-based shooting logic. This script binds the abstract weapon 
 logic from `Gun.cs` to the visual and physical representation of the pistol in the game world.
 
+---
 
 ### Player
 .. content ...
 
+---
+
 ### UI
 ... content ...
+
+---
 
 ## Contact & Contributions
 
