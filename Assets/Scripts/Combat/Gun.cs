@@ -15,7 +15,6 @@ namespace UrbanFracture.Combat
         public GunData gunData;
         [HideInInspector] public FirstPersonController firstPersonController;
         [HideInInspector] public Transform cameraTransform;
-        [HideInInspector] public Recoil recoilHandler;
 
         public GameHUD gameHUD;
 
@@ -42,15 +41,13 @@ namespace UrbanFracture.Combat
             currentAmmo = gunData.MagazineSize;
             firstPersonController = transform.root.GetComponent<FirstPersonController>();
             cameraTransform = firstPersonController.firstPersonCamera.transform;
-            recoilHandler = GetComponent<Recoil>();
-
             if (firstPersonController != null) { gameHUD = firstPersonController.GetComponentInChildren<GameHUD>(); }
         }
 
         /// <summary>
-        /// Updates gun state each frame. Resets recoil when applicable.
+        /// Updates gun state each frame.
         /// </summary>
-        public virtual void Update() { recoilHandler?.ResetRecoil(gunData); }
+        public virtual void Update() { }
 
         /// <summary>
         /// Attempts to fire the gun if it's not reloading and has ammo. 
@@ -78,8 +75,6 @@ namespace UrbanFracture.Combat
 
             shootSFX?.Play();
             Shoot();
-
-            recoilHandler?.ApplyRecoil(gunData);
         }
 
         /// <summary>

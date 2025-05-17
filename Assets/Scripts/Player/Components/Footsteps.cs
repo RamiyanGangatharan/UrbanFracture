@@ -60,7 +60,6 @@ namespace UrbanFracture.Player.Components
                     1.5f, terrainLayerMask
                 )
             ) { return GetClipsByTag(hit.collider.tag); }
-
             return footstep_general;
         }
 

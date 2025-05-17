@@ -19,9 +19,11 @@ namespace UrbanFracture.Core.Player
         [SerializeField] private CharacterController characterController;
         [SerializeField] public CinemachineCamera firstPersonCamera;
         [SerializeField] private Footsteps footsteps;
-        [SerializeField] private Canvas gameHUDCanvas; // Canvas reference for GameHUD
+        [SerializeField] private Canvas gameHUDCanvas; 
         [SerializeField] private Health playerHealth;
-        public Health PlayerHealth => playerHealth; // Expose for GameHUD
+        [SerializeField] private Transform cameraPivotTransform;
+
+        public Health PlayerHealth => playerHealth; 
 
         [Header("Input")]
         public Vector2 moveInput;
@@ -41,7 +43,7 @@ namespace UrbanFracture.Core.Player
         private CameraFOVHandler FOVHandler;
         private JumpHandler jumpHandler;
 
-        private GameHUD gameHUD; // Reference to the GameHUD component
+        private GameHUD gameHUD; 
 
         /// <summary>
         /// Ensures required component references are assigned in the editor.
@@ -60,7 +62,7 @@ namespace UrbanFracture.Core.Player
         private void Awake()
         {
             movementHandler = new MovementHandler(characterController);
-            lookHandler = new LookHandler(transform, firstPersonCamera);
+            lookHandler = new LookHandler(transform, cameraPivotTransform);
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
             jumpHandler = new JumpHandler(characterController);
 
@@ -117,11 +119,9 @@ namespace UrbanFracture.Core.Player
         public void EquipGun(Gun gun)
         {
             if (currentGun != null) { currentGun.HolsterWeapon(); }
-
             currentGun = gun;
 
             if (currentGun != null) { currentGun.UnholsterWeapon(); }
-
             gameHUD?.UpdateHUD();
         }
 

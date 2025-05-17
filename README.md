@@ -90,7 +90,7 @@ This project was built using a combination of custom systems and learning resour
 
 ### Saturday, May 17th, 2025
 - Added weapon holstering mechanics
-
+- Removed recoil mechanics (I will be re-implementing it later)
 ---
 
 ### Friday, May 16th, 2025

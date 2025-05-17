@@ -21,7 +21,7 @@ namespace UrbanFracture.Combat
 
         /// <summary>
         /// Executes the pistol's shooting behavior by playing a muzzle flash at the designated 
-        /// spawn point, performing a raycast to detect any hit targets, and spawning a particle 
+        /// spawn point, performing a ray cast to detect any hit targets, and spawning a particle 
         /// effect at the impact location.
         /// </summary>
         public override void Shoot()
