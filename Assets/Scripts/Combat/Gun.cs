@@ -94,7 +94,7 @@ namespace UrbanFracture.Combat
         public void HolsterWeapon()
         {
             isHolstered = true;
-            gameObject.SetActive(false); 
+            gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace UrbanFracture.Combat
         public void UnholsterWeapon()
         {
             isHolstered = false;
-            gameObject.SetActive(true); 
+            gameObject.SetActive(true);
         }
 
         /// <summary>

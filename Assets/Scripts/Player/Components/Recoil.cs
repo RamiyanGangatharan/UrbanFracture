@@ -28,9 +28,9 @@ namespace UrbanFracture.Player.Components
         private void Update()
         {
             currentRecoil = Vector3.SmoothDamp(
-                currentRecoil, 
-                Vector3.zero, 
-                ref currentVelocity, 
+                currentRecoil,
+                Vector3.zero,
+                ref currentVelocity,
                 1f / gunData.ResetRecoilSpeed
             );
         }

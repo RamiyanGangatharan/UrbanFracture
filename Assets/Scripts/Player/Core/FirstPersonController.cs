@@ -128,7 +128,7 @@ namespace UrbanFracture.Core.Player
         public void TakeDamage(float amount)
         {
             playerHealth?.TakeDamage(amount);
-            gameHUD?.UpdateHUD(); 
+            gameHUD?.UpdateHUD();
         }
     }
 }

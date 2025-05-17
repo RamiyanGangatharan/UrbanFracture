@@ -39,10 +39,10 @@ namespace UrbanFracture.Combat
             if (
                 Physics.Raycast
                 (
-                    cameraTransform.position, 
-                    cameraTransform.forward, 
-                    out RaycastHit hit, 
-                    gunData.Range, 
+                    cameraTransform.position,
+                    cameraTransform.forward,
+                    out RaycastHit hit,
+                    gunData.Range,
                     gunData.TargetLayerMask
                 )
             )
@@ -53,8 +53,8 @@ namespace UrbanFracture.Combat
                 {
                     var hitEffect = Instantiate
                     (
-                        hitEffectParticleSystem, 
-                        hit.point, 
+                        hitEffectParticleSystem,
+                        hit.point,
                         Quaternion.LookRotation(hit.normal)
                     );
 

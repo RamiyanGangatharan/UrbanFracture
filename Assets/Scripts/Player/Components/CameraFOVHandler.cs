@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Unity.Cinemachine;
+﻿using Unity.Cinemachine;
+using UnityEngine;
 
 namespace UrbanFracture.Player.Components
 {

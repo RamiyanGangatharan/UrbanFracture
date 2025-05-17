@@ -76,46 +76,33 @@ namespace UrbanFracture.UI.HUD
             }
         }
 
+
+        /// <summary>
+        /// This sets the alpha value of a given graphic element to create a fade effect.
+        /// </summary>
+        /// <param name="graphic"></param>
+        /// <param name="alpha"></param>
+        private void SetAlpha(Graphic graphic, float alpha)
+        {
+            if (graphic != null)
+            {
+                Color currentColor = graphic.color;
+                currentColor.a = alpha;
+                graphic.color = currentColor;
+            }
+        }
+
         /// <summary>
         /// This makes the HUD for the weapons fade out or in based on the alpha value provided.
         /// </summary>
         /// <param name="alpha"></param>
         private void SetWeaponUIAlpha(float alpha)
         {
-            if (AmmoText != null)
-            {
-                Color c = AmmoText.color;
-                c.a = alpha;
-                AmmoText.color = c;
-            }
-
-            if (WeaponName != null)
-            {
-                Color c = WeaponName.color;
-                c.a = alpha;
-                WeaponName.color = c;
-            }
-
-            if (WeaponImage != null)
-            {
-                Color c = WeaponImage.color;
-                c.a = alpha;
-                WeaponImage.color = c;
-            }
-
-            if (WeaponIcon != null)
-            {
-                Color c = WeaponIcon.color;
-                c.a = alpha;
-                WeaponIcon.color = c;
-            }
-
-            if (AmmoIcon != null)
-            {
-                Color c = AmmoIcon.color;
-                c.a = alpha;
-                AmmoIcon.color = c;
-            }
+            SetAlpha(AmmoText, alpha);
+            SetAlpha(WeaponName, alpha);
+            SetAlpha(WeaponImage, alpha);
+            SetAlpha(WeaponIcon, alpha);
+            SetAlpha(AmmoIcon, alpha);
         }
 
         /// <summary>
