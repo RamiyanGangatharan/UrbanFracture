@@ -1,6 +1,7 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UrbanFracture.Combat;
 using UrbanFracture.Player.Components;
 using UrbanFracture.UI.HUD;
@@ -80,9 +81,21 @@ namespace UrbanFracture.Core.Player
             movementHandler.ApplyMovement(movementHandler.verticalVelocity);
 
             footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
+
+            if (Keyboard.current.hKey.wasPressedThisFrame) { ToggleHolsterWeapon(); }
         }
 
         public void TryJump() => jumpHandler.TryJump(ref movementHandler.verticalVelocity);
+
+        void ToggleHolsterWeapon()
+        {
+            if (currentGun != null)
+            {
+                if (currentGun.IsHolstered()) { currentGun.UnholsterWeapon(); }
+                else { currentGun.HolsterWeapon(); }
+                gameHUD?.UpdateHUD();
+            }
+        }
 
         public void TryAttack()
         {
@@ -101,7 +114,16 @@ namespace UrbanFracture.Core.Player
             }
         }
 
-        public void EquipGun(Gun gun) => currentGun = gun;
+        public void EquipGun(Gun gun)
+        {
+            if (currentGun != null) { currentGun.HolsterWeapon(); }
+
+            currentGun = gun;
+
+            if (currentGun != null) { currentGun.UnholsterWeapon(); }
+
+            gameHUD?.UpdateHUD();
+        }
 
         public void TakeDamage(float amount)
         {

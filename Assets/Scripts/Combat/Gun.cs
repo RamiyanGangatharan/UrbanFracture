@@ -22,6 +22,9 @@ namespace UrbanFracture.Combat
         public float currentAmmo = 0f;
         private float nextTimeToFire = 0f;
         private bool isReloading = false;
+        private bool isHolstered = false;
+
+        public bool IsHolstered() { return isHolstered; }
 
         [Header("Audio Sources")]
         [Tooltip("AudioSource component that plays shooting sound.")]
@@ -55,6 +58,7 @@ namespace UrbanFracture.Combat
         /// </summary>
         public void TryShoot()
         {
+            if (isHolstered) return;
             if (isReloading) { Debug.Log($"{gunData.WeaponName} is reloading..."); return; }
             if (currentAmmo <= 0f) { Debug.Log($"{gunData.WeaponName} has run out of ammo, please reload..."); return; }
             if (Time.time >= nextTimeToFire) { nextTimeToFire = Time.time + (1 / gunData.FireRate); HandleShoot(); }
@@ -85,10 +89,29 @@ namespace UrbanFracture.Combat
         public abstract void Shoot();
 
         /// <summary>
+        /// Disables the gun's game object based on its holstered state.
+        /// </summary>
+        public void HolsterWeapon()
+        {
+            isHolstered = true;
+            gameObject.SetActive(false); 
+        }
+
+        /// <summary>
+        /// Enables the gun's game object based on its holstered state.
+        /// </summary>
+        public void UnholsterWeapon()
+        {
+            isHolstered = false;
+            gameObject.SetActive(true); 
+        }
+
+        /// <summary>
         /// Attempts to reload the weapon if not already reloading and magazine isn't full.
         /// </summary>
         public void TryReload()
         {
+            if (isHolstered) return;
             if (!isReloading && currentAmmo < gunData.MagazineSize) { StartCoroutine(Reload()); }
         }
 

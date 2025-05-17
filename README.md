@@ -88,6 +88,17 @@ This project was built using a combination of custom systems and learning resour
 
 ---
 
+### Saturday, May 17th, 2025
+- Added weapon holstering mechanics
+
+---
+
+### Friday, May 16th, 2025
+
+- Looked at textures and am redesigning the map.
+
+---
+
 ### Thursday, May 15th, 2025
 
 #### General
