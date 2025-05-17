@@ -7,6 +7,8 @@ and tactical combat. This project is not intended for commercial release. Instea
 with game design principles, mechanics, and systems. The primary goal is to practice and refine game development skills 
 while recreating the tone and atmosphere of iconic shooters from the era.
 
+> **Important:** Please refer to my [USER MANUAL](/Assets/Scripts/UserManual.md) regarding the code for more information.
+
 ---
 
 > [!WARNING]
