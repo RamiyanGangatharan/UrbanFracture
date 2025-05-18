@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -92,7 +91,7 @@ namespace UrbanFracture.UI.LoadingScreen
                 yield return null;
             }
 
-            backgroundImage.texture = newTexture; 
+            backgroundImage.texture = newTexture;
 
             t = 0f;
 

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Unity.Cinemachine;
+﻿using Unity.Cinemachine;
+using UnityEngine;
 
 namespace UrbanFracture.Player.Components
 {
@@ -10,8 +10,8 @@ namespace UrbanFracture.Player.Components
     public class CameraFOVHandler
     {
         private readonly CinemachineCamera cam;
-        private float normalFOV = 60f;
-        private float sprintFOV = 80f;
+        private float normalFOV = 45f;
+        private float sprintFOV = 55f;
         private float smoothing = 1f;
 
         /// <summary>

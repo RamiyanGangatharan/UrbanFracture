@@ -1,153 +1,225 @@
-# URBAN FRACTURE
+# Urban Fracture
 
-Urban Fracture is a first-person shooter (FPS) developed for educational purposes. The game is designed to evoke the look and feel of mid-2000s FPS titles, drawing inspiration from iconic games like Call of Duty, Garry's Mod, and Escape from Tarkov. It's a project intended to help the developer gain experience in game design, mechanics, and systems, offering a mix of action, exploration, and tactical gameplay within a dystopian, broken city environment.
+**Urban Fracture** is a first-person shooter (FPS) developed as an educational project. It aims to capture the aesthetic 
+and gameplay feel of mid-2000s FPS titles, drawing inspiration from classics such as *Call of Duty*, *Garry's Mod*, 
+and *Escape from Tarkov*. Set in a dystopian, fractured urban environment, the game blends action, exploration, 
+and tactical combat. This project is not intended for commercial release. Instead, it serves as a platform for experimenting 
+with game design principles, mechanics, and systems. The primary goal is to practice and refine game development skills 
+while recreating the tone and atmosphere of iconic shooters from the era.
 
-This project is created purely for educational purposes to practice and refine game development skills. The goal is not to produce a fully polished or commercial game, but rather to experiment with game mechanics and systems while capturing the aesthetic and vibe of classic FPS games.
+> **Important:** Please refer to my [USER MANUAL](/Assets/Scripts/UserManual.md) regarding the code for more information.
 
---- 
+---
+
+> [!WARNING]
+> **Before cloning this project, install Git LFS (Large File Storage)** to ensure all assets are properly downloaded.
 
 # Getting Started
 
-## Prerequisites:
+## Prerequisites
+- **Unity 6000.x or newer** (for game development)
+- **Visual Studio** or any compatible C# IDE (for scripting)
 
-- Unity 6000.x+ for development
-- Visual Studio or another equivalent C# IDE for scripting
+## Installation
 
-## Installing
-- Clone this repository `git clone -b main https://github.com/RamiyanGangatharan/UrbanFracture.git UrbanFracture`
-
-- Open the project in Unity 6000.x
-- Press play in the MainMenu Scene
+1. Clone the repository:
+   ```bash
+    git clone -b main https://github.com/RamiyanGangatharan/UrbanFracture.git UrbanFracture
+   ```
+2. Open the project in Unity 6000.x
+3. Press play in the `MainMenu` Scene
 
 ## Controls
-- `WASD` for keyboard player movement
-- `MOUSE` to move your camera around your character
-- `LEFT_CLICK` for Firing your weapon
-- `RIGHT_CLICK` to aim down sights
-- `R` to reload weapon
-- `LEFT_SHIFT` to sprint
-- `E` to interact with objects
-- `ESCAPE` to use the pause menu
+
+| Action               | Key/Mouse Input     |
+|----------------------|---------------------|
+| Move                 | `WASD`              |
+| Look Around          | `Mouse`             |
+| Fire Weapon          | `Left Click`        |
+| Aim Down Sights      | `Right Click`       |
+| Reload               | `R`                 |
+| Sprint               | `Left Shift`        |
+| Interact             | `E`                 |
+| Pause / Open Menu    | `Escape`            |
+
 
 ## Primary Features
-- Smooth First-Person movement 
-- Gunplay: Multiple Weapons with unique handling and attributes
-- Health & Damage functionality
-- AI Enemies
-- UI Elements such as a main menu, loading screens, in-game HUD's and a pause menu.
+- Smooth first-person movement
+- Gunplay with multiple weapons, each featuring unique handling and characteristics
+- Health and damage system
+- AI enemy behaviors
+- UI elements:
+    - Main menu
+    - Loading screens
+    - In-game HUD
+    - Pause menu
 
 ## Audio
 - Sound Effects
-    - Weapon sounds
+    - Weapon fire
     - Footsteps
-    - Ambient Audio
+    - Ambient environmental audio
 - Music
     - Main Menu soundtrack
     - Optional Background music during gameplay
 
 ## Development 
-- Unity Version 6000.1.2f1
+- Engine: Unity 6000.1.2f1
 - Language: C#
 - Tools Used:
-    - Unity Engine [Game Engine]
-    - Visual Studio [IDE for coding]
-    - FL Studio [For audio creation]
+    - Unity Engine (Game Development)
+    - Visual Studio 2022 (Code Editing)
+    - FL Studio (Audio Production)
 
 ---
 
-## Resources Used:
-- [Background Music Implementation](https://damiandabrowski.medium.com/how-to-add-and-manage-background-music-in-your-unity-projects-86cd5889a542)
-- [UI Slider](https://youtu.be/oya8_SlLXb0)
-- [Loading Screen](https://youtu.be/NyFYNsC3H8k)
-- [First-Person Movement](https://youtu.be/41MD0s9FiXI)
-- [Weapon Systems](https://youtu.be/JCngTlb2R2c)
----
+## Resources Used
 
+This project was built using a combination of custom systems and learning resources from the game development community. Key references include:
+
+- [How to Add and Manage Background Music in Unity](https://damiandabrowski.medium.com/how-to-add-and-manage-background-music-in-your-unity-projects-86cd5889a542)
+- [UI Slider Tutorial (YouTube)](https://youtu.be/oya8_SlLXb0)
+- [Loading Screen Implementation (YouTube)](https://youtu.be/NyFYNsC3H8k)
+- [First-Person Movement Tutorial (YouTube)](https://youtu.be/41MD0s9FiXI)
+- [Weapon Systems Tutorial (YouTube)](https://youtu.be/JCngTlb2R2c)
+- [Muzzle Flash Particle System (YouTube)](https://youtu.be/rf7gHVixmmc)
+- Custom sand impact particle system created with the help of ChatGPT
+
+---
 ## Development Log
+
+---
+
+### Saturday, May 17th, 2025
+- Added weapon holstering mechanics
+- Removed recoil mechanics (I will be re-implementing it later)
+- Working on a user manual for my code
+---
+
+### Friday, May 16th, 2025
+
+- Looked at textures and am redesigning the map.
+
+---
+
+### Thursday, May 15th, 2025
+
+#### General
+- Converted the repository to use Git LFS (Large File Storage).
+- Overhauled the README for clarity and structure.
+- Rebuilding the map to focus on a single large building instead of a full city layout.
+
+---
+
+### Wednesday, May 14th, 2025
+
+#### General
+- Implemented a functional in-game HUD displaying player health, ammo count, and weapon information.
+- Integrated initial weapon particle effects, including muzzle flash and placeholder impact visuals.
+- Started debugging the recoil system — logic implemented, but no visible impact yet.
+
+#### First-Person Character System
+- Developed a modular player health system to support damage and healing.
+- Added weapon SFX (shooting, reloading) using `AudioSource` components.
+- Implemented a simple crosshair UI for aiming feedback.
+- Improved weapon interaction by connecting audio, UI, and input logic.
+
+#### Unity Particle System
+- Replaced Unity’s default particle pack with custom-made VFX for visual consistency.
+- Designed and implemented a muzzle flash system tailored for FPS weapons.
+- Created a sand impact particle system to simulate bullet hits on terrain using custom parameters.
+
+---
 
 ### Tuesday, May 13th, 2025
 
----
+#### General
+- Refactored the player controller into multiple files for better organization.
+  - Adopted a hub-and-spoke architecture for modular expansion.
+- Imported player models and terrain assets.
+- Created an initial terrain for testing.
 
-### General
-- Split up the player controller into multiple files to keep it more organized.
-    - Organized it into a hub and spoke, controller type of system, will implement that concept into later systems.
-- Imported Playermodels
-- Imported Terrain assets
-- Created a terrain
+#### First-Person Character System
+- Added a player model (`Survivalist Character`), but removed it due to setup complexity.
+- Implemented camera bobbing for movement immersion.
 
-### First Person Character System
-- Implemented a player model called `Survivalist character`.
-- Added then removed the player model as it is too complicated to configure at the moment
-- added camera bobbing
+#### Weapon System
 
-### Audio
-- Added footstep sounds
+**General Weapon Features**
+- Integrated pistol model.
+- Implemented firing, reloading, and (in-progress) recoil mechanics.
+- Added a UI crosshair via Unity Canvas.
+
+**Codebase Structure**
+- Created modular classes:
+  - `Gun`
+  - `Pistol`
+  - `Recoil`
+  - `GunData` (Scriptable Object)
+
+#### Audio
+- Implemented footstep sounds.
 
 ---
 
 ### Monday, May 12th, 2025
 
----
-
-### General
-- Restarted the project from scratch after a critical failure caused by attempting to port a character and controller script from a previous project.
-- Implemented XML documentation throughout the codebase for improved maintainability and future scalability.
-- Designed and added basic terrain for initial gameplay testing and level prototyping.
+#### General
+- Restarted the project after a critical failure from importing old controller scripts.
+- Added XML documentation to the codebase for maintainability.
+- Created basic terrain for testing and prototyping.
 
 ---
 
-### UI Development
+#### UI Development
 - Refactored UI structure:
-  - Introduced `MainMenuController` and `UIButtonAudio` components to separate visual logic from audio interactions.
-- Enhanced main menu functionality:
-  - Added responsive hover and click sound effects for interactive feedback.
-- Fixed issues with inconsistent audio playback in UI elements.
+  - Introduced `MainMenuController` and `UIButtonAudio` to separate visual and audio logic.
+- Enhanced main menu:
+  - Added responsive hover/click audio feedback.
+- Fixed inconsistent audio playback in UI elements.
 
 ---
 
-### First-Person Character System
-- Developed a modular **First Person Controller** featuring:
-  - Smooth acceleration-based movement using `CharacterController`.
-  - Sprinting with Cinemachine-driven dynamic FOV changes for immersive speed feedback.
-  - Configurable double-jump system with toggle and automatic reset upon landing.
-  - Scaled gravity application for more realistic airborne movement and fall behavior.
-  - Asynchronous velocity blending for seamless movement transitions.
-  - Landing detection with Unity Events for potential animation or effect triggers.
-  
-- Implemented advanced **mouse look system**:
+#### First-Person Character System
+- Built a modular **First Person Controller** with:
+  - Smooth, acceleration-based movement via `CharacterController`.
+  - Sprinting with Cinemachine-driven dynamic FOV changes.
+  - Configurable double-jump with automatic reset on landing.
+  - Enhanced airborne physics with custom gravity scaling.
+  - Asynchronous velocity blending for fluid movement.
+  - Landing detection via Unity Events for extensibility.
+
+- Implemented advanced **Mouse Look System**:
   - Adjustable pitch/yaw sensitivity.
-  - Pitch clamping for natural head movement limits.
-  - Real-time camera and player rotation for a fluid FPS experience.
-  
-- Integrated cinematic FOV transitions using `Mathf.Lerp` to visually enhance sprinting.
+  - Natural head movement limits with pitch clamping.
+  - Real-time rotation syncing between player and camera.
+
+- Integrated cinematic FOV transitions using `Mathf.Lerp` for immersive sprint effects.
 
 ---
 
-### Player Input Integration
-- Connected Unity's new Input System to gameplay through a `Player` component.
-  - Mapped the following actions using `InputValue`:
-    - Movement: `WASD`
-    - Look: `Mouse`
-    - Sprint: `Left Shift`
-    - Jump: `Spacebar`
-- Centralized input logic for better maintainability and flexibility across gameplay features.
+#### Player Input Integration
+- Connected Unity’s Input System via a centralized `Player` component.
+- Mapped key actions using `InputValue`:
+  - Move: `WASD`
+  - Look: `Mouse`
+  - Sprint: `Left Shift`
+  - Jump: `Spacebar`
 
 ---
 
-### Scene Management and Loading
-- Created asynchronous scene loading logic to support non-blocking transitions.
-- Designed and implemented a loading screen with:
-  - Progress feedback to improve UX during scene changes.
-  - A GTA IV-style slideshow showcasing in-game images for visual engagement.
-- Optimized load performance to create a smoother, more polished transition experience.
+#### Scene Management and Loading
+- Created asynchronous scene loading to prevent freezing.
+- Designed a loading screen with:
+  - Real-time progress bar.
+  - GTA IV-style slideshow featuring in-game imagery.
+- Optimized load times for smoother transitions.
 
 ---
 
-### Audio Enhancements
-- Fixed persistent audio playback issues in the UI interaction system.
-- Edited the game’s theme song:
-  - Trimmed to highlight the chorus and closing sections for a more memorable intro/loop.
+#### Audio Enhancements
+- Resolved persistent audio playback issues in UI.
+- Edited the main theme:
+  - Trimmed to emphasize the chorus and ending for a memorable loop.
 
 ---
-

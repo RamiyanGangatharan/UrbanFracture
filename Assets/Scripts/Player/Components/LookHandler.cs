@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Unity.Cinemachine;
 
 namespace UrbanFracture.Player.Components
 {
@@ -10,7 +9,7 @@ namespace UrbanFracture.Player.Components
     public class LookHandler
     {
         private readonly Transform body;
-        private readonly CinemachineCamera camera;
+        private readonly Transform cameraTransform;
         private Vector2 sensitivity = new(0.1f, 0.1f);
         private float pitch = 0f;
         private float pitchLimit = 40f;
@@ -19,11 +18,11 @@ namespace UrbanFracture.Player.Components
         /// Initializes the look handler with player body and camera references.
         /// </summary>
         /// <param name="body">The transform of the player’s body (typically the root object).</param>
-        /// <param name="cam">The Cinemachine camera used for first-person view.</param>
-        public LookHandler(Transform body, CinemachineCamera cam)
+        /// <param name="cameraTransform">The transform of the camera or camera follow target.</param>
+        public LookHandler(Transform body, Transform cameraTransform)
         {
             this.body = body;
-            this.camera = cam;
+            this.cameraTransform = cameraTransform;
         }
 
         /// <summary>
@@ -33,11 +32,31 @@ namespace UrbanFracture.Player.Components
         /// <param name="lookInput">The 2D input vector representing horizontal and vertical look direction.</param>
         public void Update(Vector2 lookInput)
         {
+            // Update vertical look (pitch)
             pitch -= lookInput.y * sensitivity.y;
             pitch = Mathf.Clamp(pitch, -pitchLimit, pitchLimit);
 
-            camera.transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+            // Apply pitch locally to the camera transform (up/down)
+            cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+
+            // Rotate the player body horizontally (yaw)
             body.Rotate(Vector3.up * lookInput.x * sensitivity.x);
+        }
+
+        /// <summary>
+        /// Optionally set sensitivity for look input
+        /// </summary>
+        public void SetSensitivity(float horizontal, float vertical)
+        {
+            sensitivity = new Vector2(horizontal, vertical);
+        }
+
+        /// <summary>
+        /// Optionally set vertical look limits
+        /// </summary>
+        public void SetPitchLimit(float limit)
+        {
+            pitchLimit = limit;
         }
     }
 }

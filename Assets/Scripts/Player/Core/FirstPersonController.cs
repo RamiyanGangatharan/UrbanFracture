@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using Unity.Cinemachine;
+using UnityEngine;
 using UnityEngine.Events;
-using Unity.Cinemachine;
+using UnityEngine.InputSystem;
+using UrbanFracture.Combat;
 using UrbanFracture.Player.Components;
+using UrbanFracture.UI.HUD;
 
 namespace UrbanFracture.Core.Player
 {
@@ -14,9 +17,13 @@ namespace UrbanFracture.Core.Player
     {
         [Header("References")]
         [SerializeField] private CharacterController characterController;
-        [SerializeField] private CinemachineCamera firstPersonCamera;
+        [SerializeField] public CinemachineCamera firstPersonCamera;
         [SerializeField] private Footsteps footsteps;
+        [SerializeField] private Canvas gameHUDCanvas; 
+        [SerializeField] private Health playerHealth;
+        [SerializeField] private Transform cameraPivotTransform;
 
+        public Health PlayerHealth => playerHealth; 
 
         [Header("Input")]
         public Vector2 moveInput;
@@ -24,12 +31,19 @@ namespace UrbanFracture.Core.Player
         public bool sprintInput;
         public UnityEvent Landed;
 
+        [Header("Combat")]
+        [SerializeField] private Gun currentGun;
+
+        [Header("Player Stats")]
+        public Gun EquippedGun => currentGun;
+
         // Component Handlers
         private MovementHandler movementHandler;
         private LookHandler lookHandler;
         private CameraFOVHandler FOVHandler;
         private JumpHandler jumpHandler;
-        private CameraBob cameraBob;
+
+        private GameHUD gameHUD; 
 
         /// <summary>
         /// Ensures required component references are assigned in the editor.
@@ -38,6 +52,8 @@ namespace UrbanFracture.Core.Player
         {
             if (characterController == null) characterController = GetComponent<CharacterController>();
             if (footsteps == null) footsteps = GetComponentInChildren<Footsteps>();
+            if (gameHUDCanvas == null) gameHUDCanvas = GetComponentInChildren<Canvas>(); // Find canvas if not assigned
+            if (playerHealth == null) playerHealth = GetComponent<Health>();
         }
 
         /// <summary>
@@ -46,11 +62,11 @@ namespace UrbanFracture.Core.Player
         private void Awake()
         {
             movementHandler = new MovementHandler(characterController);
-            lookHandler = new LookHandler(transform, firstPersonCamera);
+            lookHandler = new LookHandler(transform, cameraPivotTransform);
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
             jumpHandler = new JumpHandler(characterController);
 
-            cameraBob = GetComponent<CameraBob>();
+            if (gameHUDCanvas != null) { gameHUD = gameHUDCanvas.GetComponentInChildren<GameHUD>(); }
         }
 
         /// <summary>
@@ -67,12 +83,52 @@ namespace UrbanFracture.Core.Player
             movementHandler.ApplyMovement(movementHandler.verticalVelocity);
 
             footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
-            cameraBob.UpdateCameraBob(movementHandler.CurrentSpeed, characterController.isGrounded);
+
+            if (Keyboard.current.hKey.wasPressedThisFrame) { ToggleHolsterWeapon(); }
         }
 
-        /// <summary>
-        /// Attempts to initiate a jump using the current vertical velocity state.
-        /// </summary>
         public void TryJump() => jumpHandler.TryJump(ref movementHandler.verticalVelocity);
+
+        void ToggleHolsterWeapon()
+        {
+            if (currentGun != null)
+            {
+                if (currentGun.IsHolstered()) { currentGun.UnholsterWeapon(); }
+                else { currentGun.HolsterWeapon(); }
+                gameHUD?.UpdateHUD();
+            }
+        }
+
+        public void TryAttack()
+        {
+            if (currentGun != null)
+            {
+                currentGun.TryShoot();
+                gameHUD?.UpdateHUD();
+            }
+        }
+        public void TryReload()
+        {
+            if (currentGun != null)
+            {
+                currentGun.TryReload();
+                gameHUD?.UpdateHUD();
+            }
+        }
+
+        public void EquipGun(Gun gun)
+        {
+            if (currentGun != null) { currentGun.HolsterWeapon(); }
+            currentGun = gun;
+
+            if (currentGun != null) { currentGun.UnholsterWeapon(); }
+            gameHUD?.UpdateHUD();
+        }
+
+        public void TakeDamage(float amount)
+        {
+            playerHealth?.TakeDamage(amount);
+            gameHUD?.UpdateHUD();
+        }
     }
 }

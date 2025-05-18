@@ -9,12 +9,12 @@ namespace UrbanFracture.Core.Player
         [Header("Components")]
         [SerializeField] FirstPersonController firstPersonController;
 
-        // These functions link Unity's Input System to our player and its controller
-
-        void OnMove(InputValue value) { firstPersonController.moveInput = value.Get<Vector2>(); }
-        void OnLook(InputValue value) { firstPersonController.lookInput = value.Get<Vector2>(); }
-        void OnSprint(InputValue value) { firstPersonController.sprintInput = value.isPressed; }
-        void OnJump(InputValue value) { if (value.isPressed) { firstPersonController.TryJump(); } }
+        void OnMove(InputValue value) => firstPersonController.moveInput = value.Get<Vector2>();
+        void OnLook(InputValue value) => firstPersonController.lookInput = value.Get<Vector2>();
+        void OnSprint(InputValue value) => firstPersonController.sprintInput = value.isPressed;
+        void OnJump(InputValue value) { if (value.isPressed) firstPersonController.TryJump(); }
+        void OnAttack(InputValue value) { if (value.isPressed) firstPersonController.TryAttack(); }
+        void OnReload(InputValue value) { if (value.isPressed) firstPersonController.TryReload(); }
 
         private void OnValidate()
         {
