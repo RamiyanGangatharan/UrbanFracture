@@ -4,8 +4,8 @@ namespace UrbanFracture.Combat
 {
     /// <summary>
     /// Handles shooting logic specific to a pistol.
-    /// Plays muzzle flash and hit effect particles, and performs raycast-based hit detection.
-    /// Inherits core behavior from the Gun base class.
+    /// Plays muzzle flash and hit effect particles, performs raycast-based hit detection,
+    /// and applies damage to objects implementing IDamageable.
     /// </summary>
     public class Pistol : Gun
     {
@@ -15,30 +15,26 @@ namespace UrbanFracture.Combat
         public ParticleSystem hitEffectParticleSystem;
 
         /// <summary>
-        /// Updates the pistol each frame by invoking the base gun update (e.g., recoil reset).
+        /// Updates the pistol each frame by invoking the base gun update.
         /// </summary>
-        public override void Update() { base.Update(); }
+        public override void Update()
+        {
+            base.Update();
+        }
 
         /// <summary>
-        /// Executes the pistol's shooting behavior by playing a muzzle flash at the designated 
-        /// spawn point, performing a ray cast to detect any hit targets, and spawning a particle 
-        /// effect at the impact location.
+        /// Executes the pistol's shooting behavior:
+        /// - Plays muzzle flash
+        /// - Raycasts for hit detection
+        /// - Spawns hit effects
+        /// - Applies damage to IDamageable targets
         /// </summary>
         public override void Shoot()
         {
-            if (muzzleFlash != null)
-            {
-                if (muzzleFlashSpawnPoint != null)
-                {
-                    muzzleFlash.transform.position = muzzleFlashSpawnPoint.position;
-                    muzzleFlash.transform.rotation = muzzleFlashSpawnPoint.rotation;
-                }
-                muzzleFlash.Play();
-            }
+            PlayMuzzleFlash();
 
             if (
-                Physics.Raycast
-                (
+                Physics.Raycast(
                     cameraTransform.position,
                     cameraTransform.forward,
                     out RaycastHit hit,
@@ -49,20 +45,58 @@ namespace UrbanFracture.Combat
             {
                 Debug.Log($"{gunData.WeaponName} hit {hit.collider.name}");
 
-                if (hitEffectParticleSystem != null)
+                SpawnHitEffect(hit);
+                ApplyDamage(hit);
+            }
+        }
+
+        /// <summary>
+        /// Plays the muzzle flash effect at the muzzle flash spawn point.
+        /// </summary>
+        private void PlayMuzzleFlash()
+        {
+            if (muzzleFlash != null)
+            {
+                if (muzzleFlashSpawnPoint != null)
                 {
-                    var hitEffect = Instantiate
-                    (
-                        hitEffectParticleSystem,
-                        hit.point,
-                        Quaternion.LookRotation(hit.normal)
-                    );
-
-                    hitEffect.Play();
-
-                    float destroyDelay = hitEffect.main.duration + hitEffect.main.startLifetime.constantMax;
-                    Destroy(hitEffect.gameObject, destroyDelay);
+                    muzzleFlash.transform.position = muzzleFlashSpawnPoint.position;
+                    muzzleFlash.transform.rotation = muzzleFlashSpawnPoint.rotation;
                 }
+                muzzleFlash.Play();
+            }
+        }
+
+        /// <summary>
+        /// Spawns the hit effect particle system at the point of impact.
+        /// </summary>
+        /// <param name="hit">Raycast hit information</param>
+        private void SpawnHitEffect(RaycastHit hit)
+        {
+            if (hitEffectParticleSystem != null)
+            {
+                var hitEffect = Instantiate(
+                    hitEffectParticleSystem,
+                    hit.point,
+                    Quaternion.LookRotation(hit.normal)
+                );
+
+                hitEffect.Play();
+
+                float destroyDelay = hitEffect.main.duration + hitEffect.main.startLifetime.constantMax;
+                Destroy(hitEffect.gameObject, destroyDelay);
+            }
+        }
+
+        /// <summary>
+        /// Applies damage to any target that implements the IDamageable interface.
+        /// </summary>
+        /// <param name="hit">Raycast hit information</param>
+        private void ApplyDamage(RaycastHit hit)
+        {
+            IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(gunData.Damage);
             }
         }
     }

@@ -46,12 +46,14 @@ namespace UrbanFracture.Player.Components
                     stepTimer = 0f;
                 }
             }
-            else
-            {
-                stepTimer = 0f;
-            }
+            else { stepTimer = 0f; }
         }
 
+        /// <summary>
+        /// This function controls the step interval based on the player's speed.
+        /// </summary>
+        /// <param name="speed"></param>
+        /// <returns>the interval in which a sound is played</returns>
         private float GetStepInterval(float speed)
         {
             float minSpeed = 0.1f;
@@ -63,26 +65,40 @@ namespace UrbanFracture.Player.Components
             return Mathf.Lerp(maxInterval, minInterval, (speed - minSpeed) / (maxSpeed - minSpeed));
         }
 
+        /// <summary>
+        /// This function will determine the footsteps by the terrain the player is on.
+        /// </summary>
+        /// <returns>footstep sounds based off terrain</returns>
         private AudioClip[] DetermineFootstepClips()
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f, terrainLayerMask))
-            {
-                return GetClipsByTag(hit.collider.tag);
-            }
+            if
+            (
+                Physics.Raycast(
+                transform.position,
+                Vector3.down,
+                out RaycastHit hit,
+                1.5f, terrainLayerMask
+                )
+            )
+            { return GetClipsByTag(hit.collider.tag); }
 
             return footstep_general;
         }
 
+        /// <summary>
+        /// This will create a list of clips based on the tag of the terrain.
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns>A switch case based on material</returns>
         private AudioClip[] GetClipsByTag(string tag)
         {
-            return tag switch
-            {
-                "Sand" => footstep_sand,
-                "Gravel" => footstep_gravel,
-                _ => footstep_general,
-            };
+            return tag switch { "Sand" => footstep_sand, "Gravel" => footstep_gravel, _ => footstep_general };
         }
 
+        /// <summary>
+        /// This function plays the footstep sounds.
+        /// </summary>
+        /// <param name="currentSpeed"></param>
         private void PlayFootstep(float currentSpeed)
         {
             AudioClip[] clips = DetermineFootstepClips();

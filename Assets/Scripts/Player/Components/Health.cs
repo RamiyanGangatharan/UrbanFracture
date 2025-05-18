@@ -6,7 +6,7 @@ namespace UrbanFracture.Player.Components
     /// <summary>
     /// Manages the player's health, damage handling, healing, and death events.
     /// </summary>
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, IDamageable
     {
         [Header("Health Settings")]
         [SerializeField] private float maxHealth = 100f;
@@ -14,6 +14,7 @@ namespace UrbanFracture.Player.Components
 
         [Header("Events")]
         public UnityEvent<float> OnHealthChanged;
+        public UnityEvent<float> OnHealed;
         public UnityEvent OnDeath;
 
         public float CurrentHealth => currentHealth;
@@ -44,8 +45,10 @@ namespace UrbanFracture.Player.Components
         public void Heal(float amount)
         {
             if (IsDead) return;
+            float oldHealth = currentHealth;
             currentHealth = Mathf.Clamp(currentHealth + amount, 0f, maxHealth);
             OnHealthChanged?.Invoke(currentHealth);
+            OnHealed?.Invoke(currentHealth - oldHealth);
         }
 
         /// <summary>
@@ -67,5 +70,23 @@ namespace UrbanFracture.Player.Components
             OnDeath?.Invoke();
             Debug.Log($"{gameObject.name} has died.");
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="healthAmount"></param>
+        public void Revive(float healthAmount)
+        {
+            if (!IsDead) return;
+            currentHealth = Mathf.Clamp(healthAmount, 0f, maxHealth);
+            OnHealthChanged?.Invoke(currentHealth);
+        }
+
+        public void ResetHealth()
+        {
+            currentHealth = maxHealth;
+            OnHealthChanged?.Invoke(currentHealth);
+        }
+
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UrbanFracture.Core.Player;
-using UrbanFracture.Player.Components;
 using UrbanFracture.UI.HUD;
 
 namespace UrbanFracture.Combat
@@ -21,7 +20,7 @@ namespace UrbanFracture.Combat
         public float currentAmmo = 0f;
         private float nextTimeToFire = 0f;
         private bool isReloading = false;
-        private bool isHolstered = false;
+        private bool isHolstered = true;
 
         public bool IsHolstered() { return isHolstered; }
 
@@ -31,6 +30,9 @@ namespace UrbanFracture.Combat
 
         [Tooltip("AudioSource component that plays reloading sound.")]
         public AudioSource reloadSFX;
+
+        [Tooltip("AudioSource component that plays empty magazine sound.")]
+        public AudioSource emptyMagazineSFX;
 
         /// <summary>
         /// Initializes references to player controller, camera, recoil handler, and HUD. 
@@ -42,6 +44,8 @@ namespace UrbanFracture.Combat
             firstPersonController = transform.root.GetComponent<FirstPersonController>();
             cameraTransform = firstPersonController.firstPersonCamera.transform;
             if (firstPersonController != null) { gameHUD = firstPersonController.GetComponentInChildren<GameHUD>(); }
+
+            HolsterWeapon();
         }
 
         /// <summary>
@@ -57,7 +61,12 @@ namespace UrbanFracture.Combat
         {
             if (isHolstered) return;
             if (isReloading) { Debug.Log($"{gunData.WeaponName} is reloading..."); return; }
-            if (currentAmmo <= 0f) { Debug.Log($"{gunData.WeaponName} has run out of ammo, please reload..."); return; }
+            if (currentAmmo <= 0f)
+            {
+                Debug.Log($"{gunData.WeaponName} has run out of ammo, please reload...");
+                emptyMagazineSFX?.PlayOneShot(emptyMagazineSFX.clip);
+                return;
+            }
             if (Time.time >= nextTimeToFire) { nextTimeToFire = Time.time + (1 / gunData.FireRate); HandleShoot(); }
         }
 
@@ -69,12 +78,19 @@ namespace UrbanFracture.Combat
         /// </summary>
         private void HandleShoot()
         {
-            currentAmmo--;
-
-            Debug.Log($"{gunData.WeaponName} shot! Bullets left: {currentAmmo}");
-
-            shootSFX?.Play();
-            Shoot();
+            if (currentAmmo > 0)
+            {
+                currentAmmo--;
+                Debug.Log($"{gunData.WeaponName} shot! Bullets left: {currentAmmo}");
+                shootSFX?.Play();
+                Shoot();
+            }
+            else
+            {
+                Debug.Log($"{gunData.WeaponName} has run out of ammo, please reload...");
+                emptyMagazineSFX?.PlayOneShot(emptyMagazineSFX.clip);
+                return;
+            }
         }
 
         /// <summary>

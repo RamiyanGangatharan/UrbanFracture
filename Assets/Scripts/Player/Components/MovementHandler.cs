@@ -9,9 +9,9 @@ namespace UrbanFracture.Player.Components
     public class MovementHandler
     {
         private readonly CharacterController controller;
-        private float walkSpeed = 3.5f;
-        private float sprintSpeed = 15f;
-        private float acceleration = 15f;
+        private float walkSpeed = 3f;
+        private float sprintSpeed = 6f;
+        private float acceleration = 10f;
         private float gravityScale = 3f;
 
         public float verticalVelocity;

@@ -19,11 +19,11 @@ namespace UrbanFracture.Core.Player
         [SerializeField] private CharacterController characterController;
         [SerializeField] public CinemachineCamera firstPersonCamera;
         [SerializeField] private Footsteps footsteps;
-        [SerializeField] private Canvas gameHUDCanvas; 
+        [SerializeField] private Canvas gameHUDCanvas;
         [SerializeField] private Health playerHealth;
         [SerializeField] private Transform cameraPivotTransform;
 
-        public Health PlayerHealth => playerHealth; 
+        public Health PlayerHealth => playerHealth;
 
         [Header("Input")]
         public Vector2 moveInput;
@@ -43,7 +43,7 @@ namespace UrbanFracture.Core.Player
         private CameraFOVHandler FOVHandler;
         private JumpHandler jumpHandler;
 
-        private GameHUD gameHUD; 
+        private GameHUD gameHUD;
 
         /// <summary>
         /// Ensures required component references are assigned in the editor.
