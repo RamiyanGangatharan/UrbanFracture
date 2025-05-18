@@ -191,63 +191,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24197881}
   m_CullTransparentMesh: 1
---- !u!1001 &86484939
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.7867222
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00000011920929
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.814941
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8415119155074357024, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188278811865288090, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
-      propertyPath: m_Name
-      value: SK_Military_Survivalist (9)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 45ba5550a3e809a4fbcb9111cbffedf9, type: 3}
 --- !u!1 &88213171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,7 +2124,9 @@ MonoBehaviour:
   terrainLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  stepInterval: 0.6
+  walkStepInterval: 0.5
+  sprintStepInterval: 0.3
+  sprintThreshold: 4.5
   pitchVariation: 0.125
   footstep_sand:
   - {fileID: 8300000, guid: de812b515a5c45d4fa030cf39e846e84, type: 3}
@@ -8576,4 +8521,3 @@ SceneRoots:
   - {fileID: 1787806764}
   - {fileID: 4514933098150145492}
   - {fileID: 1947432382}
-  - {fileID: 86484939}
