@@ -90,10 +90,27 @@ This project was built using a combination of custom systems and learning resour
 
 ---
 
+### Thursday, May 22nd, 2025
+I have forgotten to update this log for a LONG time. here is what I have done (or at least what I remember)
+- Made a factory
+- Replaced the pistol with an AKM
+- Messed around with particle and lighting systems
+- broke the game completely (zero motivation for a few days)
+- manually fixed everything and reconfigured all textures
+
+TODO: 
+- reconfigure sound effects and music for main menu
+- create a level selector as that got deleted in the rollback
+- make a custom theme song and sound effects in FL Studio
+- configure footstep noise parameters better.
+
+---
+
 ### Saturday, May 17th, 2025
 - Added weapon holstering mechanics
 - Removed recoil mechanics (I will be re-implementing it later)
 - Working on a user manual for my code
+
 ---
 
 ### Friday, May 16th, 2025
