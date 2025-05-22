@@ -45,7 +45,7 @@ namespace UrbanFracture.Combat
             cameraTransform = firstPersonController.firstPersonCamera.transform;
             if (firstPersonController != null) { gameHUD = firstPersonController.GetComponentInChildren<GameHUD>(); }
 
-            HolsterWeapon();
+            //HolsterWeapon();
         }
 
         /// <summary>
