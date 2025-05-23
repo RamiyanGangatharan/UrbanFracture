@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &209903845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,13 +371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86905dfcad7063a468d0ef4dec49a337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButton: {fileID: 0}
-  settingsButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  creditsButton: {fileID: 0}
   hoverSound: {fileID: 1023419129}
   clickSound: {fileID: 1338283325}
-  FactoryButton: {fileID: 562198827}
+  factoryButton: {fileID: 562198827}
 --- !u!1 &212641850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,7 +2644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1401421548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2750,12 +2746,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32342c3cdf1c7146906e2d974cc73e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverSound: {fileID: 1023419129}
+  clickSound: {fileID: 1338283325}
   playButton: {fileID: 779389054}
   settingsButton: {fileID: 1584829303}
   quitButton: {fileID: 212641852}
   creditsButton: {fileID: 370747227}
-  hoverSound: {fileID: 1023419129}
-  clickSound: {fileID: 1338283325}
 --- !u!114 &1401421554
 MonoBehaviour:
   m_ObjectHideFlags: 0
