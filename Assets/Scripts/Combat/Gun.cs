@@ -34,6 +34,8 @@ namespace UrbanFracture.Combat
         [Tooltip("AudioSource component that plays empty magazine sound.")]
         public AudioSource emptyMagazineSFX;
 
+        public AudioSource holsterWeaponSFX;
+
         /// <summary>
         /// Initializes references to player controller, camera, recoil handler, and HUD. 
         /// Sets the current ammo to the magazine size.
@@ -45,7 +47,7 @@ namespace UrbanFracture.Combat
             cameraTransform = firstPersonController.firstPersonCamera.transform;
             if (firstPersonController != null) { gameHUD = firstPersonController.GetComponentInChildren<GameHUD>(); }
 
-            //HolsterWeapon();
+            HolsterWeapon();
         }
 
         /// <summary>
@@ -106,6 +108,7 @@ namespace UrbanFracture.Combat
         {
             isHolstered = true;
             gameObject.SetActive(false);
+            holsterWeaponSFX?.Play();
         }
 
         /// <summary>
@@ -115,6 +118,7 @@ namespace UrbanFracture.Combat
         {
             isHolstered = false;
             gameObject.SetActive(true);
+            holsterWeaponSFX?.Play();
         }
 
         /// <summary>

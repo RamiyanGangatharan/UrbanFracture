@@ -1,53 +1,20 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UrbanFracture.UI.MainMenu;
 
-namespace UrbanFracture.UI.MainMenu
+public class MainMenuController : BaseMenuController
 {
-    /// <summary>
-    /// Controls the main menu functionality, including button references and audio feedback.
-    /// </summary>
-    public class MainMenuController : MonoBehaviour
+    [Header("Main Menu Buttons")]
+    [SerializeField] private Button playButton;
+    [SerializeField] private Button settingsButton;
+    [SerializeField] private Button quitButton;
+    [SerializeField] private Button creditsButton;
+
+    protected override void InitializeMenu()
     {
-        [Header("Menu Buttons")]
-        [SerializeField] private Button playButton;
-        [SerializeField] private Button settingsButton;
-        [SerializeField] private Button quitButton;
-        [SerializeField] private Button creditsButton;
-
-        [Header("Audio")]
-        [SerializeField] private AudioSource hoverSound;
-        [SerializeField] private AudioSource clickSound;
-
-        private void Start()
-        {
-            SetupButton(playButton);
-            SetupButton(settingsButton);
-            SetupButton(quitButton);
-            SetupButton(creditsButton);
-        }
-
-        /// <summary>
-        /// Attaches audio behavior to the specified button.
-        /// </summary>
-        /// <param name="button">Button to set up.</param>
-        private void SetupButton(Button button)
-        {
-            if (button == null) return;
-
-            button.onClick.AddListener(() => PlayClickSound()); // Add click sound
-
-            // Add hover sound via EventTrigger
-            EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
-            if (trigger == null) { trigger = button.gameObject.AddComponent<EventTrigger>(); }
-
-            var entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
-            entry.callback.AddListener(_ => PlayHoverSound());
-
-            trigger.triggers.Add(entry);
-        }
-
-        private void PlayHoverSound() { if (hoverSound != null) hoverSound.Play(); }
-        private void PlayClickSound() { if (clickSound != null) clickSound.Play(); }
+        SetupButton(playButton);
+        SetupButton(settingsButton);
+        SetupButton(quitButton);
+        SetupButton(creditsButton);
     }
 }

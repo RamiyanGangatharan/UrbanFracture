@@ -92,6 +92,13 @@ This project was built using a combination of custom systems and learning resour
 
 ---
 
+### Friday May 23rd, 2025
+- Created a level select menu
+- Created crouching mechanics for my character
+- Implemented new sound effects for the menu's
+
+---
+
 ### Thursday, May 22nd, 2025
 I have forgotten to update this log for a LONG time. here is what I have done (or at least what I remember)
 - Made a factory

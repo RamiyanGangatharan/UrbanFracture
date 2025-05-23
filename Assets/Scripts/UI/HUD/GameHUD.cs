@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UrbanFracture.Combat;
 using UrbanFracture.Core.Player;
+using UrbanFracture.Player.Components;
 
 namespace UrbanFracture.UI.HUD
 {
@@ -20,8 +21,11 @@ namespace UrbanFracture.UI.HUD
         public RawImage WeaponImage;
         public RawImage WeaponIcon;
         public RawImage AmmoIcon;
+        public RawImage CrouchImage;
+        public RawImage StandImage;
 
         private FirstPersonController player;
+        private CrouchHandler crouchHandler;
         private Gun currentGun;
 
         /// <summary>
@@ -30,6 +34,7 @@ namespace UrbanFracture.UI.HUD
         private void Start()
         {
             player = GetComponent<FirstPersonController>();
+            crouchHandler = GetComponent<CrouchHandler>();
 
             if (player != null)
             {
@@ -38,6 +43,7 @@ namespace UrbanFracture.UI.HUD
             }
 
             UpdateHUD();
+            UpdateStandState();
         }
 
         /// <summary>
@@ -110,5 +116,30 @@ namespace UrbanFracture.UI.HUD
         /// </summary>
         /// <param name="currentHealth">The player's current health value.</param>
         private void UpdateHealth(float currentHealth) { HealthText.text = $"HP: {Mathf.RoundToInt(currentHealth)}"; }
+        
+        /// <summary>
+        /// This will change an image icon on the HUD stating if the player is crouched or not
+        /// </summary>
+        private void UpdateStandState()
+        {
+            if (crouchHandler != null)
+            {
+                bool isCrouching = crouchHandler.IsCrouching;
+
+                if (CrouchImage != null) CrouchImage.enabled = isCrouching;
+                if (StandImage != null) StandImage.enabled = !isCrouching;
+
+                if (isCrouching)
+                {
+                    SetAlpha(CrouchImage, 1f);
+                    SetAlpha(StandImage, 0f);
+                }
+                else
+                {
+                    SetAlpha(CrouchImage, 0f);
+                    SetAlpha(StandImage, 1f);
+                }
+            }
+        }
     }
 }

@@ -1,54 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="UrbanFracture.Core.Player.FirstPersonController">
-    <Position X="9.75" Y="2" Width="2" />
+    <Position X="16" Y="2" Width="2" />
     <TypeIdentifier>
-      <HashCode>gAQIBAEAFIACAQAAgAEEACDBAAAACAAAAAAghAMAAkA=</HashCode>
+      <HashCode>gAQIBAEAFIAiAQAAgAEEACDFAAAACAAAAAAghAMAAkA=</HashCode>
       <FileName>Assets\Scripts\Player\Core\FirstPersonController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Core.Player.Player">
-    <Position X="15.5" Y="2.25" Width="1.75" />
+    <Position X="21.25" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAIAACAAAkAAAAAAAAAAAAAAAAAAIAIACA=</HashCode>
+      <HashCode>AAQAAAAAACAIAACAAAkAAAAAAAAAAAAAAAAAAIAKACA=</HashCode>
       <FileName>Assets\Scripts\Player\Core\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Player.@InputSystem_Actions" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="7" Y="12.5" Width="2" />
+    <Position X="23.5" Y="10.5" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
-    <NestedTypes>
-      <Struct Name="UrbanFracture.Player.@InputSystem_Actions.PlayerActions">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Player\InputSystem_Actions.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-      <Struct Name="UrbanFracture.Player.@InputSystem_Actions.UIActions">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Player\InputSystem_Actions.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-      <Interface Name="UrbanFracture.Player.@InputSystem_Actions.IPlayerActions">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Player\InputSystem_Actions.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Interface>
-      <Interface Name="UrbanFracture.Player.@InputSystem_Actions.IUIActions">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Player\InputSystem_Actions.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Interface>
-    </NestedTypes>
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="11.125" Y="11.95" />
-        <Point X="11.125" Y="12.239" />
-        <Point X="8" Y="12.239" />
-        <Point X="8" Y="12.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>CIIGAAAAACAAIhAiAAKEGxAJYAIXBmAUAGEgIFhQAsA=</HashCode>
       <FileName>Assets\Scripts\Player\InputSystem_Actions.cs</FileName>
@@ -56,57 +26,69 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="UrbanFracture.Combat.Gun">
-    <Position X="3.25" Y="2" Width="1.75" />
+    <Position X="8.25" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>GAQEAAEABDACBAAQAIgAAgAQAAIAAAAACAIgAAAQAAA=</HashCode>
+      <HashCode>GAQMAAEABDACBAAQAIgAAgAQAAIAAAAACAIgAAAQAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\Gun.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Combat.GunData">
-    <Position X="1" Y="3.25" Width="1.5" />
+    <Position X="13.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAACIAAIKiAICAgAAAAAAAAAIAAoAAAAIAACAAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\GunData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Combat.Pistol">
-    <Position X="4.5" Y="8" Width="2" />
+    <Position X="10.5" Y="8.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAABACIAAAIAAAAgEAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Assets\Scripts\Combat\Pistol.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Combat.RaycastGun">
-    <Position X="2" Y="8" Width="1.5" />
+    <Position X="8.25" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAIACAABAAAAAAAAAAACAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\RaycastGun.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Player.Components.CameraFOVHandler">
-    <Position X="11.25" Y="12.5" Width="1.75" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="11.125" Y="11.95" />
-        <Point X="11.125" Y="12.252" />
-        <Point X="12.125" Y="12.252" />
-        <Point X="12.125" Y="12.5" />
-      </Path>
-    </InheritanceLine>
+    <Position X="27.75" Y="11" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAQABAAAAAAAAAAAAAAAAAAAAAAAEAAAAAQAAAgAAAA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\CameraFOVHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Player.Components.Footsteps">
-    <Position X="7.25" Y="2" Width="2" />
+    <Position X="13" Y="8.25" Width="2" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="20.25" Y="1.191" />
+        <Point X="20.25" Y="1.625" />
+        <Point X="15.768" Y="1.625" />
+        <Point X="15.768" Y="8.023" />
+        <Point X="14" Y="8.023" />
+        <Point X="14" Y="8.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AgAAAAAIAAAAAAAAAGgAAAAgAEAAABAsAQEAAgAABAA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\Footsteps.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Player.Components.Health" BaseTypeListCollapsed="true">
-    <Position X="12.5" Y="2" Width="1.75" />
+    <Position X="15.5" Y="9.5" Width="1.75" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="20.25" Y="1.191" />
+        <Point X="20.25" Y="2.075" />
+        <Point X="18.485" Y="2.075" />
+        <Point X="18.485" Y="9.308" />
+        <Point X="16.375" Y="9.308" />
+        <Point X="16.375" Y="9.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAIAUAACACgAAAUEIQAAAAEAAAAAAAAgAAAEEA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\Health.cs</FileName>
@@ -114,53 +96,28 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="UrbanFracture.Player.Components.JumpHandler">
-    <Position X="9.25" Y="12.5" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="11.125" Y="11.95" />
-        <Point X="11.125" Y="12.239" />
-        <Point X="10" Y="12.239" />
-        <Point X="10" Y="12.5" />
-      </Path>
-    </InheritanceLine>
+    <Position X="24" Y="11.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAgBcCAAAAIAAAAAAACAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAgBcCAAAAIAAEAAAACAAAAAAAAAAAIAA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\JumpHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Player.Components.LookHandler">
-    <Position X="9.25" Y="16.25" Width="1.5" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="11.125" Y="11.95" />
-        <Point X="11.125" Y="12.239" />
-        <Point X="10.873" Y="12.239" />
-        <Point X="10.873" Y="17.701" />
-        <Point X="10.75" Y="17.701" />
-      </Path>
-    </InheritanceLine>
+    <Position X="25.75" Y="12" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAEAUAAEAAAAAAIAAAAAAAQAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\LookHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Player.Components.MovementHandler">
-    <Position X="11" Y="15.25" Width="1.75" />
-    <InheritanceLine Type="System.Object" ManuallyRouted="true">
-      <Path>
-        <Point X="11.125" Y="11.95" />
-        <Point X="11.125" Y="15.025" />
-        <Point X="11.875" Y="15.025" />
-        <Point X="11.875" Y="15.25" />
-      </Path>
-    </InheritanceLine>
+    <Position X="22" Y="11.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAgAEAgAQAIgAAEAAAEAQAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAgAEAgAQAIgAEEAAAEAQAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\MovementHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CompassBar">
-    <Position X="15.5" Y="9.75" Width="2" />
+    <Position X="23.5" Y="2" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -177,7 +134,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.UI.HUD.FPSCounter">
-    <Position X="12.5" Y="7" Width="1.75" />
+    <Position X="19" Y="3.75" Width="1.75" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -190,12 +147,10 @@
     </NestedTypes>
     <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
       <Path>
-        <Point X="10.75" Y="1.191" />
-        <Point X="10.75" Y="1.791" />
-        <Point X="15.044" Y="1.791" />
-        <Point X="15.044" Y="6.7" />
-        <Point X="13.375" Y="6.7" />
-        <Point X="13.375" Y="7" />
+        <Point X="20.25" Y="1.191" />
+        <Point X="20.25" Y="2.36" />
+        <Point X="19.875" Y="2.36" />
+        <Point X="19.875" Y="3.75" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -204,54 +159,103 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.UI.HUD.GameHUD">
-    <Position X="18" Y="2.5" Width="1.75" />
+    <Position X="21.25" Y="5.5" Width="1.75" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="20.25" Y="1.191" />
+        <Point X="20.25" Y="2.002" />
+        <Point X="21.105" Y="2.002" />
+        <Point X="21.105" Y="5.346" />
+        <Point X="22.125" Y="5.346" />
+        <Point X="22.125" Y="5.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AIQACAEBACAIAAIAAgBAAAABAAAAAAIBAAAAACAAAAA=</HashCode>
+      <HashCode>AIQACAEBACAIAAIAAgBAAAAHAAAAEAIBAAAAACAgAAA=</HashCode>
       <FileName>Assets\Scripts\UI\HUD\GameHUD.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.UI.LoadingScreen.AsyncManager">
-    <Position X="7.25" Y="6.75" Width="2" />
+    <Position X="10.75" Y="2" Width="2" />
     <TypeIdentifier>
-      <HashCode>ADAAJAAAAMAAAIECAAoAAAAMAAAAABAEAAIAAAAAAAA=</HashCode>
+      <HashCode>ADAQJAAAAMAAAIECAAoAAAIMAAEAABAEAAIAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\LoadingScreen\AsyncLoader.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SliderController">
-    <Position X="18" Y="7" Width="1.75" />
+    <Position X="20" Y="10.75" Width="1.75" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="20.25" Y="1.191" />
+        <Point X="20.25" Y="1.983" />
+        <Point X="20.991" Y="1.983" />
+        <Point X="20.991" Y="10.51" />
+        <Point X="20.875" Y="10.51" />
+        <Point X="20.875" Y="10.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\LoadingScreen\SliderController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="UrbanFracture.UI.MainMenu.MainMenuController">
-    <Position X="15.5" Y="6" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACEAAAAAAAAAgAAACIAAAAIQAAAAAAAAJEA=</HashCode>
-      <FileName>Assets\Scripts\UI\MainMenu\MainMenuController.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="19.5" Y="0.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="System.Object">
-    <Position X="10.25" Y="9.5" Width="1.75" />
+    <Position X="23.5" Y="7" Width="1.75" />
     <TypeIdentifier />
   </Class>
   <Class Name="UnityEngine.ScriptableObject" Collapsed="true">
-    <Position X="1" Y="1.75" Width="1.5" />
+    <Position X="13.5" Y="2" Width="1.5" />
     <TypeIdentifier />
   </Class>
+  <Class Name="UrbanFracture.Player.Components.CrouchHandler">
+    <Position X="17.5" Y="9.5" Width="2.25" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="20.25" Y="1.191" />
+        <Point X="20.25" Y="2.203" />
+        <Point X="18.625" Y="2.203" />
+        <Point X="18.625" Y="9.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAYAADgAAAACAAABAKAAAEgARIAAAACQAAAAAAIAAEA=</HashCode>
+      <FileName>Assets\Scripts\Player\Components\CrouchHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.UI.MainMenu.BaseMenuController">
+    <Position X="26.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAwAAAAAAAAAAQAAAAAAAAJEA=</HashCode>
+      <FileName>Assets\Scripts\UI\MainMenu\BaseMenuController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelSelector">
+    <Position X="26" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\MainMenu\LevelSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuController">
+    <Position X="28" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAQAAACIAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\MainMenu\MainMenuController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="IDamageable">
-    <Position X="5.5" Y="2.5" Width="1.5" />
+    <Position X="28" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\IDamageable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="UrbanFracture.UI.LoadingScreen.SceneEnum">
-    <Position X="5.5" Y="4.5" Width="1.5" />
+    <Position X="28" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAgAAAAgAAQAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\LoadingScreen\AsyncLoader.cs</FileName>
