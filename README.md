@@ -14,7 +14,7 @@ while recreating the tone and atmosphere of iconic shooters from the era.
 > [!WARNING]
 > **Before cloning this project, install Git LFS (Large File Storage)** to ensure all assets are properly downloaded.
 
-![alt text](../ClassDiagram1.jpg)
+![alt text](/ClassDiagram1.jpg)
 
 # Getting Started
 
