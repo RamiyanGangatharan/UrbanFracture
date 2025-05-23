@@ -3,14 +3,14 @@
   <Class Name="UrbanFracture.Core.Player.FirstPersonController">
     <Position X="9.75" Y="2" Width="2" />
     <TypeIdentifier>
-      <HashCode>gAQIBAEAFIACAQAAgAEEACDBAAAACAAAAAAghAMAAkA=</HashCode>
+      <HashCode>gAQIBAEAFIAiAQAAgAEEACDFAAAACAAAAAAghAMAAkA=</HashCode>
       <FileName>Assets\Scripts\Player\Core\FirstPersonController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Core.Player.Player">
     <Position X="15.5" Y="2.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAIAACAAAkAAAAAAAAAAAAAAAAAAIAIACA=</HashCode>
+      <HashCode>AAQAAAAAACAIAACAAAkAAAAAAAAAAAAAAAAAAIAKACA=</HashCode>
       <FileName>Assets\Scripts\Player\Core\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -102,7 +102,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAgBcCAAAAIAAAAAAACAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAgBcCAAAAIAAEAAAACAAAAAAAAAAAIAA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\JumpHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -133,7 +133,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAgAEAgAQAIgAAEAAAEAQAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAgAEAgAQAIgAEEAAAEAQAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\MovementHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -193,14 +193,14 @@
   <Class Name="UrbanFracture.UI.HUD.GameHUD">
     <Position X="18" Y="2.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIQACAEBACAIAAIAAgBAAAABAAAAAAIBAAAAACAAAAA=</HashCode>
+      <HashCode>AIQACAEBACAIAAIAAgBAAAAHAAAAEAIBAAAAACAgAAA=</HashCode>
       <FileName>Assets\Scripts\UI\HUD\GameHUD.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.UI.LoadingScreen.AsyncManager">
     <Position X="7.25" Y="6.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>ADAQJAAAAMAAAIECAAoAAAAMAAEAABAEAAIAAAAAAAA=</HashCode>
+      <HashCode>ADAQJAAAAMAAAIECAAoAAAIMAAEAABAEAAIAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\LoadingScreen\AsyncLoader.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -235,6 +235,25 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\MainMenu\LevelSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Player.Components.CrouchHandler">
+    <Position X="6.75" Y="13.5" Width="2.25" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="10.75" Y="1.191" />
+        <Point X="10.75" Y="1.791" />
+        <Point X="5.25" Y="1.791" />
+        <Point X="5.25" Y="8.133" />
+        <Point X="6.691" Y="8.133" />
+        <Point X="6.691" Y="13.323" />
+        <Point X="7.875" Y="13.323" />
+        <Point X="7.875" Y="13.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAYAADgAAAACAAABAKAAAEgARIAAAACQAAAAAAIAAEA=</HashCode>
+      <FileName>Assets\Scripts\Player\Components\CrouchHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="IDamageable">
