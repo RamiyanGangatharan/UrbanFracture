@@ -23,6 +23,9 @@ namespace UrbanFracture.UI.LoadingScreen
         [SerializeField] private GameObject loadingScreen; // Loading Screen UI
         [SerializeField] private SliderController sliderController;
 
+        public Canvas canvasToEnable;
+        public Canvas canvasToDisable;
+
         [Header("UI Elements")]
         [SerializeField] private Slider loadingSlider;
 
@@ -61,6 +64,8 @@ namespace UrbanFracture.UI.LoadingScreen
         /// <returns>An IEnumerator for Coroutine.</returns>
         private IEnumerator BackgroundSlideshow()
         {
+            sceneFrom.SetActive(false);
+
             int index = 0;
             while (loadingScreen.activeSelf)
             {
@@ -81,6 +86,8 @@ namespace UrbanFracture.UI.LoadingScreen
         /// <returns>An IEnumerator for Coroutine.</returns>
         private IEnumerator CrossfadeToTexture(Texture2D newTexture)
         {
+            sceneFrom.SetActive(false);
+
             float t = 0f;
             Color color = backgroundImage.color;
 
@@ -172,5 +179,22 @@ namespace UrbanFracture.UI.LoadingScreen
         {
             if (System.Enum.TryParse(sceneName, out SceneEnum scene)) { LoadLevel(scene); }
         }
+
+        /// <summary>
+        /// Helper function to switch between menu's
+        /// </summary>
+        public void SwitchCanvas()
+        {
+            canvasToDisable.gameObject.SetActive(false);
+            canvasToEnable.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Helper function to disable a canvas on the fly 
+        /// </summary>
+        public void disableCanvas()
+        {
+            if (canvasToDisable != null) canvasToDisable.gameObject.SetActive(false);
+        }    
     }
 }

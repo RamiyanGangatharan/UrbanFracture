@@ -19,28 +19,6 @@
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
-    <NestedTypes>
-      <Struct Name="UrbanFracture.Player.@InputSystem_Actions.PlayerActions">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Player\InputSystem_Actions.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-      <Struct Name="UrbanFracture.Player.@InputSystem_Actions.UIActions">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Player\InputSystem_Actions.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-      <Interface Name="UrbanFracture.Player.@InputSystem_Actions.IPlayerActions">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Player\InputSystem_Actions.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Interface>
-      <Interface Name="UrbanFracture.Player.@InputSystem_Actions.IUIActions">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Scripts\Player\InputSystem_Actions.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Interface>
-    </NestedTypes>
     <InheritanceLine Type="System.Object" ManuallyRouted="true">
       <Path>
         <Point X="11.125" Y="11.95" />
@@ -58,7 +36,7 @@
   <Class Name="UrbanFracture.Combat.Gun">
     <Position X="3.25" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>GAQEAAEABDACBAAQAIgAAgAQAAIAAAAACAIgAAAQAAA=</HashCode>
+      <HashCode>GAQMAAEABDACBAAQAIgAAgAQAAIAAAAACAIgAAAQAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\Gun.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -70,27 +48,27 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Combat.Pistol">
-    <Position X="4.5" Y="8" Width="2" />
+    <Position X="4.5" Y="8.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAABACIAAAIAAAAgEAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Assets\Scripts\Combat\Pistol.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Combat.RaycastGun">
-    <Position X="2" Y="8" Width="1.5" />
+    <Position X="2" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAIACAABAAAAAAAAAAACAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\RaycastGun.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Player.Components.CameraFOVHandler">
-    <Position X="11.25" Y="12.5" Width="1.75" />
+    <Position X="11.25" Y="13" Width="1.75" />
     <InheritanceLine Type="System.Object" ManuallyRouted="true">
       <Path>
         <Point X="11.125" Y="11.95" />
-        <Point X="11.125" Y="12.252" />
-        <Point X="12.125" Y="12.252" />
-        <Point X="12.125" Y="12.5" />
+        <Point X="11.125" Y="12.731" />
+        <Point X="12.125" Y="12.731" />
+        <Point X="12.125" Y="13" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -145,13 +123,13 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Player.Components.MovementHandler">
-    <Position X="11" Y="15.25" Width="1.75" />
+    <Position X="11" Y="15.75" Width="1.75" />
     <InheritanceLine Type="System.Object" ManuallyRouted="true">
       <Path>
         <Point X="11.125" Y="11.95" />
-        <Point X="11.125" Y="15.025" />
-        <Point X="11.875" Y="15.025" />
-        <Point X="11.875" Y="15.25" />
+        <Point X="11.125" Y="15.619" />
+        <Point X="11.875" Y="15.619" />
+        <Point X="11.875" Y="15.75" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -160,12 +138,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="CompassBar">
-    <Position X="15.5" Y="9.75" Width="2" />
+    <Position X="18.25" Y="9.75" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
       <Class Name="CompassBar.CompassMarker">
+        <InheritanceLine Type="System.Object" ManuallyRouted="true">
+          <Path>
+            <Point X="11.125" Y="11.95" />
+            <Point X="11.125" Y="12.459" />
+            <Point X="16.602" Y="12.459" />
+            <Point X="16.602" Y="12.251" />
+            <Point X="19.3" Y="12.251" />
+          </Path>
+        </InheritanceLine>
         <TypeIdentifier>
           <NewMemberFileName>Assets\Scripts\UI\HUD\CompassUI.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -213,7 +200,7 @@
   <Class Name="UrbanFracture.UI.LoadingScreen.AsyncManager">
     <Position X="7.25" Y="6.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>ADAAJAAAAMAAAIECAAoAAAAMAAAAABAEAAIAAAAAAAA=</HashCode>
+      <HashCode>ADAQJAAAAMAAAIECAAoAAAAMAAEAABAEAAIAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\LoadingScreen\AsyncLoader.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -227,7 +214,7 @@
   <Class Name="UrbanFracture.UI.MainMenu.MainMenuController">
     <Position X="15.5" Y="6" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACEAAAAAAAAAgAAACIAAAAIQAAAAAAAAJEA=</HashCode>
+      <HashCode>AAAAAAAAACEAAAAAAAAAwAAACIAAAAIQAAAAAAAAJEA=</HashCode>
       <FileName>Assets\Scripts\UI\MainMenu\MainMenuController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -242,6 +229,13 @@
   <Class Name="UnityEngine.ScriptableObject" Collapsed="true">
     <Position X="1" Y="1.75" Width="1.5" />
     <TypeIdentifier />
+  </Class>
+  <Class Name="UrbanFracture.UI.MainMenu.LevelSelector">
+    <Position X="15.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\MainMenu\LevelSelector.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Interface Name="IDamageable">
     <Position X="5.5" Y="2.5" Width="1.5" />

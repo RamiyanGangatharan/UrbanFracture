@@ -42,6 +42,7 @@ namespace UrbanFracture.Core.Player
         private LookHandler lookHandler;
         private CameraFOVHandler FOVHandler;
         private JumpHandler jumpHandler;
+        private CrouchHandler crouchHandler;
 
         private GameHUD gameHUD;
 
@@ -52,19 +53,21 @@ namespace UrbanFracture.Core.Player
         {
             if (characterController == null) characterController = GetComponent<CharacterController>();
             if (footsteps == null) footsteps = GetComponentInChildren<Footsteps>();
-            if (gameHUDCanvas == null) gameHUDCanvas = GetComponentInChildren<Canvas>(); // Find canvas if not assigned
+            if (gameHUDCanvas == null) gameHUDCanvas = GetComponentInChildren<Canvas>(); 
             if (playerHealth == null) playerHealth = GetComponent<Health>();
-        }
+            if (crouchHandler == null) crouchHandler = GetComponent<CrouchHandler>();
+        } 
 
         /// <summary>
         /// Initializes all gameplay-related handlers for movement, camera control, FOV, and jumping.
         /// </summary>
         private void Awake()
         {
-            movementHandler = new MovementHandler(characterController);
+            movementHandler = new MovementHandler(characterController, crouchHandler);
+            crouchHandler = GetComponent<CrouchHandler>();
             lookHandler = new LookHandler(transform, cameraPivotTransform);
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
-            jumpHandler = new JumpHandler(characterController);
+            jumpHandler = new JumpHandler(characterController, crouchHandler);
 
             if (gameHUDCanvas != null) { gameHUD = gameHUDCanvas.GetComponentInChildren<GameHUD>(); }
         }
@@ -78,7 +81,7 @@ namespace UrbanFracture.Core.Player
             lookHandler.Update(lookInput);
             FOVHandler.Update(movementHandler.CurrentSpeed, sprintInput);
             jumpHandler.Update(ref movementHandler.verticalVelocity);
-
+            crouchHandler.Update();
             if (jumpHandler.CheckLanding()) { Landed?.Invoke(); }
             movementHandler.ApplyMovement(movementHandler.verticalVelocity);
 
@@ -114,6 +117,11 @@ namespace UrbanFracture.Core.Player
                 currentGun.TryReload();
                 gameHUD?.UpdateHUD();
             }
+        }
+
+        public void TryCrouch()
+        {
+            crouchHandler.ToggleCrouch();
         }
 
         public void EquipGun(Gun gun)

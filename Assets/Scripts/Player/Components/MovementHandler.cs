@@ -9,6 +9,14 @@ namespace UrbanFracture.Player.Components
     public class MovementHandler
     {
         private readonly CharacterController controller;
+        private readonly CrouchHandler crouchHandler;
+
+        public MovementHandler(CharacterController controller, CrouchHandler crouchHandler)
+        {
+            this.controller = controller;
+            this.crouchHandler = crouchHandler;
+        }
+
         private float walkSpeed = 3f;
         private float sprintSpeed = 6f;
         private float acceleration = 10f;
@@ -36,7 +44,7 @@ namespace UrbanFracture.Player.Components
             Vector3 direction = controller.transform.forward * moveInput.y + controller.transform.right * moveInput.x;
             direction.Normalize();
 
-            float targetSpeed = isSprinting ? sprintSpeed : walkSpeed;
+            float targetSpeed = (isSprinting && !crouchHandler.IsCrouching) ? sprintSpeed : walkSpeed;
             Vector3 targetVelocity = direction * targetSpeed;
 
             CurrentVelocity = Vector3.MoveTowards(CurrentVelocity, targetVelocity, acceleration * Time.deltaTime);

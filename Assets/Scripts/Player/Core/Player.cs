@@ -13,6 +13,7 @@ namespace UrbanFracture.Core.Player
         void OnLook(InputValue value) => firstPersonController.lookInput = value.Get<Vector2>();
         void OnSprint(InputValue value) => firstPersonController.sprintInput = value.isPressed;
         void OnJump(InputValue value) { if (value.isPressed) firstPersonController.TryJump(); }
+        void OnCrouch(InputValue value) { if (value.isPressed) firstPersonController.TryCrouch(); }
         void OnAttack(InputValue value) { if (value.isPressed) firstPersonController.TryAttack(); }
         void OnReload(InputValue value) { if (value.isPressed) firstPersonController.TryReload(); }
 

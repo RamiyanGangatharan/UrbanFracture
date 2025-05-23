@@ -19,7 +19,7 @@ namespace UrbanFracture.UI.MainMenu
         [SerializeField] private AudioSource hoverSound;
         [SerializeField] private AudioSource clickSound;
 
-        private void Start()
+        protected virtual void InitializeMenu()
         {
             SetupButton(playButton);
             SetupButton(settingsButton);
@@ -27,11 +27,16 @@ namespace UrbanFracture.UI.MainMenu
             SetupButton(creditsButton);
         }
 
+        private void Start()
+        {
+            InitializeMenu();
+        }
+
         /// <summary>
         /// Attaches audio behavior to the specified button.
         /// </summary>
         /// <param name="button">Button to set up.</param>
-        private void SetupButton(Button button)
+        protected void SetupButton(Button button)
         {
             if (button == null) return;
 

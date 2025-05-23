@@ -9,6 +9,13 @@ namespace UrbanFracture.Player.Components
     public class JumpHandler
     {
         private readonly CharacterController controller;
+        private readonly CrouchHandler crouchHandler;
+        public JumpHandler(CharacterController controller, CrouchHandler crouchHandler)
+        {
+            this.controller = controller;
+            this.crouchHandler = crouchHandler;
+        }
+
         private float jumpHeight = 2f;
         private float gravityScale = 3f;
         private int timesJumped = 0;
@@ -38,6 +45,8 @@ namespace UrbanFracture.Player.Components
         /// <param name="verticalVelocity">The player's vertical velocity to modify (passed by reference).</param>
         public void TryJump(ref float verticalVelocity)
         {
+            if (crouchHandler.IsCrouching) { return; }
+
             bool groundedJump = controller.isGrounded && verticalVelocity <= 0f;
             bool doubleJump = canDoubleJump && timesJumped < 2;
             bool singleJump = !canDoubleJump && timesJumped < 1;
