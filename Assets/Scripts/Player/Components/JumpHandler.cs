@@ -10,6 +10,12 @@ namespace UrbanFracture.Player.Components
     {
         private readonly CharacterController controller;
         private readonly CrouchHandler crouchHandler;
+
+        /// <summary>
+        /// The constructor initializes the JumpHandler with a reference to the CharacterController and CrouchHandler.
+        /// </summary>
+        /// <param name="controller"></param>
+        /// <param name="crouchHandler"></param>
         public JumpHandler(CharacterController controller, CrouchHandler crouchHandler)
         {
             this.controller = controller;

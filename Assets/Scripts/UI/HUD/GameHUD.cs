@@ -116,7 +116,10 @@ namespace UrbanFracture.UI.HUD
         /// </summary>
         /// <param name="currentHealth">The player's current health value.</param>
         private void UpdateHealth(float currentHealth) { HealthText.text = $"HP: {Mathf.RoundToInt(currentHealth)}"; }
-
+        
+        /// <summary>
+        /// This will change an image icon on the HUD stating if the player is crouched or not
+        /// </summary>
         private void UpdateStandState()
         {
             if (crouchHandler != null)

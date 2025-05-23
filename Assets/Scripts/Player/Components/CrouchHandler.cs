@@ -3,6 +3,9 @@ using UrbanFracture.UI.HUD;
 
 namespace UrbanFracture.Player.Components
 {
+    /// <summary>
+    /// This class is responsible for allowing the player to crouch in game
+    /// </summary>
     public class CrouchHandler : MonoBehaviour
     {
         [Header("References")]
@@ -37,6 +40,9 @@ namespace UrbanFracture.Player.Components
             targetWeaponPosition = weaponStandingPosition;
         }
 
+        /// <summary>
+        /// This function determines whether or not a player is allowed to crouch and will toggle the crouch state.
+        /// </summary>
         public void ToggleCrouch()
         {
             isCrouching = !isCrouching;
@@ -52,6 +58,9 @@ namespace UrbanFracture.Player.Components
             }
         }
 
+        /// <summary>
+        /// This will update the crouch state of the player in-game smoothly. It will be called every frame. 
+        /// </summary>
         public void Update()
         {
             if (cameraTransform != null)

@@ -2,16 +2,12 @@
 using UnityEngine.UI;
 using UrbanFracture.UI.MainMenu;
 
-namespace UrbanFracture.UI.MainMenu
+public class LevelSelector : BaseMenuController
 {
-    public class LevelSelector : MainMenuController
-    {
-        [SerializeField] private Button FactoryButton;
+    [SerializeField] private Button factoryButton;
 
-        protected override void InitializeMenu()
-        {
-            base.InitializeMenu();
-            SetupButton(FactoryButton);
-        }
+    protected override void InitializeMenu()
+    {
+        SetupButton(factoryButton);
     }
 }
