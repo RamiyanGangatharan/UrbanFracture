@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86b41d42513f7b6428208600b735509e, type: 3}
-  m_Name: Pistol
+  m_Name: AKM
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  weaponIcon: {fileID: 2800000, guid: 58cfca2465ad37e45a724005cd142733, type: 3}
+  weaponName: AKM
+  weaponIcon: {fileID: 2800000, guid: d4e30ae614cf7d8419922a9b75a36526, type: 3}
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64
   range: 100
   fireRate: 4
+  damage: 10
   magazineSize: 10
   reloadTime: 2
-  recoilAmount: 1
-  recoilSpeed: 0
-  maximumRecoil: {x: 1, y: 2}
-  resetRecoilSpeed: 4

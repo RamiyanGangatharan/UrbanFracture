@@ -14,6 +14,22 @@ namespace UrbanFracture.Combat
         public Transform muzzleFlashSpawnPoint;
         public ParticleSystem hitEffectPrefab;
 
+        [Header("Recoil System")]
+        [SerializeField] public Transform weaponTransform;
+        [SerializeField] public Vector3 weaponRecoilKick = new Vector3(0.08f, 0.01f, -0.15f);
+        [SerializeField] public float weaponRecoilReturnSpeed = 14f;
+        [Space]
+        [SerializeField] public float rotationSpeed = 8f;
+        [SerializeField] public float returnSpeed = 20f;
+        [SerializeField] public Vector3 recoilRotation = new Vector3(5.5f, 2.5f, 3f);
+        [SerializeField] public Transform recoilCamera;
+        [Space]
+        [SerializeField] private Vector3 recoilTargetRotation;
+        [SerializeField] private Vector3 recoilCurrentRotation;
+        [SerializeField] private Vector3 weaponRecoilOffset;
+        [SerializeField] private Vector3 weaponCurrentOffset;
+
+
         /// <summary>
         /// Updates the pistol each frame by invoking the base gun update.
         /// </summary>
@@ -21,6 +37,39 @@ namespace UrbanFracture.Combat
         {
             base.Update();
         }
+
+        private void FixedUpdate()
+        {
+            // CAMERA RECOIL
+            recoilTargetRotation = Vector3.Lerp(
+                recoilTargetRotation, Vector3.zero,
+                Time.fixedDeltaTime * returnSpeed
+            );
+
+            recoilCurrentRotation = Vector3.Slerp(
+                recoilCurrentRotation, recoilTargetRotation,
+                Time.fixedDeltaTime * rotationSpeed
+            );
+
+            if (recoilCamera != null)
+            {
+                recoilCamera.localRotation = Quaternion.Euler(recoilCurrentRotation);
+            }
+
+            // WEAPON RECOIL OFFSET
+            weaponRecoilOffset = Vector3.Lerp(
+                weaponRecoilOffset, Vector3.zero,
+                Time.fixedDeltaTime * weaponRecoilReturnSpeed
+            );
+
+            weaponCurrentOffset = Vector3.Slerp(
+                weaponCurrentOffset, weaponRecoilOffset,
+                Time.fixedDeltaTime * weaponRecoilReturnSpeed
+            );
+
+            if (weaponTransform != null) { weaponTransform.localPosition = weaponCurrentOffset; }
+        }
+
 
         /// <summary>
         /// Executes the pistol's shooting behavior:
@@ -43,13 +92,28 @@ namespace UrbanFracture.Combat
                 )
             )
             {
+                recoilTargetRotation += new Vector3(
+                    -recoilRotation.x,
+                    Random.Range(-recoilRotation.y, recoilRotation.y),
+                    Random.Range(-recoilRotation.z, recoilRotation.z)
+                );
+
+                weaponRecoilOffset += new Vector3(
+                    weaponRecoilKick.x,
+                    Random.Range(
+                        -weaponRecoilKick.y, 
+                         weaponRecoilKick.y
+                    ),
+                    weaponRecoilKick.z
+                );
+
                 Debug.Log($"{gunData.WeaponName} hit {hit.collider.name}");
 
                 if (hitEffectPrefab != null)
                 {
                     ParticleSystem hitEffect = Instantiate(
-                        hitEffectPrefab, 
-                        hit.point, 
+                        hitEffectPrefab,
+                        hit.point,
                         Quaternion.LookRotation(hit.normal)
                     );
                     Destroy(hitEffect.gameObject, 2f); // Destroy the hit effect after 2 seconds

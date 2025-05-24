@@ -2538,6 +2538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 384825292}
   - component: {fileID: 384825293}
+  - component: {fileID: 384825294}
   m_Layer: 0
   m_Name: FirstPersonCamera
   m_TagString: Untagged
@@ -2603,6 +2604,21 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &384825294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384825291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37da148a7443da74aa6024b2685cf835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 6
+  returnSpeed: 25
+  recoilAmount: {x: 6, y: 2, z: 6}
 --- !u!1001 &390274297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18503,6 +18519,17 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1289188813}
   muzzleFlashSpawnPoint: {fileID: 1289188811}
   hitEffectPrefab: {fileID: 6605898800699329399}
+  weaponTransform: {fileID: 1998467726}
+  weaponRecoilKick: {x: 12, y: 8, z: -12}
+  weaponRecoilReturnSpeed: 7
+  rotationSpeed: 8
+  returnSpeed: 2
+  recoilRotation: {x: 12, y: 6, z: 12}
+  recoilCamera: {fileID: 384825292}
+  recoilTargetRotation: {x: 0, y: 0, z: 0}
+  recoilCurrentRotation: {x: 0, y: 0, z: 0}
+  weaponRecoilOffset: {x: 0, y: 0, z: 0}
+  weaponCurrentOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1998467728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18524,7 +18551,7 @@ MonoBehaviour:
   reloadSFX: {fileID: 2120214174}
   emptyMagazineSFX: {fileID: 1511861307}
   holsterWeaponSFX: {fileID: 719774810}
-  range: 100
+  range: 250
   impactForce: 50
 --- !u!1001 &2009951617
 PrefabInstance:
