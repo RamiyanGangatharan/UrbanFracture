@@ -47,6 +47,8 @@ namespace UrbanFracture.Combat
             cameraTransform = firstPersonController.firstPersonCamera.transform;
             if (firstPersonController != null) { gameHUD = firstPersonController.GetComponentInChildren<GameHUD>(); }
 
+            LayerMask concreteMask = 1 << 6;  // 6 is the layer index for "Concrete"
+
             HolsterWeapon();
         }
 

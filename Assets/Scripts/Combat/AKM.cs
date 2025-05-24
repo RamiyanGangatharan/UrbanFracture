@@ -3,16 +3,16 @@ using UnityEngine;
 namespace UrbanFracture.Combat
 {
     /// <summary>
-    /// Handles shooting logic specific to a pistol.
+    /// Handles shooting logic specific to an AKM.
     /// Plays muzzle flash and hit effect particles, performs raycast-based hit detection,
     /// and applies damage to objects implementing IDamageable.
     /// </summary>
-    public class Pistol : Gun
+    public class AKM : Gun
     {
         [Header("Effects")]
         public ParticleSystem muzzleFlash;
         public Transform muzzleFlashSpawnPoint;
-        public ParticleSystem hitEffectParticleSystem;
+        public ParticleSystem hitEffectPrefab;
 
         /// <summary>
         /// Updates the pistol each frame by invoking the base gun update.
@@ -45,7 +45,16 @@ namespace UrbanFracture.Combat
             {
                 Debug.Log($"{gunData.WeaponName} hit {hit.collider.name}");
 
-                SpawnHitEffect(hit);
+                if (hitEffectPrefab != null)
+                {
+                    ParticleSystem hitEffect = Instantiate(
+                        hitEffectPrefab, 
+                        hit.point, 
+                        Quaternion.LookRotation(hit.normal)
+                    );
+                    Destroy(hitEffect.gameObject, 2f); // Destroy the hit effect after 2 seconds
+                }
+
                 ApplyDamage(hit);
             }
         }
@@ -63,27 +72,6 @@ namespace UrbanFracture.Combat
                     muzzleFlash.transform.rotation = muzzleFlashSpawnPoint.rotation;
                 }
                 muzzleFlash.Play();
-            }
-        }
-
-        /// <summary>
-        /// Spawns the hit effect particle system at the point of impact.
-        /// </summary>
-        /// <param name="hit">Raycast hit information</param>
-        private void SpawnHitEffect(RaycastHit hit)
-        {
-            if (hitEffectParticleSystem != null)
-            {
-                var hitEffect = Instantiate(
-                    hitEffectParticleSystem,
-                    hit.point,
-                    Quaternion.LookRotation(hit.normal)
-                );
-
-                hitEffect.Play();
-
-                float destroyDelay = hitEffect.main.duration + hitEffect.main.startLifetime.constantMax;
-                Destroy(hitEffect.gameObject, destroyDelay);
             }
         }
 
