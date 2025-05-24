@@ -15,7 +15,8 @@ namespace UrbanFracture.UI.HUD
     public class GameHUD : MonoBehaviour
     {
         [Header("References")]
-        public TextMeshProUGUI AmmoText;
+        public TextMeshProUGUI CurrentAmmoText;
+        public TextMeshProUGUI TotalAmmoText;
         public TextMeshProUGUI HealthText;
         public TextMeshProUGUI WeaponName;
         public RawImage WeaponImage;
@@ -66,7 +67,8 @@ namespace UrbanFracture.UI.HUD
 
                 if (!isHolstered)
                 {
-                    AmmoText.text = $"{currentGun.currentAmmo} / {currentGun.gunData.MagazineSize}";
+                    CurrentAmmoText.text = $"{currentGun.currentAmmo}";
+                    TotalAmmoText.text = $"{currentGun.gunData.MagazineSize}";
                     WeaponName.text = currentGun.gunData.WeaponName;
 
                     if (WeaponImage != null && currentGun.gunData.WeaponIcon != null)
@@ -104,7 +106,8 @@ namespace UrbanFracture.UI.HUD
         /// <param name="alpha"></param>
         private void SetWeaponUIAlpha(float alpha)
         {
-            SetAlpha(AmmoText, alpha);
+            SetAlpha(CurrentAmmoText, alpha);
+            SetAlpha(TotalAmmoText, alpha);
             SetAlpha(WeaponName, alpha);
             SetAlpha(WeaponImage, alpha);
             SetAlpha(WeaponIcon, alpha);
