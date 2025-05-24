@@ -1,4 +1,5 @@
 using UnityEngine;
+using UrbanFracture.Player.Components;
 
 namespace UrbanFracture.Combat
 {
@@ -10,24 +11,27 @@ namespace UrbanFracture.Combat
     public class AKM : Gun
     {
         [Header("Effects")]
-        public ParticleSystem muzzleFlash;
         public Transform muzzleFlashSpawnPoint;
+        public ParticleSystem muzzleFlash;
         public ParticleSystem hitEffectPrefab;
+        public ParticleSystem gunSmoke;
 
         [Header("Recoil System")]
+        [SerializeField] public Transform recoilCamera;
         [SerializeField] public Transform weaponTransform;
-        [SerializeField] public Vector3 weaponRecoilKick = new Vector3(0.08f, 0.01f, -0.15f);
-        [SerializeField] public float weaponRecoilReturnSpeed = 14f;
+        [SerializeField] public Vector3 weaponRecoilKick = new Vector3(0.25f, 0.25f, -0.25f);
+        [SerializeField] public Vector3 recoilRotation = new Vector3(12.0f, 6.0f, 12.0f);
+        [SerializeField] public float weaponRecoilReturnSpeed = 7f;
         [Space]
         [SerializeField] public float rotationSpeed = 8f;
-        [SerializeField] public float returnSpeed = 20f;
-        [SerializeField] public Vector3 recoilRotation = new Vector3(5.5f, 2.5f, 3f);
-        [SerializeField] public Transform recoilCamera;
+        [SerializeField] public float returnSpeed = 2f;
+
         [Space]
         [SerializeField] private Vector3 recoilTargetRotation;
         [SerializeField] private Vector3 recoilCurrentRotation;
         [SerializeField] private Vector3 weaponRecoilOffset;
         [SerializeField] private Vector3 weaponCurrentOffset;
+        [SerializeField] private CameraFOVHandler cameraFOVHandler;
 
 
         /// <summary>
@@ -81,6 +85,7 @@ namespace UrbanFracture.Combat
         public override void Shoot()
         {
             PlayMuzzleFlash();
+            PlayGunSmoke();
 
             if (
                 Physics.Raycast(
@@ -101,7 +106,7 @@ namespace UrbanFracture.Combat
                 weaponRecoilOffset += new Vector3(
                     weaponRecoilKick.x,
                     Random.Range(
-                        -weaponRecoilKick.y, 
+                        -weaponRecoilKick.y,
                          weaponRecoilKick.y
                     ),
                     weaponRecoilKick.z
@@ -112,8 +117,7 @@ namespace UrbanFracture.Combat
                 if (hitEffectPrefab != null)
                 {
                     ParticleSystem hitEffect = Instantiate(
-                        hitEffectPrefab,
-                        hit.point,
+                        hitEffectPrefab, hit.point,
                         Quaternion.LookRotation(hit.normal)
                     );
                     Destroy(hitEffect.gameObject, 2f); // Destroy the hit effect after 2 seconds
@@ -136,6 +140,16 @@ namespace UrbanFracture.Combat
                     muzzleFlash.transform.rotation = muzzleFlashSpawnPoint.rotation;
                 }
                 muzzleFlash.Play();
+            }
+        }
+
+        private void PlayGunSmoke()
+        {
+            if (gunSmoke != null)
+            {
+                gunSmoke.transform.position = muzzleFlashSpawnPoint.position;
+                gunSmoke.transform.rotation = muzzleFlashSpawnPoint.rotation;
+                gunSmoke.Play();
             }
         }
 
