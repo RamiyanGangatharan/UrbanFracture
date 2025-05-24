@@ -47,6 +47,8 @@ namespace UrbanFracture.Combat
             cameraTransform = firstPersonController.firstPersonCamera.transform;
             if (firstPersonController != null) { gameHUD = firstPersonController.GetComponentInChildren<GameHUD>(); }
 
+            LayerMask concreteMask = 1 << 6;  // 6 is the layer index for "Concrete"
+
             HolsterWeapon();
         }
 
@@ -72,6 +74,18 @@ namespace UrbanFracture.Combat
             if (Time.time >= nextTimeToFire) { nextTimeToFire = Time.time + (1 / gunData.FireRate); HandleShoot(); }
         }
 
+        private void PlayGunshot()
+        {
+            if (shootSFX != null && shootSFX.clip != null)
+            {
+                shootSFX.PlayOneShot(shootSFX.clip);
+            }
+            else
+            {
+                Debug.LogWarning("Shoot SFX not assigned or missing clip.");
+            }
+        }
+
         /// <summary>
         /// Handles the internal shooting logic by decrementing the ammo count, 
         /// playing the shooting sound effect, triggering the abstract Shoot() method 
@@ -84,7 +98,7 @@ namespace UrbanFracture.Combat
             {
                 currentAmmo--;
                 Debug.Log($"{gunData.WeaponName} shot! Bullets left: {currentAmmo}");
-                shootSFX?.Play();
+                PlayGunshot();
                 Shoot();
             }
             else

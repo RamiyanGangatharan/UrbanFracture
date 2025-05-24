@@ -28,28 +28,21 @@
   <Class Name="UrbanFracture.Combat.Gun">
     <Position X="8.25" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>GAQMAAEABDACBAAQAIgAAgAQAAIAAAAACAIgAAAQAAA=</HashCode>
+      <HashCode>GAQMAAEABDACBAAQAIgAAkAQAAIAAAAACAIgAAAQAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\Gun.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Combat.GunData">
-    <Position X="13.5" Y="3.5" Width="1.5" />
+    <Position X="13.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAACIAAIKiAICAgAAAAAAAAAIAAoAAAAIAACAAAA=</HashCode>
+      <HashCode>AIAAAACIAAIKiAICCgAAAAgAAAAIAAoAAAAIAACAAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\GunData.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="UrbanFracture.Combat.Pistol">
-    <Position X="10.5" Y="8.25" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAABACIAAAIAAAAgEAAAAAAAAAAAAAAAEA=</HashCode>
-      <FileName>Assets\Scripts\Combat\Pistol.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="UrbanFracture.Combat.RaycastGun">
-    <Position X="8.25" Y="8.25" Width="1.5" />
+    <Position X="7.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAIACAABAAAAAAAAAAACAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIAAAABAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\RaycastGun.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -171,7 +164,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AIQACAEBACAIAAIAAgBAAAAHAAAAEAIBAAAAACAgAAA=</HashCode>
+      <HashCode>AIQACAEBACAIAIIAAgBAAAAHAAAAEAIBCAAAAAAgAAA=</HashCode>
       <FileName>Assets\Scripts\UI\HUD\GameHUD.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -245,6 +238,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAAAQAAACIAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\MainMenu\MainMenuController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Combat.AKM">
+    <Position X="9.25" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiAABAKQAIAMAIgAhEABAAAgAEJAAAIAAQg=</HashCode>
+      <FileName>Assets\Scripts\Combat\AKM.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="IDamageable">

@@ -94,7 +94,9 @@ This project was built using a combination of custom systems and learning resour
 - Created a level select menu
 - Created crouching mechanics for my character
 - Implemented new sound effects for the menu's
+- Implemented automatic weapon fire modes
 
+Issue: the weapon is louder than intended.
 ---
 
 ### Thursday, May 22nd, 2025
