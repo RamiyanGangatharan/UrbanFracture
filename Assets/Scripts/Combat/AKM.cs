@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UrbanFracture.Player.Components;
 
 namespace UrbanFracture.Combat
@@ -33,6 +34,9 @@ namespace UrbanFracture.Combat
         [SerializeField] private Vector3 weaponCurrentOffset;
         [SerializeField] private CameraFOVHandler cameraFOVHandler;
 
+        [Header("Fire Mode Configuration")]
+        [SerializeField] private float nextTimeToFire = 0f;
+
 
         /// <summary>
         /// Updates the pistol each frame by invoking the base gun update.
@@ -40,6 +44,23 @@ namespace UrbanFracture.Combat
         public override void Update()
         {
             base.Update();
+
+            if (gunData == null) return;
+
+            if (gunData.IsAutomatic)
+            {
+                if (Mouse.current.leftButton.isPressed)
+                {
+                    TryShoot();
+                }
+            }
+            else
+            {
+                if (Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    TryShoot();
+                }
+            }
         }
 
         private void FixedUpdate()

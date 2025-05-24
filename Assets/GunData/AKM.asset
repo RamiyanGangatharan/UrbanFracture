@@ -17,8 +17,9 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  range: 100
-  fireRate: 4
-  damage: 10
+  range: 300
+  fireRate: 10
+  isAutomatic: 1
+  damage: 34
   magazineSize: 30
   reloadTime: 2

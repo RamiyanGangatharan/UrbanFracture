@@ -24,6 +24,8 @@ namespace UrbanFracture.Combat
         [Tooltip("Rate of fire in shots per second.")]
         [SerializeField] private float fireRate = 5f;
 
+        [SerializeField] private bool isAutomatic = false;
+
         [Tooltip("How much damage the weapon deals per shot.")]
         [SerializeField] private float damage = 10f;
 
@@ -40,6 +42,7 @@ namespace UrbanFracture.Combat
         public LayerMask TargetLayerMask => targetLayerMask;
         public float Range => range;
         public float FireRate => fireRate;
+        public bool IsAutomatic => isAutomatic;
         public float Damage => damage; 
         public float MagazineSize => magazineSize;
         public float ReloadTime => reloadTime;

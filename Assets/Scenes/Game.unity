@@ -15196,7 +15196,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 6d85a2c52311b2a45b2cfec41a84b1b7, type: 3}
   m_Resource: {fileID: 8300000, guid: 6d85a2c52311b2a45b2cfec41a84b1b7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -18787,8 +18787,8 @@ MonoBehaviour:
   gunSmoke: {fileID: 1524607128}
   recoilCamera: {fileID: 384825292}
   weaponTransform: {fileID: 1998467726}
-  weaponRecoilKick: {x: 0.25, y: 0.25, z: 0.25}
-  recoilRotation: {x: 12, y: 6, z: 12}
+  weaponRecoilKick: {x: 0, y: 0.25, z: 0}
+  recoilRotation: {x: 2, y: 2, z: 2}
   weaponRecoilReturnSpeed: 7
   rotationSpeed: 8
   returnSpeed: 2
@@ -18796,6 +18796,7 @@ MonoBehaviour:
   recoilCurrentRotation: {x: 0, y: 0, z: 0}
   weaponRecoilOffset: {x: 0, y: 0, z: 0}
   weaponCurrentOffset: {x: 0, y: 0, z: 0}
+  nextTimeToFire: 5
 --- !u!114 &1998467728
 MonoBehaviour:
   m_ObjectHideFlags: 0
