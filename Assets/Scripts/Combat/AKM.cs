@@ -20,11 +20,11 @@ namespace UrbanFracture.Combat
         [Header("Recoil System")]
         [SerializeField] public Transform recoilCamera;
         [SerializeField] public Transform weaponTransform;
-        [SerializeField] public Vector3 weaponRecoilKick = new Vector3(0.25f, 0.25f, -0.25f);
-        [SerializeField] public Vector3 recoilRotation = new Vector3(12.0f, 6.0f, 12.0f);
+        [SerializeField] public Vector3 weaponRecoilKick = new Vector3(0.10f, 0.10f, -0.10f);
+        [SerializeField] public Vector3 recoilRotation = new Vector3(2.0f, 1.0f, 4.0f);
         [SerializeField] public float weaponRecoilReturnSpeed = 7f;
         [Space]
-        [SerializeField] public float rotationSpeed = 8f;
+        [SerializeField] public float rotationSpeed = 7f;
         [SerializeField] public float returnSpeed = 2f;
 
         [Space]

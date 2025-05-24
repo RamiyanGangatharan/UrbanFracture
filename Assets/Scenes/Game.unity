@@ -722,7 +722,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1035045263}
   - {fileID: 1916376701}
   - {fileID: 2029137551}
   - {fileID: 2116328608}
@@ -6593,78 +6592,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4480898967109445159, guid: e302621f2616c4042b0c4be3f63ea422, type: 3}
   m_PrefabInstance: {fileID: 1018716475}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1035045262
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1035045263}
-  - component: {fileID: 1035045265}
-  - component: {fileID: 1035045264}
-  m_Layer: 5
-  m_Name: RawImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1035045263
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035045262}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 88213172}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 353.80002, y: -157.19994}
-  m_SizeDelta: {x: 75, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1035045264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035045262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 58cfca2465ad37e45a724005cd142733, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &1035045265
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035045262}
-  m_CullTransparentMesh: 1
 --- !u!4 &1041552550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 466108, guid: 8b4c3f5393e8fc14cbcb6b7d7030dcfc, type: 3}
@@ -8067,7 +7994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 353.9, y: -124.5}
+  m_AnchoredPosition: {x: 353.9, y: -179.97}
   m_SizeDelta: {x: 71.2216, y: 10.3033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1245406901
@@ -8517,7 +8444,7 @@ MonoBehaviour:
   TotalAmmoText: {fileID: 1914990823}
   HealthText: {fileID: 837945870}
   WeaponName: {fileID: 2029137552}
-  WeaponImage: {fileID: 1035045264}
+  WeaponImage: {fileID: 0}
   WeaponIcon: {fileID: 2116328609}
   AmmoIcon: {fileID: 1056656423}
   CrouchImage: {fileID: 524380024}
@@ -18773,10 +18700,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: 41aeeac798cf61e4fa366e95aa9a8dab, type: 2}
-  firstPersonController: {fileID: 0}
-  cameraTransform: {fileID: 0}
+  firstPersonController: {fileID: 1281205258}
+  cameraTransform: {fileID: 384825292}
   gameHUD: {fileID: 1281205262}
-  currentAmmo: 0
+  currentAmmo: 30
   shootSFX: {fileID: 220171126}
   reloadSFX: {fileID: 2120214174}
   emptyMagazineSFX: {fileID: 1511861307}
@@ -18787,15 +18714,15 @@ MonoBehaviour:
   gunSmoke: {fileID: 1524607128}
   recoilCamera: {fileID: 384825292}
   weaponTransform: {fileID: 1998467726}
-  weaponRecoilKick: {x: 0, y: 0.25, z: 0}
-  recoilRotation: {x: 2, y: 2, z: 2}
+  weaponRecoilKick: {x: 0.1, y: 0.1, z: -0.1}
+  recoilRotation: {x: 2, y: 1, z: 4}
   weaponRecoilReturnSpeed: 7
-  rotationSpeed: 8
+  rotationSpeed: 7
   returnSpeed: 2
-  recoilTargetRotation: {x: 0, y: 0, z: 0}
-  recoilCurrentRotation: {x: 0, y: 0, z: 0}
-  weaponRecoilOffset: {x: 0, y: 0, z: 0}
-  weaponCurrentOffset: {x: 0, y: 0, z: 0}
+  recoilTargetRotation: {x: -0.0012663429, y: -0.0002719582, z: -0.0007507674}
+  recoilCurrentRotation: {x: -0.0017019655, y: -0.00036551186, z: -0.0010090315}
+  weaponRecoilOffset: {x: 7.0126403e-16, y: 2.4145204e-16, z: -7.0126403e-16}
+  weaponCurrentOffset: {x: 2.2008503e-14, y: 7.557367e-15, z: -2.2008503e-14}
   nextTimeToFire: 5
 --- !u!114 &1998467728
 MonoBehaviour:
