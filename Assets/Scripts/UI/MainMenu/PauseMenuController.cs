@@ -38,6 +38,8 @@ namespace UrbanFracture.UI.MainMenu
         {
             base.Start();
             pauseMenuUI.SetActive(false);
+            isPaused = false;
+            Time.timeScale = 1f;
         }
 
         private void OnEnable()

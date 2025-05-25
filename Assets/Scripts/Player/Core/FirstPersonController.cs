@@ -92,6 +92,7 @@ namespace UrbanFracture.Core.Player
 
                 if (Keyboard.current.hKey.wasPressedThisFrame) { ToggleHolsterWeapon(); }
             }
+            
         }
 
         public void TryJump() => jumpHandler.TryJump(ref movementHandler.verticalVelocity);
