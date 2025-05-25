@@ -96,7 +96,15 @@ This project was built using a combination of custom systems and learning resour
 - Implemented new sound effects for the menu's
 - Implemented automatic weapon fire modes
 
-Issue: the weapon is louder than intended.
+Issues: 
+- The weapon is louder than intended.
+- Sprinting is not allowed anymore, I have broke it after configuring crouching 
+- Holstering doesn't work properly: need to unholster and reholster twice to see weapon at the start of the game
+- No back button on level select screen
+- Game is sometimes paused at the start with no pause menu displayed
+    - Make game not pause at start
+- In addition to the issues above, I need to configure a proper settings menu
+
 ---
 
 ### Thursday, May 22nd, 2025

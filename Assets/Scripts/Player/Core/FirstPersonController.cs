@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UrbanFracture.Combat;
 using UrbanFracture.Player.Components;
 using UrbanFracture.UI.HUD;
+using UrbanFracture.UI.MainMenu;
 
 namespace UrbanFracture.Core.Player
 {
@@ -77,17 +78,20 @@ namespace UrbanFracture.Core.Player
         /// </summary>
         private void Update()
         {
-            movementHandler.Update(moveInput, sprintInput);
-            lookHandler.Update(lookInput);
-            FOVHandler.Update(movementHandler.CurrentSpeed, sprintInput);
-            jumpHandler.Update(ref movementHandler.verticalVelocity);
-            crouchHandler.Update();
-            if (jumpHandler.CheckLanding()) { Landed?.Invoke(); }
-            movementHandler.ApplyMovement(movementHandler.verticalVelocity);
+            if (!PauseMenuController.isPaused)
+            {
+                movementHandler.Update(moveInput, sprintInput);
+                lookHandler.Update(lookInput);
+                FOVHandler.Update(movementHandler.CurrentSpeed, sprintInput);
+                jumpHandler.Update(ref movementHandler.verticalVelocity);
+                crouchHandler.Update();
+                if (jumpHandler.CheckLanding()) { Landed?.Invoke(); }
+                movementHandler.ApplyMovement(movementHandler.verticalVelocity);
 
-            footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
+                footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
 
-            if (Keyboard.current.hKey.wasPressedThisFrame) { ToggleHolsterWeapon(); }
+                if (Keyboard.current.hKey.wasPressedThisFrame) { ToggleHolsterWeapon(); }
+            }
         }
 
         public void TryJump() => jumpHandler.TryJump(ref movementHandler.verticalVelocity);

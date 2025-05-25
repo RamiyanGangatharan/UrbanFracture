@@ -1,20 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UrbanFracture.UI.MainMenu;
 
-public class MainMenuController : BaseMenuController
+namespace UrbanFracture.UI.MainMenu
 {
-    [Header("Main Menu Buttons")]
-    [SerializeField] private Button playButton;
-    [SerializeField] private Button settingsButton;
-    [SerializeField] private Button quitButton;
-    [SerializeField] private Button creditsButton;
-
-    protected override void InitializeMenu()
+    public class MainMenuController : BaseMenuController
     {
-        SetupButton(playButton);
-        SetupButton(settingsButton);
-        SetupButton(quitButton);
-        SetupButton(creditsButton);
+        [Header("Main Menu Buttons")]
+        [SerializeField] private Button playButton;
+        [SerializeField] private Button settingsButton;
+        [SerializeField] private Button quitButton;
+        [SerializeField] private Button creditsButton;
+
+        protected override void InitializeMenu()
+        {
+            SetupButton(playButton);
+            SetupButton(settingsButton);
+            SetupButton(quitButton);
+            SetupButton(creditsButton);
+        }
     }
+
 }

@@ -226,15 +226,15 @@
       <FileName>Assets\Scripts\UI\MainMenu\BaseMenuController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LevelSelector">
-    <Position X="26" Y="5.75" Width="1.5" />
+  <Class Name="UrbanFracture.UI.MainMenu.LevelSelector">
+    <Position X="25.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\MainMenu\LevelSelector.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainMenuController">
-    <Position X="28" Y="5.75" Width="1.5" />
+  <Class Name="UrbanFracture.UI.MainMenu.MainMenuController">
+    <Position X="27.5" Y="5.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAAAQAAACIAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\UI\MainMenu\MainMenuController.cs</FileName>
@@ -245,6 +245,13 @@
     <TypeIdentifier>
       <HashCode>AAQAAAAAAiAABAKQAIAMAIgAhEABAAAgAEJAAAIAAQg=</HashCode>
       <FileName>Assets\Scripts\Combat\AKM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.UI.MainMenu.PauseMenuController">
+    <Position X="29.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAQgAACAAAAAAEAAAUIAAAAACAAEIAABAAAAAKgA=</HashCode>
+      <FileName>Assets\Scripts\UI\MainMenu\PauseMenuController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="IDamageable">
