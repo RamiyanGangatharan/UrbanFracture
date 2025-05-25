@@ -9,9 +9,9 @@
 - Field of View (FOV) Slider
 
 ### AUDIO
-- Master Volume
-- Music Volume
-- SFX Volume (Guns, Footsteps, UI)
+- [DONE] Master Volume 
+- [DONE] Music Volume
+- [DONE] SFX Volume (Guns, Footsteps, UI)
 
 ### GRAPHICS
 - Screen Mode (Fullscreen / Borderless / Windowed)

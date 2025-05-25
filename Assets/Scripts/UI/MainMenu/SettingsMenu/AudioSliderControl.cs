@@ -4,8 +4,15 @@ using UnityEngine.UI;
 
 namespace UrbanFracture.UI.MainMenu
 {
+    /// <summary>
+    /// Controls a UI slider that adjusts a specific type of audio volume
+    /// (Master, Music, or SFX) via the <see cref="AudioManager"/>.
+    /// </summary>
     public class AudioSliderControl : MonoBehaviour
     {
+        /// <summary>
+        /// Enum representing the type of volume this slider controls.
+        /// </summary>
         public enum VolumeType { Master, Music, SFX }
 
         [Header("UI")]
@@ -24,6 +31,10 @@ namespace UrbanFracture.UI.MainMenu
             }
         }
 
+        /// <summary>
+        /// Loads the initial volume value from <see cref="AudioManager"/>
+        /// and sets it on the slider without triggering the value change event.
+        /// </summary>
         private void LoadInitialValue()
         {
             float volume = volumeType switch
@@ -38,30 +49,23 @@ namespace UrbanFracture.UI.MainMenu
             UpdateValueText(volume);
         }
 
+        /// <summary>
+        /// Called when the slider value is changed.
+        /// Updates the corresponding volume in <see cref="AudioManager"/> and updates the UI text.
+        /// </summary>
+        /// <param name="value">New slider value between 0 and 1.</param>
         private void OnSliderValueChanged(float value)
         {
             switch (volumeType)
             {
-                case VolumeType.Master:
-                    AudioManager.Instance.SetMasterVolume(value);
-                    break;
-                case VolumeType.Music:
-                    AudioManager.Instance.SetMusicVolume(value);
-                    break;
-                case VolumeType.SFX:
-                    AudioManager.Instance.SetSFXVolume(value);
-                    break;
+                case VolumeType.Master: AudioManager.Instance.SetMasterVolume(value); break;
+                case VolumeType.Music: AudioManager.Instance.SetMusicVolume(value); break;
+                case VolumeType.SFX: AudioManager.Instance.SetSFXVolume(value); break;
             }
 
             UpdateValueText(value);
         }
 
-        private void UpdateValueText(float value)
-        {
-            if (valueText != null)
-            {
-                valueText.text = $"{(value * 100f):F0}%";
-            }
-        }
+        private void UpdateValueText(float value) { if (valueText != null) { valueText.text = $"{(value * 100f):F0}%"; } }
     }
 }
