@@ -216,9 +216,8 @@ namespace UrbanFracture.UI.MainMenu
             textureDropdown.RefreshShownValue();
             antiAliasingDropdown.RefreshShownValue();
 
-            ApplyAllSettings();
-
             suppressCallbacks = false;
+            ApplyAllSettings();
         }
 
         /// <summary>

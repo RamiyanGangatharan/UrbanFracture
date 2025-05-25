@@ -14,19 +14,18 @@
 - [DONE] SFX Volume (Guns, Footsteps, UI)
 
 ### GRAPHICS
-- Screen Mode (Fullscreen / Borderless / Windowed)
 - Brightness / Gamma
 - VSync (Toggle)
 - Framerate Cap (30 / 60 / 120 / Unlimited)
 
 - [URP-specific options]
-  - Texture Quality (Low / Medium / High)
+  - [DONE] Texture Quality (Low / Medium / High)
   - Shadow Quality (Low / Medium / High)
-  - Anti-Aliasing (None / FXAA / TAA / MSAA)
-  - Post-Processing (Toggle)
+  - [DONE] Anti-Aliasing (None / FXAA / TAA / MSAA)
+  - [DONE] Post-Processing (Toggle)
   - Ambient Occlusion (Toggle)
   - Motion Blur (Toggle)
-  - Anisotropic Filtering (Off / 2x / 4x / 8x)
+  - [DONE] Anisotropic Filtering (Off / 2x / 4x / 8x)
 
 ### SYSTEM
 - Apply Settings
