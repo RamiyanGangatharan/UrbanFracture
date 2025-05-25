@@ -105,6 +105,11 @@ Issues:
     - Make game not pause at start
 - In addition to the issues above, I need to configure a proper settings menu
 
+Fixed:
+- Weapon Sound adjusted
+- Pause on start fixed
+- Added a back button to level select
+
 ---
 
 ### Thursday, May 22nd, 2025
