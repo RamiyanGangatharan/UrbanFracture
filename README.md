@@ -12,9 +12,7 @@ while recreating the tone and atmosphere of iconic shooters from the era.
 > [!WARNING]
 > **Before cloning this project, install Git LFS (Large File Storage)** to ensure all assets are properly downloaded.
 
-![alt text](/CombatUML.png)
-![alt text](/PlayerUML.png)
-![alt text](/UserInterfaceUML.png)
+For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 
 # Getting Started
 
