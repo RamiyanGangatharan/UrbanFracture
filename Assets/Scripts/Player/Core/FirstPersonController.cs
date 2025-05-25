@@ -101,8 +101,7 @@ namespace UrbanFracture.Core.Player
         {
             if (currentGun != null)
             {
-                if (currentGun.IsHolstered()) { currentGun.UnholsterWeapon(); }
-                else { currentGun.HolsterWeapon(); }
+                currentGun.SetHolstered(!currentGun.IsHolstered());
                 gameHUD?.UpdateHUD();
             }
         }
@@ -131,10 +130,10 @@ namespace UrbanFracture.Core.Player
 
         public void EquipGun(Gun gun)
         {
-            if (currentGun != null) { currentGun.HolsterWeapon(); }
+            if (currentGun != null) { currentGun.SetHolstered(true); }
             currentGun = gun;
 
-            if (currentGun != null) { currentGun.UnholsterWeapon(); }
+            if (currentGun != null) { currentGun.SetHolstered(false); }
             gameHUD?.UpdateHUD();
         }
 

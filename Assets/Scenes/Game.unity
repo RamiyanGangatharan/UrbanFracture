@@ -20147,6 +20147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1998467726}
   - component: {fileID: 1998467727}
+  - component: {fileID: 1998467729}
   - component: {fileID: 1998467728}
   m_Layer: 0
   m_Name: AKM
@@ -20197,17 +20198,7 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1289188813}
   hitEffectPrefab: {fileID: 6605898800699329399}
   gunSmoke: {fileID: 1524607128}
-  recoilCamera: {fileID: 384825292}
-  weaponTransform: {fileID: 1998467726}
-  weaponRecoilKick: {x: 0.1, y: 0.1, z: -0.1}
-  recoilRotation: {x: 2, y: 1, z: 4}
-  weaponRecoilReturnSpeed: 7
-  rotationSpeed: 7
-  returnSpeed: 2
-  recoilTargetRotation: {x: -0.0012663429, y: -0.0002719582, z: -0.0007507674}
-  recoilCurrentRotation: {x: -0.0017019655, y: -0.00036551186, z: -0.0010090315}
-  weaponRecoilOffset: {x: 7.0126403e-16, y: 2.4145204e-16, z: -7.0126403e-16}
-  weaponCurrentOffset: {x: 2.2008503e-14, y: 7.557367e-15, z: -2.2008503e-14}
+  recoilHandler: {fileID: 1998467729}
   nextTimeToFire: 5
 --- !u!114 &1998467728
 MonoBehaviour:
@@ -20232,6 +20223,29 @@ MonoBehaviour:
   holsterWeaponSFX: {fileID: 719774810}
   range: 250
   impactForce: 50
+--- !u!114 &1998467729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998467725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82401744fea08b945a4b328ca6bfcc97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilCamera: {fileID: 384825292}
+  weaponTransform: {fileID: 1998467726}
+  weaponRecoilKick: {x: 0.1, y: 0.1, z: -0.1}
+  recoilRotation: {x: 4, y: 1, z: 4}
+  weaponRecoilReturnSpeed: 7
+  rotationSpeed: 7
+  returnSpeed: 2
+  recoilTargetRotation: {x: 0, y: 0, z: 0}
+  recoilCurrentRotation: {x: 0, y: 0, z: 0}
+  weaponRecoilOffset: {x: 0, y: 0, z: 0}
+  weaponCurrentOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &2009951617
 PrefabInstance:
   m_ObjectHideFlags: 0
