@@ -12,7 +12,7 @@ while recreating the tone and atmosphere of iconic shooters from the era.
 > [!WARNING]
 > **Before cloning this project, install Git LFS (Large File Storage)** to ensure all assets are properly downloaded.
 
-![alt text](/ClassDiagram1.jpg)
+![alt text](/ClassDiagram1.png)
 
 # Getting Started
 
@@ -109,6 +109,10 @@ Fixed:
 - Weapon Sound adjusted
 - Pause on start fixed
 - Added a back button to level select
+- Fixed sprinting mechanics
+- Tweaked recoil mechanics and put into a seperate file
+- The boolean for the holstering mechanic has been fixed as it was faulty
+- WIP settings menu prototype is coming
 
 ---
 
