@@ -9,7 +9,7 @@ namespace UrbanFracture.Player.Components
     public class MovementHandler
     {
         private readonly CharacterController controller;
-        private readonly CrouchHandler crouchHandler;
+        private readonly CrouchHandler crouch;
 
         /// <summary>
         /// The constructor initializes the MovementHandler with a reference to the CharacterController and CrouchHandler.
@@ -19,7 +19,7 @@ namespace UrbanFracture.Player.Components
         public MovementHandler(CharacterController controller, CrouchHandler crouchHandler)
         {
             this.controller = controller;
-            this.crouchHandler = crouchHandler;
+            this.crouch = crouchHandler;
         }
 
         private float walkSpeed = 3f;
@@ -46,13 +46,23 @@ namespace UrbanFracture.Player.Components
         /// <param name="isSprinting">Whether the player is sprinting.</param>
         public void Update(Vector2 moveInput, bool isSprinting)
         {
-            Vector3 direction = controller.transform.forward * moveInput.y + controller.transform.right * moveInput.x;
+            Vector3 direction = controller.transform.forward * moveInput.y + 
+                                controller.transform.right * moveInput.x;
+
             direction.Normalize();
 
-            float targetSpeed = (isSprinting && !crouchHandler.IsCrouching) ? sprintSpeed : walkSpeed;
+            float targetSpeed;
+
+            if (isSprinting && (crouch == null || !crouch.IsCrouching)) { targetSpeed = sprintSpeed; }
+            else { targetSpeed = walkSpeed; }
+
             Vector3 targetVelocity = direction * targetSpeed;
 
-            CurrentVelocity = Vector3.MoveTowards(CurrentVelocity, targetVelocity, acceleration * Time.deltaTime);
+            CurrentVelocity = Vector3.MoveTowards(
+                CurrentVelocity, 
+                targetVelocity, 
+                acceleration * Time.deltaTime
+            );
 
             if (controller.isGrounded && verticalVelocity < 0f) { verticalVelocity = -3f; }
             else { verticalVelocity += Physics.gravity.y * gravityScale * Time.deltaTime; }
@@ -66,7 +76,12 @@ namespace UrbanFracture.Player.Components
         /// <param name="vertical">The vertical component of the velocity (e.g., from jumping or gravity).</param>
         public void ApplyMovement(float vertical)
         {
-            Vector3 fullVelocity = new Vector3(CurrentVelocity.x, vertical, CurrentVelocity.z);
+            Vector3 fullVelocity = new Vector3(
+                CurrentVelocity.x, 
+                vertical, 
+                CurrentVelocity.z
+            );
+
             controller.Move(fullVelocity * Time.deltaTime);
         }
     }

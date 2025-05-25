@@ -18,21 +18,7 @@ namespace UrbanFracture.Combat
         public ParticleSystem gunSmoke;
 
         [Header("Recoil System")]
-        [SerializeField] public Transform recoilCamera;
-        [SerializeField] public Transform weaponTransform;
-        [SerializeField] public Vector3 weaponRecoilKick = new Vector3(0.10f, 0.10f, -0.10f);
-        [SerializeField] public Vector3 recoilRotation = new Vector3(2.0f, 1.0f, 4.0f);
-        [SerializeField] public float weaponRecoilReturnSpeed = 7f;
-        [Space]
-        [SerializeField] public float rotationSpeed = 7f;
-        [SerializeField] public float returnSpeed = 2f;
-
-        [Space]
-        [SerializeField] private Vector3 recoilTargetRotation;
-        [SerializeField] private Vector3 recoilCurrentRotation;
-        [SerializeField] private Vector3 weaponRecoilOffset;
-        [SerializeField] private Vector3 weaponCurrentOffset;
-        [SerializeField] private CameraFOVHandler cameraFOVHandler;
+        [SerializeField] private RecoilHandler recoilHandler;
 
         [Header("Fire Mode Configuration")]
         [SerializeField] private float nextTimeToFire = 0f;
@@ -63,37 +49,7 @@ namespace UrbanFracture.Combat
             }
         }
 
-        private void FixedUpdate()
-        {
-            // CAMERA RECOIL
-            recoilTargetRotation = Vector3.Lerp(
-                recoilTargetRotation, Vector3.zero,
-                Time.fixedDeltaTime * returnSpeed
-            );
-
-            recoilCurrentRotation = Vector3.Slerp(
-                recoilCurrentRotation, recoilTargetRotation,
-                Time.fixedDeltaTime * rotationSpeed
-            );
-
-            if (recoilCamera != null)
-            {
-                recoilCamera.localRotation = Quaternion.Euler(recoilCurrentRotation);
-            }
-
-            // WEAPON RECOIL OFFSET
-            weaponRecoilOffset = Vector3.Lerp(
-                weaponRecoilOffset, Vector3.zero,
-                Time.fixedDeltaTime * weaponRecoilReturnSpeed
-            );
-
-            weaponCurrentOffset = Vector3.Slerp(
-                weaponCurrentOffset, weaponRecoilOffset,
-                Time.fixedDeltaTime * weaponRecoilReturnSpeed
-            );
-
-            if (weaponTransform != null) { weaponTransform.localPosition = weaponCurrentOffset; }
-        }
+        private void FixedUpdate() { recoilHandler?.Tick(Time.fixedDeltaTime); }
 
 
         /// <summary>
@@ -118,20 +74,7 @@ namespace UrbanFracture.Combat
                 )
             )
             {
-                recoilTargetRotation += new Vector3(
-                    -recoilRotation.x,
-                    Random.Range(-recoilRotation.y, recoilRotation.y),
-                    Random.Range(-recoilRotation.z, recoilRotation.z)
-                );
-
-                weaponRecoilOffset += new Vector3(
-                    weaponRecoilKick.x,
-                    Random.Range(
-                        -weaponRecoilKick.y,
-                         weaponRecoilKick.y
-                    ),
-                    weaponRecoilKick.z
-                );
+                recoilHandler?.ApplyRecoil();
 
                 Debug.Log($"{gunData.WeaponName} hit {hit.collider.name}");
 

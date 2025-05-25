@@ -2,12 +2,13 @@
 using UnityEngine;
 using UrbanFracture.Core.Player;
 using UrbanFracture.UI.HUD;
+using UrbanFracture.UI.MainMenu;
 
 namespace UrbanFracture.Combat
 {
     /// <summary>
     /// Abstract base class for all guns in the game. 
-    /// Handles common weapon logic such as shooting, reloading, recoil, and HUD updates.
+    /// Handles common weapon logic.
     /// </summary>
     public abstract class Gun : MonoBehaviour
     {
@@ -20,41 +21,28 @@ namespace UrbanFracture.Combat
         public float currentAmmo = 0f;
         private float nextTimeToFire = 0f;
         private bool isReloading = false;
-        private bool isHolstered = true;
+        private bool isHolstered = false;
 
-        public bool IsHolstered() { return isHolstered; }
+        public bool IsHolstered() => isHolstered;
 
         [Header("Audio Sources")]
-        [Tooltip("AudioSource component that plays shooting sound.")]
         public AudioSource shootSFX;
-
-        [Tooltip("AudioSource component that plays reloading sound.")]
         public AudioSource reloadSFX;
-
-        [Tooltip("AudioSource component that plays empty magazine sound.")]
         public AudioSource emptyMagazineSFX;
-
         public AudioSource holsterWeaponSFX;
 
-        /// <summary>
-        /// Initializes references to player controller, camera, recoil handler, and HUD. 
-        /// Sets the current ammo to the magazine size.
-        /// </summary>
         private void Start()
         {
             currentAmmo = gunData.MagazineSize;
             firstPersonController = transform.root.GetComponent<FirstPersonController>();
             cameraTransform = firstPersonController.firstPersonCamera.transform;
-            if (firstPersonController != null) { gameHUD = firstPersonController.GetComponentInChildren<GameHUD>(); }
 
-            LayerMask concreteMask = 1 << 6;  // 6 is the layer index for "Concrete"
-
-            HolsterWeapon();
+            if (firstPersonController != null)
+            {
+                gameHUD = firstPersonController.GetComponentInChildren<GameHUD>();
+            }
         }
 
-        /// <summary>
-        /// Updates gun state each frame.
-        /// </summary>
         public virtual void Update() { }
 
         /// <summary>
@@ -63,27 +51,28 @@ namespace UrbanFracture.Combat
         /// </summary>
         public void TryShoot()
         {
-            if (isHolstered) return;
-            if (isReloading) { Debug.Log($"{gunData.WeaponName} is reloading..."); return; }
-            if (currentAmmo <= 0f)
+            if (!PauseMenuController.isPaused)
             {
-                Debug.Log($"{gunData.WeaponName} has run out of ammo, please reload...");
-                emptyMagazineSFX?.PlayOneShot(emptyMagazineSFX.clip);
-                return;
+                if (isHolstered) return;
+                if (isReloading) { Debug.Log($"{gunData.WeaponName} is reloading..."); return; }
+                if (currentAmmo <= 0f)
+                {
+                    Debug.Log($"{gunData.WeaponName} is out of ammo...");
+                    emptyMagazineSFX?.PlayOneShot(emptyMagazineSFX.clip);
+                    return;
+                }
+                if (Time.time >= nextTimeToFire)
+                {
+                    nextTimeToFire = Time.time + (1 / gunData.FireRate);
+                    HandleShoot();
+                }
             }
-            if (Time.time >= nextTimeToFire) { nextTimeToFire = Time.time + (1 / gunData.FireRate); HandleShoot(); }
         }
 
         private void PlayGunshot()
         {
-            if (shootSFX != null && shootSFX.clip != null)
-            {
-                shootSFX.PlayOneShot(shootSFX.clip);
-            }
-            else
-            {
-                Debug.LogWarning("Shoot SFX not assigned or missing clip.");
-            }
+            if (shootSFX != null && shootSFX.clip != null) { shootSFX.PlayOneShot(shootSFX.clip); }
+            else { Debug.LogWarning("Shoot SFX not assigned or missing clip."); }
         }
 
         /// <summary>
@@ -103,9 +92,8 @@ namespace UrbanFracture.Combat
             }
             else
             {
-                Debug.Log($"{gunData.WeaponName} has run out of ammo, please reload...");
+                Debug.Log($"{gunData.WeaponName} is out of ammo...");
                 emptyMagazineSFX?.PlayOneShot(emptyMagazineSFX.clip);
-                return;
             }
         }
 
@@ -116,23 +104,19 @@ namespace UrbanFracture.Combat
         public abstract void Shoot();
 
         /// <summary>
-        /// Disables the gun's game object based on its holstered state.
+        /// NEW unified method for holstering/unholstering.
+        /// This method sets the holstered state of the gun.
         /// </summary>
-        public void HolsterWeapon()
+        /// <param name="shouldHolster"></param>
+        public void SetHolstered(bool shouldHolster)
         {
-            isHolstered = true;
-            gameObject.SetActive(false);
-            holsterWeaponSFX?.Play();
-        }
-
-        /// <summary>
-        /// Enables the gun's game object based on its holstered state.
-        /// </summary>
-        public void UnholsterWeapon()
-        {
-            isHolstered = false;
-            gameObject.SetActive(true);
-            holsterWeaponSFX?.Play();
+            if (!PauseMenuController.isPaused)
+            {
+                isHolstered = shouldHolster;
+                gameObject.SetActive(!shouldHolster);
+                Debug.Log($"{gunData.WeaponName} {(shouldHolster ? "holstering..." : "unholstering...")}");
+                holsterWeaponSFX?.Play();
+            }
         }
 
         /// <summary>
@@ -140,8 +124,11 @@ namespace UrbanFracture.Combat
         /// </summary>
         public void TryReload()
         {
-            if (isHolstered) return;
-            if (!isReloading && currentAmmo < gunData.MagazineSize) { StartCoroutine(Reload()); }
+            if (!PauseMenuController.isPaused)
+            {
+                if (isHolstered) { return; }
+                if (!isReloading && currentAmmo < gunData.MagazineSize) { StartCoroutine(Reload()); }
+            }
         }
 
         /// <summary>
@@ -154,18 +141,21 @@ namespace UrbanFracture.Combat
         /// <returns>IEnumerator for coroutine execution</returns>
         public IEnumerator Reload()
         {
-            isReloading = true;
+            if (!PauseMenuController.isPaused)
+            {
+                isReloading = true;
 
-            Debug.Log($"{gunData.WeaponName} is reloading...");
-            reloadSFX?.Play();
+                Debug.Log($"{gunData.WeaponName} is reloading...");
+                reloadSFX?.Play();
 
-            yield return new WaitForSeconds(gunData.ReloadTime);
+                yield return new WaitForSeconds(gunData.ReloadTime);
 
-            currentAmmo = gunData.MagazineSize;
-            isReloading = false;
+                currentAmmo = gunData.MagazineSize;
+                isReloading = false;
 
-            Debug.Log($"{gunData.WeaponName} is reloaded.");
-            gameHUD?.UpdateHUD();
+                Debug.Log($"{gunData.WeaponName} is reloaded.");
+                gameHUD?.UpdateHUD();
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ while recreating the tone and atmosphere of iconic shooters from the era.
 > [!WARNING]
 > **Before cloning this project, install Git LFS (Large File Storage)** to ensure all assets are properly downloaded.
 
-![alt text](/ClassDiagram1.jpg)
+![alt text](/ClassDiagram1.png)
 
 # Getting Started
 
@@ -96,7 +96,24 @@ This project was built using a combination of custom systems and learning resour
 - Implemented new sound effects for the menu's
 - Implemented automatic weapon fire modes
 
-Issue: the weapon is louder than intended.
+Issues: 
+- The weapon is louder than intended.
+- Sprinting is not allowed anymore, I have broke it after configuring crouching 
+- Holstering doesn't work properly: need to unholster and reholster twice to see weapon at the start of the game
+- No back button on level select screen
+- Game is sometimes paused at the start with no pause menu displayed
+    - Make game not pause at start
+- In addition to the issues above, I need to configure a proper settings menu
+
+Fixed:
+- Weapon Sound adjusted
+- Pause on start fixed
+- Added a back button to level select
+- Fixed sprinting mechanics
+- Tweaked recoil mechanics and put into a seperate file
+- The boolean for the holstering mechanic has been fixed as it was faulty
+- WIP settings menu prototype is coming
+
 ---
 
 ### Thursday, May 22nd, 2025
