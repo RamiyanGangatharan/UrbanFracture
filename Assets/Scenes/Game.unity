@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 94311614}
   m_Layer: 0
   m_Name: FootstepAudio
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1655,7 +1655,7 @@ GameObject:
   - component: {fileID: 220171126}
   m_Layer: 0
   m_Name: SFX_Shooting
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2708,7 +2708,7 @@ GameObject:
   - component: {fileID: 378663654}
   m_Layer: 0
   m_Name: ButtonClickSound
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4733,7 +4733,7 @@ GameObject:
   - component: {fileID: 719774810}
   m_Layer: 0
   m_Name: SFX_Holster
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15751,7 +15751,7 @@ GameObject:
   - component: {fileID: 1481144123}
   m_Layer: 0
   m_Name: SFX_Init
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16155,7 +16155,7 @@ GameObject:
   - component: {fileID: 1511861307}
   m_Layer: 0
   m_Name: SFX_EmptyMag
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19070,7 +19070,7 @@ GameObject:
   - component: {fileID: 1909785678}
   m_Layer: 0
   m_Name: ButtonHoverSound
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21055,7 +21055,7 @@ GameObject:
   - component: {fileID: 2120214174}
   m_Layer: 0
   m_Name: SFX_Reloading
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21451,7 +21451,7 @@ GameObject:
   - component: {fileID: 2136368826}
   m_Layer: 0
   m_Name: PauseMusic
-  m_TagString: Untagged
+  m_TagString: MUSIC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

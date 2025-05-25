@@ -11,6 +11,8 @@ TagManager:
   - LevelPart
   - Dummie
   - Sand
+  - SFX
+  - MUSIC
   layers:
   - Default
   - TransparentFX

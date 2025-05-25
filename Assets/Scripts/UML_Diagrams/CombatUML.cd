@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UrbanFracture.Combat.AKM">
+    <Position X="9" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiAABACAAAAIAAAAgEBAAAAAAEIAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Combat\AKM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Combat.Gun">
+    <Position X="10" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>GAQMAAAABDACBAAQAIgAAkAQAAIAAAAACAIgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Combat\Gun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Combat.GunData">
+    <Position X="1" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAACIAAIKiAICCgAAAAgAAAAIAAoAAAAIAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\Combat\GunData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Combat.RaycastGun">
+    <Position X="11.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAABAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Combat\RaycastGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Combat.RecoilHandler">
+    <Position X="14" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIQAIAEAIgABAABAAggAABAAAAAQQA=</HashCode>
+      <FileName>Assets\Scripts\Combat\RecoilHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour">
+    <Position X="11.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UnityEngine.ScriptableObject">
+    <Position X="3.25" Y="7" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="UnityEngine.Object">
+    <Position X="3.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="RampAsset">
+    <Position X="3.25" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAAgAAAQA=</HashCode>
+      <FileName>Assets\UnityTechnologies\ParticlePack\Shared\Ramps\Runtime\RampAsset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Readme">
+    <Position X="5.5" Y="9.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Readme.Section">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\UnityTechnologies\ParticlePack\TutorialInfo\Scripts\Readme.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAQAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\UnityTechnologies\ParticlePack\TutorialInfo\Scripts\Readme.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IDamageable">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Combat\IDamageable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
