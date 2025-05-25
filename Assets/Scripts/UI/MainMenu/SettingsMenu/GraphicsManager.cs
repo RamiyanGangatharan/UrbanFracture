@@ -123,7 +123,7 @@ namespace UrbanFracture.UI.MainMenu
             if (suppressCallbacks) { return; }
             resolutionIndex = Mathf.Clamp(resolutionIndex, 0, resolutions.Length - 1);
             Resolution resolution = resolutions[resolutionIndex];
-            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+            Screen.SetResolution(resolution.width, resolution.height, false);
         }
 
         /// <summary>
@@ -195,7 +195,6 @@ namespace UrbanFracture.UI.MainMenu
             PlayerPrefs.SetInt("ResolutionPreference", resolutionDropdown.value);
             PlayerPrefs.SetInt("TextureQualityPreference", textureDropdown.value);
             PlayerPrefs.SetInt("AntiAliasingPreference", antiAliasingDropdown.value);
-            PlayerPrefs.SetInt("FullscreenPreference", Screen.fullScreen ? 1 : 0);
             PlayerPrefs.Save();
         }
 
@@ -211,7 +210,6 @@ namespace UrbanFracture.UI.MainMenu
             resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference", resolutionIndex);
             textureDropdown.value = PlayerPrefs.GetInt("TextureQualityPreference", 0);
             antiAliasingDropdown.value = PlayerPrefs.GetInt("AntiAliasingPreference", 1);
-            Screen.fullScreen = PlayerPrefs.GetInt("FullscreenPreference", 1) == 1;
 
             qualityDropdown.RefreshShownValue();
             resolutionDropdown.RefreshShownValue();
