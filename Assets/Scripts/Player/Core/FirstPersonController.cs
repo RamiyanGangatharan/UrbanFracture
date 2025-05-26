@@ -1,4 +1,5 @@
-﻿using Unity.Cinemachine;
+﻿using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -44,6 +45,7 @@ namespace UrbanFracture.Core.Player
         private CameraFOVHandler FOVHandler;
         private JumpHandler jumpHandler;
         private CrouchHandler crouchHandler;
+        private LeanHandler leanHandler;
 
         private GameHUD gameHUD;
 
@@ -57,6 +59,7 @@ namespace UrbanFracture.Core.Player
             if (gameHUDCanvas == null) gameHUDCanvas = GetComponentInChildren<Canvas>(); 
             if (playerHealth == null) playerHealth = GetComponent<Health>();
             if (crouchHandler == null) crouchHandler = GetComponent<CrouchHandler>();
+            if (leanHandler == null) leanHandler = GetComponentInChildren<LeanHandler>();
         } 
 
         /// <summary>
@@ -66,15 +69,17 @@ namespace UrbanFracture.Core.Player
         {
             movementHandler = new MovementHandler(characterController, crouchHandler);
             crouchHandler = GetComponent<CrouchHandler>();
+            leanHandler = GetComponent<LeanHandler>();
             lookHandler = new LookHandler(transform, cameraPivotTransform);
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
             jumpHandler = new JumpHandler(characterController, crouchHandler);
-
+            
             if (gameHUDCanvas != null) { gameHUD = gameHUDCanvas.GetComponentInChildren<GameHUD>(); }
         }
 
         /// <summary>
-        /// Updates player movement, camera look direction, FOV adjustments, jumping, and landing events.
+        /// Updates player movement, camera look direction, FOV adjustments, jumping, and 
+        /// landing events.
         /// </summary>
         private void Update()
         {
@@ -141,6 +146,12 @@ namespace UrbanFracture.Core.Player
         {
             playerHealth?.TakeDamage(amount);
             gameHUD?.UpdateHUD();
+        }
+
+        public void TryLean(LeanHandler.LeanDirection direction)
+        {
+            Debug.Log($"Trying to lean: {direction}");
+            leanHandler.SetLean(direction);
         }
     }
 }
