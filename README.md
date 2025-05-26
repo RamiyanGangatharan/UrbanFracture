@@ -82,6 +82,7 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
     - Volume Settings
 - Tweaked recoil
 - Seperated the UML diagrams by use case (movement, combat, etc.)
+- Implemented leaning mechanics as a toggle
 
 ---
 
