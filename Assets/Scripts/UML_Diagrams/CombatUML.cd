@@ -15,7 +15,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="UrbanFracture.Combat.GunData">
-    <Position X="1" Y="9.5" Width="1.75" />
+    <Position X="3" Y="9.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AIAAAACIAAIKiAICCgAAAAgAAAAIAAoAAAAIAACAAAA=</HashCode>
       <FileName>Assets\Scripts\Combat\GunData.cs</FileName>
@@ -40,22 +40,22 @@
     <TypeIdentifier />
   </Class>
   <Class Name="UnityEngine.ScriptableObject">
-    <Position X="3.25" Y="7" Width="2.25" />
+    <Position X="6.5" Y="7" Width="2.25" />
     <TypeIdentifier />
   </Class>
   <Class Name="UnityEngine.Object">
-    <Position X="3.25" Y="0.5" Width="3.25" />
+    <Position X="6" Y="0.5" Width="3.25" />
     <TypeIdentifier />
   </Class>
   <Class Name="RampAsset">
-    <Position X="3.25" Y="9.5" Width="1.75" />
+    <Position X="5" Y="9.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAAgAAAQA=</HashCode>
       <FileName>Assets\UnityTechnologies\ParticlePack\Shared\Ramps\Runtime\RampAsset.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Readme">
-    <Position X="5.5" Y="9.5" Width="1.5" />
+    <Position X="7" Y="9.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
