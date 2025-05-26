@@ -12,7 +12,7 @@ while recreating the tone and atmosphere of iconic shooters from the era.
 > [!WARNING]
 > **Before cloning this project, install Git LFS (Large File Storage)** to ensure all assets are properly downloaded.
 
-![alt text](/ClassDiagram1.png)
+For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 
 # Getting Started
 
@@ -36,7 +36,6 @@ while recreating the tone and atmosphere of iconic shooters from the era.
 | Move                 | `WASD`              |
 | Look Around          | `Mouse`             |
 | Fire Weapon          | `Left Click`        |
-| Aim Down Sights      | `Right Click`       |
 | Reload               | `R`                 |
 | Sprint               | `Left Shift`        |
 | Interact             | `E`                 |
@@ -73,20 +72,16 @@ while recreating the tone and atmosphere of iconic shooters from the era.
 
 ---
 
-## Resources Used
-
-This project was built using a combination of custom systems and learning resources from the game development community. Key references include:
-
-- [How to Add and Manage Background Music in Unity](https://damiandabrowski.medium.com/how-to-add-and-manage-background-music-in-your-unity-projects-86cd5889a542)
-- [UI Slider Tutorial (YouTube)](https://youtu.be/oya8_SlLXb0)
-- [Loading Screen Implementation (YouTube)](https://youtu.be/NyFYNsC3H8k)
-- [First-Person Movement Tutorial (YouTube)](https://youtu.be/41MD0s9FiXI)
-- [Weapon Systems Tutorial (YouTube)](https://youtu.be/JCngTlb2R2c)
-- [Muzzle Flash Particle System (YouTube)](https://youtu.be/rf7gHVixmmc)
-- Custom sand impact particle system created with the help of ChatGPT
+## Development Log
 
 ---
-## Development Log
+
+### Monday May 26th, 2025
+- Created a settings menu
+    - Graphics Settings
+    - Volume Settings
+- Tweaked recoil
+- Seperated the UML diagrams by use case (movement, combat, etc.)
 
 ---
 
