@@ -77,12 +77,31 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 ---
 
 ### Tuesday May 27th, 2025
+
+#### General Updates
 - Tested the health system successfully
 - Created static enemies to test player health, shooting mechanics and decals on.
 - Created a blood particle system on raycast hit.
 - Created a system for blood decals based off the particle system raycast hit.
 - Created a base class for my first person controller so I can use the same code for enemies at different areas.
 - Fixed colliders in the factory walls
+
+#### Artificial Intelligence Implementation
+
+In a nutshell, I have created an artificial intelligence system where the enemy bots will chase you around.
+The only limitation right now is that they do not know how to go up or down stairs.
+
+- Implemented a base class called `BaseAI.cs` to create a solid template on basic AI behaviour.
+- Implemented a modular system for my AI system that can be referenced in both `EnemyController.cs` and `BaseAI.cs`.
+    - `EnemyManager.cs`: Responsible for linking the player controller to the enemy in order for it to have motion.
+    - `EnemyAnimation.cs`: An animation state management script where it determines animations based off player velocity.
+    - `EnemyMovement.cs`: Used for the locomotion of the enemy, paired with the animation script to create realistic movement.
+    - `EnemyPerception.cs`: Used to detect when a player is near a bot, activating the bot to follow the player within a certain range.
+    - `EnemySpawner.cs`: This script automates the process of enemy spawn processes where it loads a number of AI into a scene then
+    when a player kills an enemy AI, it will spawn another enemy at a random point.
+    - `EnemyController.cs`: An extension of `BaseCharacterController.cs` to make character creation simpler.
+
+---
 
 ### Monday May 26th, 2025
 - Created a settings menu
