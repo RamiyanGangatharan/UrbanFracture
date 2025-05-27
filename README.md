@@ -76,30 +76,33 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 
 ---
 
-### Tuesday May 27th, 2025
+### Tuesday, May 27th, 2025
 
-#### General Updates
-- Tested the health system successfully
-- Created static enemies to test player health, shooting mechanics and decals on.
-- Created a blood particle system on raycast hit.
-- Created a system for blood decals based off the particle system raycast hit.
-- Created a base class for my first person controller so I can use the same code for enemies at different areas.
-- Fixed colliders in the factory walls
+#### General Progress
+- Successfully tested the player health system in a combat scenario.
+- Created static enemy dummies to test core gameplay features: player health, shooting mechanics, and bullet impact decals.
+- Designed a blood particle effect triggered on raycast hit to simulate bullet impact.
+- Built a system that instantiates blood decals at the hit location using the particle system's collision detection.
+- Refactored the first-person controller into a base class to allow shared movement logic between the player and enemy AI.
+- Fixed wall colliders in the factory scene to ensure proper physics and navigation.
 
 #### Artificial Intelligence Implementation
 
-In a nutshell, I have created an artificial intelligence system where the enemy bots will chase you around.
-The only limitation right now is that they do not know how to go up or down stairs.
+Developed a foundational AI system where enemy bots can detect and chase the player. The main limitation at the moment is their inability to navigate stairs or vertical terrain changes.
 
-- Implemented a base class called `BaseAI.cs` to create a solid template on basic AI behaviour.
-- Implemented a modular system for my AI system that can be referenced in both `EnemyController.cs` and `BaseAI.cs`.
-    - `EnemyManager.cs`: Responsible for linking the player controller to the enemy in order for it to have motion.
-    - `EnemyAnimation.cs`: An animation state management script where it determines animations based off player velocity.
-    - `EnemyMovement.cs`: Used for the locomotion of the enemy, paired with the animation script to create realistic movement.
-    - `EnemyPerception.cs`: Used to detect when a player is near a bot, activating the bot to follow the player within a certain range.
-    - `EnemySpawner.cs`: This script automates the process of enemy spawn processes where it loads a number of AI into a scene then
-    when a player kills an enemy AI, it will spawn another enemy at a random point.
-    - `EnemyController.cs`: An extension of `BaseCharacterController.cs` to make character creation simpler.
+##### Modular Artificial Intelligence System Overview
+- **`BaseAI.cs`**: A base class providing core AI behavior, allowing consistent and reusable logic across enemy types.
+- **`EnemyManager.cs`**: Manages all active enemies and provides references to the player so enemies can react and move appropriately.
+- **`EnemyAnimation.cs`**: Handles animation states based on movement data, ensuring smooth transitions and realistic visuals.
+- **`EnemyMovement.cs`**: Controls enemy locomotion using Unity’s NavMesh system and syncs with animation logic for coordinated movement.
+- **`EnemyPerception.cs`**: Monitors for player proximity and triggers engagement behavior when the player enters a defined detection range.
+- **`EnemySpawner.cs`**: Automates enemy spawning across multiple points. Initially loads a set number of enemies, then spawns new ones when existing enemies are eliminated.
+- **`EnemyController.cs`**: Inherits from `BaseCharacterController.cs`, integrating all AI subsystems to define complete enemy behavior.
+
+Next steps:
+- Implement vertical navigation for AI (e.g., stair traversal).
+- Add combat behavior and attack animations.
+- Enhance perception logic with line-of-sight and audio detection.
 
 ---
 
