@@ -76,6 +76,14 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 
 ---
 
+### Tuesday May 27th, 2025
+- Tested the health system successfully
+- Created static enemies to test player health, shooting mechanics and decals on.
+- Created a blood particle system on raycast hit.
+- Created a system for blood decals based off the particle system raycast hit.
+- Created a base class for my first person controller so I can use the same code for enemies at different areas.
+- Fixed colliders in the factory walls
+
 ### Monday May 26th, 2025
 - Created a settings menu
     - Graphics Settings
