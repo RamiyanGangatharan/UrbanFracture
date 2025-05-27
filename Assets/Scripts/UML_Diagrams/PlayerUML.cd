@@ -164,7 +164,7 @@
   <Class Name="UrbanFracture.Core.Player.EnemyController">
     <Position X="0.75" Y="12.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAAAACAA=</HashCode>
       <FileName>Assets\Scripts\Player\Core\EnemyController.cs</FileName>
     </TypeIdentifier>
   </Class>

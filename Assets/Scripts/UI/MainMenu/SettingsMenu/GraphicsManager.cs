@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -50,13 +49,13 @@ namespace UrbanFracture.UI.MainMenu
                 if (!seen.Add(option)) { continue; }
 
                 options.Add(option);
-                if 
-                ( 
-                    resolutions[i].width == Screen.currentResolution.width && 
+                if
+                (
+                    resolutions[i].width == Screen.currentResolution.width &&
                     resolutions[i].height == Screen.currentResolution.height
-                ) 
-                { 
-                    currentIndex = i; 
+                )
+                {
+                    currentIndex = i;
                 }
             }
 
@@ -243,8 +242,8 @@ namespace UrbanFracture.UI.MainMenu
                     resolutions[i].width == Screen.currentResolution.width &&
                     resolutions[i].height == Screen.currentResolution.height
                 )
-                { 
-                    return i; 
+                {
+                    return i;
                 }
             }
             return 0;
