@@ -3,21 +3,6 @@
   <Comment CommentText="I do not know why there are two input systems but I am only using one. I will keep both just in case.">
     <Position X="12.535" Y="2.062" Height="0.776" Width="1.7" />
   </Comment>
-  <Class Name="UrbanFracture.Core.Player.FirstPersonController">
-    <Position X="0.5" Y="5.75" Width="2.25" />
-    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
-      <Path>
-        <Point X="5.75" Y="4.684" />
-        <Point X="5.75" Y="5.117" />
-        <Point X="1.625" Y="5.117" />
-        <Point X="1.625" Y="5.75" />
-      </Path>
-    </InheritanceLine>
-    <TypeIdentifier>
-      <HashCode>gAQIBAUAFIAiAQAAgAEEACDFCAAACAAAAAAghAMAAkA=</HashCode>
-      <FileName>Assets\Scripts\Player\Core\FirstPersonController.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="UnityEngine.MonoBehaviour">
     <Position X="4.5" Y="0.5" Width="2.5" />
     <TypeIdentifier />
@@ -152,6 +137,35 @@
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAgAEAgAYAIgAAEAAAEAQAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\MovementHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Core.Player.BaseCharacterController">
+    <Position X="0.5" Y="6.5" Width="2" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="4.684" />
+        <Point X="5.75" Y="5.117" />
+        <Point X="1.417" Y="5.117" />
+        <Point X="1.417" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAFAAABAAgAAAAgAEEAADFAAAACAAAAAAghAIAAMA=</HashCode>
+      <FileName>Assets\Scripts\Player\Core\BaseCharacterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Core.Player.FirstPersonController">
+    <Position X="3" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAUAFIAiAQAAgAEEACDACAAACAAAAAAggAEAAkA=</HashCode>
+      <FileName>Assets\Scripts\Player\Core\FirstPersonController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Core.Player.EnemyController">
+    <Position X="0.75" Y="12.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Player\Core\EnemyController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

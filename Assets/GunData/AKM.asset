@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponIcon: {fileID: 2800000, guid: d4e30ae614cf7d8419922a9b75a36526, type: 3}
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
   range: 300
   fireRate: 10
   isAutomatic: 1

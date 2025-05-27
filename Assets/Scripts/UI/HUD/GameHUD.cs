@@ -19,7 +19,6 @@ namespace UrbanFracture.UI.HUD
         public TextMeshProUGUI TotalAmmoText;
         public TextMeshProUGUI HealthText;
         public TextMeshProUGUI WeaponName;
-        public RawImage WeaponImage;
         public RawImage WeaponIcon;
         public RawImage AmmoIcon;
         public RawImage CrouchImage;
@@ -70,11 +69,6 @@ namespace UrbanFracture.UI.HUD
                     CurrentAmmoText.text = $"{currentGun.currentAmmo}";
                     TotalAmmoText.text = $"{currentGun.gunData.MagazineSize}";
                     WeaponName.text = currentGun.gunData.WeaponName;
-
-                    if (WeaponImage != null && currentGun.gunData.WeaponIcon != null)
-                    {
-                        WeaponImage.texture = currentGun.gunData.WeaponIcon;
-                    }
                 }
             }
 
@@ -109,7 +103,6 @@ namespace UrbanFracture.UI.HUD
             SetAlpha(CurrentAmmoText, alpha);
             SetAlpha(TotalAmmoText, alpha);
             SetAlpha(WeaponName, alpha);
-            SetAlpha(WeaponImage, alpha);
             SetAlpha(WeaponIcon, alpha);
             SetAlpha(AmmoIcon, alpha);
         }

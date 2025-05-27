@@ -1,5 +1,4 @@
-﻿using System;
-using Unity.Cinemachine;
+﻿using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -11,21 +10,18 @@ using UrbanFracture.UI.MainMenu;
 namespace UrbanFracture.Core.Player
 {
     /// <summary>
-    /// Controls first-person player behavior including movement, camera rotation,
-    /// sprinting, jumping, and invoking events on landing.
+    /// This is a controller that controls the player that the user controls.
+    /// For all XML documentation, refer to the base class.
     /// </summary>
     [RequireComponent(typeof(CharacterController))]
-    public class FirstPersonController : MonoBehaviour
+    public class FirstPersonController : BaseCharacterController
     {
         [Header("References")]
-        [SerializeField] private CharacterController characterController;
         [SerializeField] public CinemachineCamera firstPersonCamera;
         [SerializeField] private Footsteps footsteps;
         [SerializeField] private Canvas gameHUDCanvas;
-        [SerializeField] private Health playerHealth;
         [SerializeField] private Transform cameraPivotTransform;
-
-        public Health PlayerHealth => playerHealth;
+        [SerializeField] private LeanHandler leanHandler;
 
         [Header("Input")]
         public Vector2 moveInput;
@@ -33,125 +29,92 @@ namespace UrbanFracture.Core.Player
         public bool sprintInput;
         public UnityEvent Landed;
 
-        [Header("Combat")]
-        [SerializeField] private Gun currentGun;
-
-        [Header("Player Stats")]
-        public Gun EquippedGun => currentGun;
-
-        // Component Handlers
-        private MovementHandler movementHandler;
         private LookHandler lookHandler;
         private CameraFOVHandler FOVHandler;
-        private JumpHandler jumpHandler;
-        private CrouchHandler crouchHandler;
-        private LeanHandler leanHandler;
-
         private GameHUD gameHUD;
 
-        /// <summary>
-        /// Ensures required component references are assigned in the editor.
-        /// </summary>
-        private void OnValidate()
-        {
-            if (characterController == null) characterController = GetComponent<CharacterController>();
-            if (footsteps == null) footsteps = GetComponentInChildren<Footsteps>();
-            if (gameHUDCanvas == null) gameHUDCanvas = GetComponentInChildren<Canvas>(); 
-            if (playerHealth == null) playerHealth = GetComponent<Health>();
-            if (crouchHandler == null) crouchHandler = GetComponent<CrouchHandler>();
-            if (leanHandler == null) leanHandler = GetComponentInChildren<LeanHandler>();
-        } 
+        public Gun EquippedGun => currentGun;
+        public Health PlayerHealth => characterHealth;
 
-        /// <summary>
-        /// Initializes all gameplay-related handlers for movement, camera control, FOV, and jumping.
-        /// </summary>
-        private void Awake()
+        protected override void Awake()
         {
-            movementHandler = new MovementHandler(characterController, crouchHandler);
+            base.Awake();
             crouchHandler = GetComponent<CrouchHandler>();
-            leanHandler = GetComponent<LeanHandler>();
+            leanHandler = GetComponentInChildren<LeanHandler>();
+            gameHUD = gameHUDCanvas.GetComponentInChildren<GameHUD>();
             lookHandler = new LookHandler(transform, cameraPivotTransform);
             FOVHandler = new CameraFOVHandler(firstPersonCamera);
-            jumpHandler = new JumpHandler(characterController, crouchHandler);
-            
-            if (gameHUDCanvas != null) { gameHUD = gameHUDCanvas.GetComponentInChildren<GameHUD>(); }
         }
 
-        /// <summary>
-        /// Updates player movement, camera look direction, FOV adjustments, jumping, and 
-        /// landing events.
-        /// </summary>
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+            if (footsteps == null) footsteps = GetComponentInChildren<Footsteps>();
+            if (gameHUDCanvas == null) gameHUDCanvas = GetComponentInChildren<Canvas>();
+            if (leanHandler == null) leanHandler = GetComponentInChildren<LeanHandler>();
+        }
+
         private void Update()
         {
-            if (!PauseMenuController.isPaused)
+            if (PauseMenuController.isPaused) return;
+
+            ApplyMovement(moveInput, sprintInput);
+            lookHandler.Update(lookInput);
+            FOVHandler.Update(movementHandler.CurrentSpeed, sprintInput);
+
+            footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
+
+            if (Keyboard.current.hKey.wasPressedThisFrame)
             {
-                movementHandler.Update(moveInput, sprintInput);
-                lookHandler.Update(lookInput);
-                FOVHandler.Update(movementHandler.CurrentSpeed, sprintInput);
-                jumpHandler.Update(ref movementHandler.verticalVelocity);
-                crouchHandler.Update();
-                if (jumpHandler.CheckLanding()) { Landed?.Invoke(); }
-                movementHandler.ApplyMovement(movementHandler.verticalVelocity);
-
-                footsteps.HandleFootsteps(movementHandler.CurrentSpeed, characterController.isGrounded);
-
-                if (Keyboard.current.hKey.wasPressedThisFrame) { ToggleHolsterWeapon(); }
-            }
-            
-        }
-
-        public void TryJump() => jumpHandler.TryJump(ref movementHandler.verticalVelocity);
-
-        void ToggleHolsterWeapon()
-        {
-            if (currentGun != null)
-            {
-                currentGun.SetHolstered(!currentGun.IsHolstered());
+                ToggleHolsterWeapon();
                 gameHUD?.UpdateHUD();
             }
         }
 
-        public void TryAttack()
-        {
-            if (currentGun != null)
-            {
-                currentGun.TryShoot();
-                gameHUD?.UpdateHUD();
-            }
-        }
-        public void TryReload()
-        {
-            if (currentGun != null)
-            {
-                currentGun.TryReload();
-                gameHUD?.UpdateHUD();
-            }
-        }
+        public override void TryJump() { base.TryJump(); }
 
-        public void TryCrouch()
+        public override void TryAttack()
         {
-            crouchHandler.ToggleCrouch();
-        }
-
-        public void EquipGun(Gun gun)
-        {
-            if (currentGun != null) { currentGun.SetHolstered(true); }
-            currentGun = gun;
-
-            if (currentGun != null) { currentGun.SetHolstered(false); }
+            base.TryAttack();
             gameHUD?.UpdateHUD();
         }
 
-        public void TakeDamage(float amount)
+        public override void TryReload()
         {
-            playerHealth?.TakeDamage(amount);
+            base.TryReload();
+            gameHUD?.UpdateHUD();
+        }
+
+        public override void TryCrouch() { base.TryCrouch(); }
+
+        public override void EquipGun(Gun gun)
+        {
+            base.EquipGun(gun);
+            gameHUD?.UpdateHUD();
+        }
+
+        public override void TakeDamage(float amount)
+        {
+            base.TakeDamage(amount);
             gameHUD?.UpdateHUD();
         }
 
         public void TryLean(LeanHandler.LeanDirection direction)
         {
             Debug.Log($"Trying to lean: {direction}");
-            leanHandler.SetLean(direction);
+            leanHandler?.SetLean(direction);
+        }
+
+        public override void ToggleHolsterWeapon()
+        {
+            base.ToggleHolsterWeapon();
+            gameHUD?.UpdateHUD();
+        }
+
+        public override void ApplyMovement(Vector2 moveInput, bool sprintInput)
+        {
+            base.ApplyMovement(moveInput, sprintInput);
+            if (jumpHandler.CheckLanding()) Landed?.Invoke();
         }
     }
 }
