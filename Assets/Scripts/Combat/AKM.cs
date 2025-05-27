@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UrbanFracture.Player.Components;
 
 namespace UrbanFracture.Combat
 {
@@ -13,8 +12,11 @@ namespace UrbanFracture.Combat
     {
         [Header("Effects")]
         public Transform muzzleFlashSpawnPoint;
+        public LayerMask environmentMask;
         public ParticleSystem muzzleFlash;
-        public ParticleSystem hitEffectPrefab;
+        public ParticleSystem concreteHitEffectPrefab;
+        public ParticleSystem enemyHitEffectPrefab;
+        public GameObject bloodDecalPrefab;
         public ParticleSystem gunSmoke;
 
         [Header("Recoil System")]
@@ -78,18 +80,57 @@ namespace UrbanFracture.Combat
 
                 Debug.Log($"{gunData.WeaponName} hit {hit.collider.name}");
 
-                if (hitEffectPrefab != null)
-                {
-                    ParticleSystem hitEffect = Instantiate(
-                        hitEffectPrefab, hit.point,
-                        Quaternion.LookRotation(hit.normal)
-                    );
-                    Destroy(hitEffect.gameObject, 2f); // Destroy the hit effect after 2 seconds
-                }
+                IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
 
-                ApplyDamage(hit);
+                if (damageable != null)
+                {
+                    // Spawn enemy blood hit effect
+                    if (enemyHitEffectPrefab != null)
+                    {
+                        ParticleSystem enemyEffect = Instantiate(
+                            enemyHitEffectPrefab,
+                            hit.point,
+                            Quaternion.LookRotation(hit.normal)
+                        );
+                        Destroy(enemyEffect.gameObject, 2f);
+                    }
+
+                    if (bloodDecalPrefab != null && environmentMask != 0)
+                    {
+                        // Cast backwards slightly to hit environment surface reliably
+                        Ray backRay = new Ray(hit.point - hit.normal * 0.01f, -hit.normal);
+
+                        if (Physics.Raycast(backRay, out RaycastHit decalHit, 5.0f, environmentMask))
+                        {
+                            // Align decal to surface and rotate it to lie flat (assuming decal faces up)
+                            Quaternion rot = Quaternion.LookRotation(-decalHit.normal) * Quaternion.Euler(90f, 0f, 0f);
+                            Vector3 pos = decalHit.point + decalHit.normal * 0.0005f; // subtle offset to avoid z-fighting
+                            Instantiate(bloodDecalPrefab, pos, rot);
+                        }
+                        else
+                        {
+                            Debug.Log("Decal Raycast missed.");
+                        }
+                    }
+
+                    damageable.TakeDamage(gunData.Damage);
+                }
+                else
+                {
+                    // Spawn regular concrete hit effect
+                    if (concreteHitEffectPrefab != null)
+                    {
+                        ParticleSystem concreteEffect = Instantiate(
+                            concreteHitEffectPrefab,
+                            hit.point,
+                            Quaternion.LookRotation(hit.normal)
+                        );
+                        Destroy(concreteEffect.gameObject, 2f);
+                    }
+                }
             }
         }
+
 
         /// <summary>
         /// Plays the muzzle flash effect at the muzzle flash spawn point.
