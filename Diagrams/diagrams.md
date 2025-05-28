@@ -1,3 +1,5 @@
+# NAMESPACE AI
+![alt text](/ArtificialIntelligence_UML.png)
 
 # NAMESPACE COMBAT
 ![alt text](/CombatUML.png)
