@@ -100,6 +100,8 @@ Developed a foundational AI system where enemy bots can detect and chase the pla
 - **`EnemyController.cs`**: Inherits from `BaseCharacterController.cs`, integrating all AI subsystems to define complete enemy behavior.
 
 Next steps:
+- Create an inventory system for weapons
+- Have the ability to switch weapons using the number keys
 - Implement vertical navigation for AI (e.g., stair traversal).
 - Add combat behavior and attack animations.
 - Enhance perception logic with line-of-sight and audio detection.
