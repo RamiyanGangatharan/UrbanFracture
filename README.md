@@ -76,6 +76,12 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 
 ---
 
+### Wednesday, May 28th, 2025
+- Attempted to create an inventory system five times and failed.
+- Updated the navmesh to make AI go up the stairs (using a transparent plane)
+
+---
+
 ### Tuesday, May 27th, 2025
 
 #### General Progress
