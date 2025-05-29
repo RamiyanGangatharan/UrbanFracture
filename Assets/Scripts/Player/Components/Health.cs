@@ -35,7 +35,6 @@ namespace UrbanFracture.Player.Components
             if (IsDead) return;
             currentHealth = Mathf.Clamp(currentHealth - amount, 0f, maxHealth);
             OnHealthChanged?.Invoke(currentHealth);
-            Debug.Log("[HEALTH]" + gameObject.name + " took " + amount + " damage. Current health: " + currentHealth);
             if (currentHealth <= 0f) { Die(); }
         }
 
@@ -88,6 +87,5 @@ namespace UrbanFracture.Player.Components
             currentHealth = maxHealth;
             OnHealthChanged?.Invoke(currentHealth);
         }
-
     }
 }
