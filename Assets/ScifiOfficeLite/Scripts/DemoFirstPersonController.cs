@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ScifiOffice {
-    public class DemoFirstPersonController : MonoBehaviour {
+namespace ScifiOffice
+{
+    public class DemoFirstPersonController : MonoBehaviour
+    {
 
         Rigidbody rb;
         CapsuleCollider col;
@@ -24,20 +24,22 @@ namespace ScifiOffice {
         float verticalMovement;
 
         [Header("HUD")]
-        public GameObject canvas;      
+        public GameObject canvas;
 
 
-        private void Start() {
+        private void Start()
+        {
             rb = playerBody.GetComponent<Rigidbody>();
             col = playerBody.GetComponent<CapsuleCollider>();
-            
-            if(controlType == ControlType.keyboardMouse)
+
+            if (controlType == ControlType.keyboardMouse)
                 Cursor.lockState = CursorLockMode.Locked;
         }
 
         // Update is called once per frame
-        void Update() {
-            
+        void Update()
+        {
+
             Walk();
             Look();
 
@@ -70,11 +72,13 @@ namespace ScifiOffice {
 
         }
 
-        public void Look() {
+        public void Look()
+        {
             float mouseX = 0;
             float mouseY = 0;
 
-            switch(controlType) {
+            switch (controlType)
+            {
                 case ControlType.android:
                     mouseX = horizontalMovement * Time.deltaTime * mouseSensitivity;
                     break;
@@ -101,18 +105,21 @@ namespace ScifiOffice {
             playerBody.Rotate(Vector3.up * mouseX);
         }
 
-        void Walk() {
+        void Walk()
+        {
             Vector3 displacement;
             float maxSpeed = speed, maxAcc = accelerationRate;
 
             // Lower the limits if we are crouching.
-            if (isCrouching) {
+            if (isCrouching)
+            {
                 maxSpeed *= crouchFactor;
                 maxAcc *= crouchFactor;
             }
 
             //Find displacement based on controlType.
-            switch(controlType) {
+            switch (controlType)
+            {
                 case ControlType.android:
                     //Move forward and back only. Horizontal turns.
                     displacement = playerBody.transform.forward * verticalMovement;
@@ -131,30 +138,39 @@ namespace ScifiOffice {
             }
 
             float len = displacement.magnitude;
-            if(len > 0) {
+            if (len > 0)
+            {
                 rb.linearVelocity += displacement / len * Time.deltaTime * maxAcc;
 
                 // Clamp velocity to the maximum speed.
-                if(rb.linearVelocity.magnitude > maxSpeed) {
+                if (rb.linearVelocity.magnitude > maxSpeed)
+                {
                     rb.linearVelocity = rb.linearVelocity.normalized * speed;
                 }
-            } else {
+            }
+            else
+            {
                 // If no buttons are pressed, decelerate.
                 len = rb.linearVelocity.magnitude;
                 float decelRate = accelerationRate * decelerationFactor * Time.deltaTime;
-                if(len < decelRate) rb.linearVelocity = Vector3.zero;
-                else {
+                if (len < decelRate) rb.linearVelocity = Vector3.zero;
+                else
+                {
                     rb.linearVelocity -= rb.linearVelocity.normalized * decelRate;
                 }
             }
         }
 
-        void Crouch() {
+        void Crouch()
+        {
             //Crouch when the couch key is being pressed
-            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift)) {
+            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftShift))
+            {
                 col.height = .5f;
-                isCrouching = true; 
-            } else {
+                isCrouching = true;
+            }
+            else
+            {
                 //Otherwise, player stop crouching
                 col.height = 2;
                 //if (Input.GetKey(KeyCode.LeftShift)) {
@@ -169,7 +185,7 @@ namespace ScifiOffice {
         public void MobileCrouch()
         {
             //If player is currently crouching, stop crouching and vice versa
-            if(isCrouching)
+            if (isCrouching)
             {
                 col.height = 2;
                 isCrouching = false;
@@ -184,13 +200,13 @@ namespace ScifiOffice {
         //setting movement for android build
         public void MobileWalk(int direction)
         {
-            
-            if(direction * direction == 1)
+
+            if (direction * direction == 1)
             {
                 //Moving left and right
                 horizontalMovement = direction;
             }
-            else if(direction == 3)
+            else if (direction == 3)
             {
                 //When none of the button is pressed, stop moving
                 horizontalMovement = 0;
@@ -201,8 +217,8 @@ namespace ScifiOffice {
                 //Moving forward and back
                 verticalMovement = direction - 1;
             }
-            
-            
+
+
         }
 
 

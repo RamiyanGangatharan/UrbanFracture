@@ -46,7 +46,7 @@ namespace UrbanFracture.Player.Components
         /// <param name="isSprinting">Whether the player is sprinting.</param>
         public void Update(Vector2 moveInput, bool isSprinting)
         {
-            Vector3 direction = controller.transform.forward * moveInput.y + 
+            Vector3 direction = controller.transform.forward * moveInput.y +
                                 controller.transform.right * moveInput.x;
 
             direction.Normalize();
@@ -59,8 +59,8 @@ namespace UrbanFracture.Player.Components
             Vector3 targetVelocity = direction * targetSpeed;
 
             CurrentVelocity = Vector3.MoveTowards(
-                CurrentVelocity, 
-                targetVelocity, 
+                CurrentVelocity,
+                targetVelocity,
                 acceleration * Time.deltaTime
             );
 
@@ -77,8 +77,8 @@ namespace UrbanFracture.Player.Components
         public void ApplyMovement(float vertical)
         {
             Vector3 fullVelocity = new Vector3(
-                CurrentVelocity.x, 
-                vertical, 
+                CurrentVelocity.x,
+                vertical,
                 CurrentVelocity.z
             );
 

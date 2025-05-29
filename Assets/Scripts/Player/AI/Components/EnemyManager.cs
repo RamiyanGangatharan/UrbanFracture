@@ -23,18 +23,18 @@ namespace UrbanFracture.Player.AI
         /// This function registers an enemy to the manager.
         /// </summary>
         /// <param name="enemy"></param>
-        public void RegisterEnemy(EnemyController enemy) 
-        { 
-            if (!activeEnemies.Contains(enemy)) { activeEnemies.Add(enemy); } 
+        public void RegisterEnemy(EnemyController enemy)
+        {
+            if (!activeEnemies.Contains(enemy)) { activeEnemies.Add(enemy); }
         }
 
         /// <summary>
         /// This function unregisters an enemy from the manager.
         /// </summary>
         /// <param name="enemy"></param>
-        public void UnregisterEnemy(EnemyController enemy) 
+        public void UnregisterEnemy(EnemyController enemy)
         {
-            if (activeEnemies.Contains(enemy)) { activeEnemies.Remove(enemy); } 
+            if (activeEnemies.Contains(enemy)) { activeEnemies.Remove(enemy); }
         }
 
         public IReadOnlyList<EnemyController> ActiveEnemies => activeEnemies.AsReadOnly();

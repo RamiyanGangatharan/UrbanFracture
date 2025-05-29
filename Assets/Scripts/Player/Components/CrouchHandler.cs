@@ -18,13 +18,13 @@ namespace UrbanFracture.Player.Components
         [SerializeField] private float crouchingHeight = 1f;
         [SerializeField] private float crouchSpeed = 8f;
 
-        [SerializeField] private Vector3 standingCameraPosition =  new Vector3(0.0f, 1.6f, 0.0f);
+        [SerializeField] private Vector3 standingCameraPosition = new Vector3(0.0f, 1.6f, 0.0f);
         [SerializeField] private Vector3 crouchingCameraPosition = new Vector3(0.0f, 1.0f, 0.0f);
-        [SerializeField] private Vector3 weaponStandingPosition =  new Vector3(0.0f, 1.7f, 0.0f);
+        [SerializeField] private Vector3 weaponStandingPosition = new Vector3(0.0f, 1.7f, 0.0f);
         [SerializeField] private Vector3 weaponCrouchingPosition = new Vector3(0.0f, 1.1f, 0.0f);
 
         private bool isCrouching = false;
-      
+
         private Vector3 targetCameraPosition;
         private Vector3 targetWeaponPosition;
 

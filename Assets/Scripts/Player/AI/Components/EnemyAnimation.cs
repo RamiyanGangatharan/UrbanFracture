@@ -17,12 +17,12 @@ namespace UrbanFracture.Player.AI
         {
             base.Awake();
             animator = GetComponent<Animator>();
+            if (animator == null) Debug.LogError("animator is null!");
         }
 
         protected override void Initialize()
         {
             movement = GetComponent<EnemyMovement>();
-            if (movement == null) { Debug.LogError("EnemyMovement component missing!"); }
         }
 
         /// <summary>
@@ -30,6 +30,7 @@ namespace UrbanFracture.Player.AI
         /// </summary>
         protected override void Tick()
         {
+            if (movement == null || animator == null) return;
             float speed = movement.CurrentSpeed;
             animator.SetFloat("Speed", speed);
             animator.SetBool("IsSprinting", speed > sprintThreshold);

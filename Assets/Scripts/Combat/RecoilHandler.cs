@@ -39,14 +39,14 @@ namespace UrbanFracture.Combat
         public void Tick(float deltaTime)
         {
             recoilTargetRotation = Vector3.Lerp(
-                recoilTargetRotation, 
-                Vector3.zero, 
+                recoilTargetRotation,
+                Vector3.zero,
                 deltaTime * returnSpeed
             );
 
             recoilCurrentRotation = Vector3.Slerp(
-                recoilCurrentRotation, 
-                recoilTargetRotation, 
+                recoilCurrentRotation,
+                recoilTargetRotation,
                 deltaTime * rotationSpeed
             );
 
@@ -56,14 +56,14 @@ namespace UrbanFracture.Combat
             }
 
             weaponRecoilOffset = Vector3.Lerp(
-                weaponRecoilOffset, 
-                Vector3.zero, 
+                weaponRecoilOffset,
+                Vector3.zero,
                 deltaTime * weaponRecoilReturnSpeed
             );
 
             weaponCurrentOffset = Vector3.Slerp(
-                weaponCurrentOffset, 
-                weaponRecoilOffset, 
+                weaponCurrentOffset,
+                weaponRecoilOffset,
                 deltaTime * weaponRecoilReturnSpeed
             );
 

@@ -13772,13 +13772,73 @@ PrefabInstance:
       propertyPath: gameHUDCanvas
       value: 
       objectReference: {fileID: 1085018426}
+    - target: {fileID: 1272766733766966368, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272766733766966370, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272766733766966372, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272766733766966374, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272766733766966376, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272766733766966378, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272766733766966380, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272766733766966382, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744102981601737887, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2151357369839918341, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2151357369839918341, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151357369839918341, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2316452505316033681, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334551924329168837, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360905161325333179, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911462343643750309, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738076599479467475, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6129752602298628078, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13860,6 +13920,10 @@ PrefabInstance:
       propertyPath: FPSText
       value: 
       objectReference: {fileID: 1482489003}
+    - target: {fileID: 8211424090621320214, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8703956059278230939, guid: 4a373213dca9b184c83cf021ff4b3d6a, type: 3}
       propertyPath: QuitButton
       value: 

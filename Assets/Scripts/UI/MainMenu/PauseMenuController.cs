@@ -93,11 +93,11 @@ namespace UrbanFracture.UI.MainMenu
 
         public void QuitGame()
         {
-            #if UNITY_EDITOR
-                        EditorApplication.isPlaying = false;
-            #else
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
                         Application.Quit();
-            #endif
+#endif
         }
     }
 }

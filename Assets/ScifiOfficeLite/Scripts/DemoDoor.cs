@@ -1,17 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ScifiOffice {
-    public class DemoDoor : MonoBehaviour {
+namespace ScifiOffice
+{
+    public class DemoDoor : MonoBehaviour
+    {
         Animator anim;
 
-        private void Start() {
+        private void Start()
+        {
             anim = GetComponent<Animator>();
         }
 
-        private void OnTriggerEnter(Collider other) {
-            if(other.gameObject.name == "Player") {
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.name == "Player")
+            {
                 anim.SetTrigger("Open");
             }
         }

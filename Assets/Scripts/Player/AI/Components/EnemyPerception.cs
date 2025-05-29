@@ -33,7 +33,7 @@ namespace UrbanFracture.Player.AI
         protected override void Tick()
         {
             DistanceToPlayer = Vector3.Distance(
-                transform.position, 
+                transform.position,
                 playerTransform.position
             );
         }

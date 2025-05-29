@@ -43,7 +43,7 @@ namespace UrbanFracture.Combat
         public float Range => range;
         public float FireRate => fireRate;
         public bool IsAutomatic => isAutomatic;
-        public float Damage => damage; 
+        public float Damage => damage;
         public float MagazineSize => magazineSize;
         public float ReloadTime => reloadTime;
     }

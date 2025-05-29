@@ -195,6 +195,6 @@ namespace UrbanFracture.UI.LoadingScreen
         public void disableCanvas()
         {
             if (canvasToDisable != null) canvasToDisable.gameObject.SetActive(false);
-        }    
+        }
     }
 }

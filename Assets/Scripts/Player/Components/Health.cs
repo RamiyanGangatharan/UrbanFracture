@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace UrbanFracture.Player.Components
@@ -69,6 +70,26 @@ namespace UrbanFracture.Player.Components
         {
             OnDeath?.Invoke();
             Debug.Log($"{gameObject.name} has died.");
+
+            // Disable components
+            foreach (var comp in GetComponents<MonoBehaviour>())
+            {
+                if (comp != this) comp.enabled = false;
+            }
+
+            StartCoroutine(DestroyAfterDelay(5f));
+        }
+
+        /// <summary>
+        /// This function destroys the GameObject after a specified delay. 
+        /// In this case the game object is a dead enemy or player.
+        /// </summary>
+        /// <param name="delay"></param>
+        /// <returns></returns>
+        private IEnumerator DestroyAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Destroy(gameObject);
         }
 
         /// <summary>

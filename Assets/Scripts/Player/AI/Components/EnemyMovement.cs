@@ -20,7 +20,6 @@ namespace UrbanFracture.Player.AI
         protected override void Initialize()
         {
             perception = GetComponent<EnemyPerception>();
-            if (perception == null) { Debug.LogError("EnemyPerception component missing!"); }
         }
 
         /// <summary>
@@ -28,6 +27,8 @@ namespace UrbanFracture.Player.AI
         /// </summary>
         protected override void Tick()
         {
+            if (perception == null || agent == null || playerTransform == null) return;
+
             if (!perception.IsPlayerInRange)
             {
                 agent.isStopped = true;
@@ -44,8 +45,8 @@ namespace UrbanFracture.Player.AI
             {
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Slerp(
-                    transform.rotation, 
-                    targetRotation, 
+                    transform.rotation,
+                    targetRotation,
                     Time.deltaTime * 5f
                 );
             }

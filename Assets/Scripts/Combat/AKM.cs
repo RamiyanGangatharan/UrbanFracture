@@ -16,7 +16,6 @@ namespace UrbanFracture.Combat
         public ParticleSystem muzzleFlash;
         public ParticleSystem concreteHitEffectPrefab;
         public ParticleSystem enemyHitEffectPrefab;
-        public GameObject bloodDecalPrefab;
         public ParticleSystem gunSmoke;
 
         [Header("Recoil System")]
@@ -95,24 +94,6 @@ namespace UrbanFracture.Combat
                         Destroy(enemyEffect.gameObject, 2f);
                     }
 
-                    if (bloodDecalPrefab != null && environmentMask != 0)
-                    {
-                        // Cast backwards slightly to hit environment surface reliably
-                        Ray backRay = new Ray(hit.point - hit.normal * 0.01f, -hit.normal);
-
-                        if (Physics.Raycast(backRay, out RaycastHit decalHit, 5.0f, environmentMask))
-                        {
-                            // Align decal to surface and rotate it to lie flat (assuming decal faces up)
-                            Quaternion rot = Quaternion.LookRotation(-decalHit.normal) * Quaternion.Euler(90f, 0f, 0f);
-                            Vector3 pos = decalHit.point + decalHit.normal * 0.0005f; // subtle offset to avoid z-fighting
-                            Instantiate(bloodDecalPrefab, pos, rot);
-                        }
-                        else
-                        {
-                            Debug.Log("Decal Raycast missed.");
-                        }
-                    }
-
                     damageable.TakeDamage(gunData.Damage);
                 }
                 else
@@ -130,6 +111,7 @@ namespace UrbanFracture.Combat
                 }
             }
         }
+
 
 
         /// <summary>

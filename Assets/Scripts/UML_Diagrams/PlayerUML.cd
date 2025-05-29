@@ -105,7 +105,7 @@
   <Class Name="UrbanFracture.Player.Components.Health">
     <Position X="8" Y="10" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAUAACACgAAAUEIQAAAAEAAAAAAAAgAAAEEA=</HashCode>
+      <HashCode>AAAAAAAIAUAACACgAAAUEIQAAAAEAAAAAAAAgACAEEA=</HashCode>
       <FileName>Assets\Scripts\Player\Components\Health.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -166,6 +166,21 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAAAACAA=</HashCode>
       <FileName>Assets\Scripts\Player\Core\EnemyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UrbanFracture.Player.Components.RagdollPhysics">
+    <Position X="13" Y="10" Width="1.75" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="5.75" Y="4.684" />
+        <Point X="5.75" Y="9.552" />
+        <Point X="13.875" Y="9.552" />
+        <Point X="13.875" Y="10" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>BCAAAAAAAAAAAAABAAAgCAAAgAAAAAAAAAACAAAABEA=</HashCode>
+      <FileName>Assets\Scripts\Player\Components\RagdollPhysics.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
