@@ -77,8 +77,6 @@ namespace UrbanFracture.Combat
             {
                 recoilHandler?.ApplyRecoil();
 
-                Debug.Log($"{gunData.WeaponName} hit {hit.collider.name}");
-
                 IDamageable damageable = hit.collider.GetComponentInParent<IDamageable>();
 
                 if (damageable != null)

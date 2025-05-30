@@ -76,6 +76,10 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 
 ---
 
+### Friday, May 30th 2025
+- Added a killfeed for the player
+- Implemented footstep sounds for the enemy AI
+
 ### Thursday, May 29th 2025
 
 - Removed debug logs from the health class.

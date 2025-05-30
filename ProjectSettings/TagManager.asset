@@ -13,6 +13,7 @@ TagManager:
   - Sand
   - SFX
   - MUSIC
+  - Enemy
   layers:
   - Default
   - TransparentFX

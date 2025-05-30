@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UrbanFracture.UI.HUD;
 
 namespace UrbanFracture.Player.Components
 {
@@ -70,6 +71,12 @@ namespace UrbanFracture.Player.Components
         {
             OnDeath?.Invoke();
             Debug.Log($"{gameObject.name} has died.");
+
+            if (CompareTag("Enemy") && KillCounter.Instance != null)
+            {
+                string killer = "Player";
+                KillCounter.Instance.RegisterKill(killer, gameObject.name);
+            }
 
             // Disable components
             foreach (var comp in GetComponents<MonoBehaviour>())

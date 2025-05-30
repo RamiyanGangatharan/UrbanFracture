@@ -53,8 +53,8 @@ namespace UrbanFracture.Combat
         {
             if (!PauseMenuController.isPaused)
             {
-                if (isHolstered) return;
-                if (isReloading) { Debug.Log($"{gunData.WeaponName} is reloading..."); return; }
+                if (isHolstered) { return; }
+                if (isReloading) { return; }
                 if (currentAmmo <= 0f)
                 {
                     Debug.Log($"{gunData.WeaponName} is out of ammo...");
@@ -86,13 +86,11 @@ namespace UrbanFracture.Combat
             if (currentAmmo > 0)
             {
                 currentAmmo--;
-                Debug.Log($"{gunData.WeaponName} shot! Bullets left: {currentAmmo}");
                 PlayGunshot();
                 Shoot();
             }
             else
             {
-                Debug.Log($"{gunData.WeaponName} is out of ammo...");
                 emptyMagazineSFX?.PlayOneShot(emptyMagazineSFX.clip);
             }
         }
@@ -144,16 +142,12 @@ namespace UrbanFracture.Combat
             if (!PauseMenuController.isPaused)
             {
                 isReloading = true;
-
-                Debug.Log($"{gunData.WeaponName} is reloading...");
                 reloadSFX?.Play();
 
                 yield return new WaitForSeconds(gunData.ReloadTime);
 
                 currentAmmo = gunData.MagazineSize;
                 isReloading = false;
-
-                Debug.Log($"{gunData.WeaponName} is reloaded.");
                 gameHUD?.UpdateHUD();
             }
         }

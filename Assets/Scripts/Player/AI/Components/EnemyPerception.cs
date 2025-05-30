@@ -7,7 +7,7 @@ namespace UrbanFracture.Player.AI
     /// </summary>
     public class EnemyPerception : BaseAI
     {
-        public float chaseRange = 10f;
+        public float chaseRange = 20f;
         public float stopDistance = 2f;
 
         /// <summary>
