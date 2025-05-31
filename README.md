@@ -141,9 +141,13 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 - [ ] Polished combat visuals, sounds, and feel
 - [ ] Maintainable and scalable code architecture
 
+---
+
 ### Friday, May 30th 2025
 - Added a killfeed for the player
 - Implemented footstep sounds for the enemy AI
+
+---
 
 ### Thursday, May 29th 2025
 
@@ -152,6 +156,8 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 - Implemented ragdoll physics onto the enemies when they enter the death state
 - Implemented a feature where the enemy upon death will despawn the enemy
 - Removed the blood sprite from the game as it messed with the ragdoll animations.
+
+---
 
 ### Wednesday, May 28th, 2025
 - Attempted to create an inventory system five times and failed.
