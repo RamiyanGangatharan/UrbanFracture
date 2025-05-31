@@ -78,6 +78,9 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 
 ### Saturday May 31st 2025
 
+- Merging ragdoll branch to main to then create animations for my player
+
+
 #### 4-Week Sprint Plan 
 
 ## ✅ Week 1: Enemy Combat Foundations
