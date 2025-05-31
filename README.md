@@ -76,6 +76,71 @@ For my diagrams, see [this](/Diagrams/diagrams.md) for the images.
 
 ---
 
+### Saturday May 31st 2025
+
+#### 4-Week Sprint Plan 
+
+## ✅ Week 1: Enemy Combat Foundations
+- [ ] Abstract `Gun` logic into an input-agnostic class (`Gun.cs`)
+- [ ] Refactor player shooting to call `Gun.Shoot()` directly
+- [ ] Create `EnemyCombat.cs`
+  - [ ] Trigger `Gun.Shoot()` on cooldown
+  - [ ] Listen to `EnemyPerception.cs` for line-of-sight
+- [ ] Add gun prefab/scriptable object to enemy prefab
+- [ ] Create enemy shooting logic that doesn't use `Input`
+- [ ] Add muzzle flash and shoot SFX for AI
+- [ ] Set up layers to prevent AI from shooting each other or themselves
+- [ ] Test: AI can detect player and shoot with basic behavior
+
+---
+
+## 🔁 Week 2: Weapon Switching & Inventory (Player)
+- [ ] Implement `WeaponInventorySystem.cs` for the player
+- [ ] Connect `WeaponSlotUI.cs` to show active weapon
+- [ ] Add hotkey input for switching (`1`, `2`, `3`, etc.)
+- [ ] Display selected weapon info in HUD
+- [ ] Ensure each weapon pulls data from its own `GunData`
+- [ ] Save/load active weapon using `PlayerPrefs` or custom save system
+- [ ] Test: Player can switch and shoot different weapons
+
+---
+
+## 🎯 Week 3: Enemy Weapon Integration + Combat Smarts
+- [ ] Assign different weapons (pistol, rifle, etc.) to enemy prefabs
+- [ ] Adjust fire rate and accuracy per weapon type
+- [ ] Add shooting animation events
+- [ ] (Optional) Add basic cover system:
+  - [ ] Enemy dodges or moves when shot
+- [ ] Add blood/decal effects when player takes damage
+- [ ] Test: Enemies vary in combat and behave smartly
+
+---
+
+## 🎨 Week 4: Combat Polish, VFX, and Feedback
+- [ ] Add hit markers or screen damage flash when player is hit
+- [ ] Add death animation + ragdoll for enemy deaths
+- [ ] Improve sound design (indoor vs outdoor variation)
+- [ ] Fine-tune recoil, fire rate, aim behavior for feel
+- [ ] (Optional) Implement slow-mo killcam on final enemy kill
+- [ ] Add enemy SFX/voice line when detecting player
+- [ ] Test: Combat feels satisfying and polished
+
+---
+
+## 🧪 [Optional] Week 5+: Stealth / Audio Detection
+- [ ] Add noise-based detection (footsteps, gunfire)
+- [ ] Enemies patrol when unaware
+- [ ] Combine line-of-sight and sound into perception logic
+
+---
+
+## 🎁 By End of Sprint
+- [ ] Shared, modular weapon system for Player + AI
+- [ ] Intelligent AI that shoots, switches weapons, reacts
+- [ ] Weapon inventory with full UI and switching support
+- [ ] Polished combat visuals, sounds, and feel
+- [ ] Maintainable and scalable code architecture
+
 ### Friday, May 30th 2025
 - Added a killfeed for the player
 - Implemented footstep sounds for the enemy AI
