@@ -7,10 +7,15 @@ namespace UrbanFracture.Combat
         [Header("References")]
         public Transform recoilCamera;
         public Transform weaponTransform;
+        public WeaponADS weaponADS; 
 
         [Header("Recoil Settings")]
-        public Vector3 weaponRecoilKick = new Vector3(0.1f, 0.1f, -0.1f);
-        public Vector3 recoilRotation = new Vector3(2f, 1f, 4f);
+        public Vector3 HipFireRecoilKick = new Vector3(0.1f, 0.1f, -0.1f);
+        public Vector3 HipFireRotation = new Vector3(2f, 1f, 4f);
+
+        public Vector3 adsRecoilKick = new Vector3(0.05f, 0.05f, -0.05f);
+        public Vector3 adsRotation = new Vector3(1f, 0.5f, 2f);
+
         public float weaponRecoilReturnSpeed = 7f;
         public float rotationSpeed = 7f;
         public float returnSpeed = 2f;
@@ -23,16 +28,21 @@ namespace UrbanFracture.Combat
 
         public void ApplyRecoil()
         {
+            bool aiming = weaponADS != null && weaponADS.IsAiming;
+
+            Vector3 rot = aiming ? adsRotation : HipFireRotation;
+            Vector3 kick = aiming ? adsRecoilKick : HipFireRecoilKick;
+
             recoilTargetRotation += new Vector3(
-                -recoilRotation.x,
-                Random.Range(-recoilRotation.y, recoilRotation.y),
-                Random.Range(-recoilRotation.z, recoilRotation.z)
+                -rot.x,
+                Random.Range(-rot.y, rot.y),
+                Random.Range(-rot.z, rot.z)
             );
 
             weaponRecoilOffset += new Vector3(
-                weaponRecoilKick.x,
-                Random.Range(-weaponRecoilKick.y, weaponRecoilKick.y),
-                weaponRecoilKick.z
+                kick.x,
+                Random.Range(-kick.y, kick.y),
+                kick.z
             );
         }
 
